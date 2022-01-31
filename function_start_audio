@@ -1,0 +1,21 @@
+#!/bin/bash
+
+start_audio ()
+{
+sudo bash -c 'cat > /etc/systemd/system/audio.service' << 'EOL'
+[Unit]
+Description=audio service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true ; do for audio in $(ls /home/pi/media/audio/* | shuf); do mpg123 $audio; done; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo systemctl daemon-reload
+sudo systemctl start audio.service
+sudo systemctl enable audio.service > /dev/null 2>&1
+}
