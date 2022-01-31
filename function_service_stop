@@ -1,6 +1,6 @@
 #!/bin/bash
 
-stop_service ()
+service_stop ()
 {
  for service in audio video images stream youtube browser logo
  do
@@ -8,9 +8,9 @@ stop_service ()
   sudo systemctl stop $service.service &&
   sudo systemctl disable $service.service  > /dev/null 2>&1 &&
   sudo rm /etc/systemd/system/$service.service &&
-  echo stop $service
+  echo stopping $service
  done
 }
 
-echo stop service
-stop_service
+echo stoping service
+service_stop
