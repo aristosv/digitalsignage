@@ -11,6 +11,9 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristo
 echo creating browser service
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_browser)
 
+echo configuring website
+sudo sed -i -e "s|weburl|$website|g" /etc/systemd/system/browser.service
+
 echo reloading services
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_reload)
 
