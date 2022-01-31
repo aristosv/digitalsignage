@@ -1,6 +1,6 @@
 #!/bin/bash
 
-browser_service ()
+service_browser ()
 {
 sudo bash -c 'cat > /etc/systemd/system/browser.service' << 'EOL'
 [Unit]
@@ -17,4 +17,4 @@ EOL
 }
 
 echo creating browser service
-browser_service
+service_browser
