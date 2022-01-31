@@ -1,60 +1,28 @@
-stop_service ()
-{
- for service in audio video images stream youtube browser logo
- do
-  sudo systemctl is-active --quiet $service.service &&
-  sudo systemctl stop $service.service &&
-  sudo systemctl disable $service.service  > /dev/null 2>&1 &&
-  sudo rm /etc/systemd/system/$service.service &&
-  echo stop $service
- done
-}
+#!/bin/bash
 
-clear_framebuffer ()
-{
- dd if=/dev/zero of=/dev/fb0 status=none > /dev/null 2>&1 &
-}
+echo stopping service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_stop)
 
-start_service ()
-{
-sudo bash -c 'cat > /etc/systemd/system/audio.service' << 'EOL'
-[Unit]
-Description=audio service
-After=network.target
+echo clearing framebuffer
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_framebuffer)
 
-[Service]
-ExecStart=/bin/bash -c "while true ; do for audio in $(ls /home/pi/media/audio/* | shuf); do mpg123 $audio; done; done"
-Restart=always
+echo creating audio service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_audio)
 
-[Install]
-WantedBy=multi-user.target
-EOL
+echo creating logo service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_logo)
 
-sudo systemctl daemon-reload
+echo reloading services
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_reload)
+
+echo starting audio service
 sudo systemctl start audio.service
-sudo systemctl enable audio.service > /dev/null 2>&1
-}
 
-start_logo ()
-{
-sudo bash -c 'cat > /etc/systemd/system/logo.service' << 'EOL'
-[Unit]
-Description=logo service
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/fim -q /home/pi/media/logo/bbx.png > /dev/null 2>&1 &
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOL
-
-sudo systemctl daemon-reload
+echo starting logo service
 sudo systemctl start logo.service
-sudo systemctl enable logo.service > /dev/null 2>&1
-}
 
-stop_service ; clear_framebuffer
-echo start audio ; start_service
-start_logo
+echo enabling audio service
+sudo systemctl enable audio.service
+
+echo enabling logo service
+sudo systemctl enable logo.service
