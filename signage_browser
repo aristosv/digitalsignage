@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo stop service
+echo stopping service
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_stop_service)
 
-echo clear framebuffer
+echo clearing framebuffer
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_clear_framebuffer)
 
 start_service ()
@@ -27,4 +27,4 @@ sudo systemctl start browser.service
 sudo systemctl enable browser.service > /dev/null 2>&1
 }
 
-echo start browser ; start_service
+echo starting browser ; start_service
