@@ -1,0 +1,9 @@
+#!/bin/bash
+
+service_reload ()
+{
+sudo systemctl daemon-reload
+}
+
+echo reloading services
+service_reload
