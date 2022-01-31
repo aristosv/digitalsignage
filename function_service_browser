@@ -8,7 +8,7 @@ Description=browser service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "sudo xinit /usr/bin/midori -e Fullscreen -a http://weburl"
+ExecStart=/bin/bash -c "sudo xinit /usr/bin/midori -e Fullscreen -a http://websiteurl"
 Restart=always
 
 [Install]
