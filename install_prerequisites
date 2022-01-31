@@ -19,10 +19,6 @@ sudo apt install -y mpg123 > /dev/null 2>&1
 echo install xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
-echo install youtube-dl
-sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
-sudo chmod a+rx /usr/local/bin/youtube-dl
-
 echo set timezone
 sudo timedatectl set-timezone Asia/Nicosia
 
