@@ -1,19 +1,19 @@
 #!/bin/bash
 
 echo stopping service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_stop)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_stop)
 
 echo clearing framebuffer
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_framebuffer)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_framebuffer)
 
 echo creating audio service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_audio)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_audio)
 
 echo creating logo service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_logo)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_logo)
 
 echo reloading services
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_reload)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_reload)
 
 echo starting audio service
 sudo systemctl start audio.service
