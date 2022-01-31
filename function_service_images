@@ -1,0 +1,19 @@
+#!/bin/bash
+
+service_images ()
+{
+sudo bash -c 'cat > /etc/systemd/system/images.service' << 'EOL'
+[Unit]
+Description=images service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/fim -a -u -q -R /home/pi/media/images -c 'while(1){display;sleep "4";next;}'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+}
+
+service_images
