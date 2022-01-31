@@ -10,17 +10,11 @@ sudo apt install -y xinit > /dev/null 2>&1
 echo install fim
 sudo apt install -y fim > /dev/null 2>&1
 
-echo install lftp
-sudo apt install -y lftp > /dev/null 2>&1
-
 echo install midori
 sudo apt install -y midori > /dev/null 2>&1
 
 echo install mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
-
-echo install sshpass
-sudo apt install -y sshpass > /dev/null 2>&1
 
 echo install xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
