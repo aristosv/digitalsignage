@@ -11,6 +11,7 @@ After=network.target
 User=pi
 ExecStart=xinit /usr/bin/vlc --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize youtubeurl
 Restart=always
+Environment=DISPLAY=:0
 
 [Install]
 WantedBy=multi-user.target
