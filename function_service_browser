@@ -6,9 +6,11 @@ sudo bash -c 'cat > /etc/systemd/system/browser.service' << 'EOL'
 [Unit]
 Description=browser service
 After=network.target
+
 [Service]
 ExecStart=/bin/bash -c "sudo xinit /usr/bin/midori -e Fullscreen -a weburl"
 Restart=always
+
 [Install]
 WantedBy=multi-user.target
 EOL
