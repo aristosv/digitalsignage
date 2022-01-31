@@ -25,6 +25,9 @@ sudo timedatectl set-timezone Asia/Nicosia
 echo create folders
 mkdir -p /home/pi/media/{audio,video,images,youtube,logo}
 
+echo download logo
+wget https://raw.githubusercontent.com/aristosv/beatbox/master/bbx.png -P /home/pi/media/logo > /dev/null 2>&1
+
 echo hide rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
 
