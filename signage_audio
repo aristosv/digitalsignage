@@ -55,7 +55,6 @@ sudo systemctl start logo.service
 sudo systemctl enable logo.service > /dev/null 2>&1
 }
 
-echo update audio ; update_media
 stop_service ; clear_framebuffer
 echo start audio ; start_service
 start_logo
