@@ -12,4 +12,5 @@ stop_service ()
  done
 }
 
-echo stop service ; stop_service
+echo stop service
+stop_service
