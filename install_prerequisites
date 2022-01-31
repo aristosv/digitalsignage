@@ -17,6 +17,10 @@ sudo apt install -y midori > /dev/null 2>&1
 echo install mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
 
+echo installing audio drivers
+sudo apt install -y alsa-base pulseaudio
+pulseaudio --start
+
 echo install xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
