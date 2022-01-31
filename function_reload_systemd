@@ -1,0 +1,9 @@
+#!/bin/bash
+
+reload_systemd ()
+{
+sudo systemctl daemon-reload
+}
+
+echo reloading systemd
+reload_systemd
