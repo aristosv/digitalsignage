@@ -14,8 +14,4 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOL
-
-sudo systemctl daemon-reload
-sudo systemctl start audio.service
-sudo systemctl enable audio.service > /dev/null 2>&1
 }
