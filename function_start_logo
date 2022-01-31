@@ -1,0 +1,24 @@
+#!/bin/bash
+
+start_logo ()
+{
+sudo bash -c 'cat > /etc/systemd/system/logo.service' << 'EOL'
+[Unit]
+Description=logo service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/fim -q /home/pi/media/logo/bbx.png > /dev/null 2>&1 &
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo systemctl daemon-reload
+sudo systemctl start logo.service
+sudo systemctl enable logo.service > /dev/null 2>&1
+}
+
+echo start logo
+start_logo
