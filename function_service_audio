@@ -16,5 +16,4 @@ WantedBy=multi-user.target
 EOL
 }
 
-echo creating audio service
 service_audio
