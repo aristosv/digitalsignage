@@ -15,6 +15,12 @@ sudo apt install -y lftp > /dev/null 2>&1
 
 echo install midori
 sudo apt install -y midori > /dev/null 2>&1
+sudo mkdir -p /root/.config/midori
+sudo bash -c "cat >> /root/.config/midori/config" << EOL
+[settings]
+last-window-width=$(fbset -s | awk '/geometry/ { print $2 }')
+last-window-height=$(fbset -s | awk '/geometry/ { print $3 }')
+EOL
 
 echo install mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
