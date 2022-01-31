@@ -16,5 +16,5 @@ WantedBy=multi-user.target
 EOL
 }
 
-echo starting logo service
+echo creating logo service
 service_logo
