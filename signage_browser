@@ -12,6 +12,19 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristo
 echo reloading services
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_reload)
 
+echo removing existing directory
+sudo rm -rf /root/.config/midori
+
+echo creating browser directory
+sudo mkdir -p /root/.config/midori
+
+echo creating browser configuration
+sudo bash -c "cat >> /root/.config/midori/config" << EOL
+[settings]
+last-window-width=$(fbset -s | awk '/geometry/ { print $2 }')
+last-window-height=$(fbset -s | awk '/geometry/ { print $3 }')
+EOL
+
 echo starting browser service
 sudo systemctl start browser.service
 
