@@ -1,0 +1,9 @@
+#!/bin/bash
+
+update_media () 
+{
+ lftp ftp://$ftpuser:$ftppass@$ftphost -e "$ftpsettings ; mirror -v -e $remotemedia $localmedia ; quit"
+}
+
+echo update audio
+update_media
