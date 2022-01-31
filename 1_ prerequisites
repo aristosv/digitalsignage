@@ -16,6 +16,9 @@ sudo apt install -y lftp > /dev/null 2>&1
 echo install midori
 sudo apt install -y midori > /dev/null 2>&1
 
+echo install mpg123
+sudo apt install -y mpg123 > /dev/null 2>&1
+
 echo install sshpass
 sudo apt install -y sshpass > /dev/null 2>&1
 
