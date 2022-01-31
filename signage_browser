@@ -29,4 +29,4 @@ echo starting browser service
 sudo systemctl start browser.service
 
 echo enabling browser service
-sudo systemctl enable browser.service
+sudo systemctl enable browser.service > /dev/null 2>&1
