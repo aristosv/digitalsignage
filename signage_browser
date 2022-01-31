@@ -1,19 +1,10 @@
-stop_service ()
-{
- for service in audio video images stream youtube browser logo
- do
-  sudo systemctl is-active --quiet $service.service &&
-  sudo systemctl stop $service.service &&
-  sudo systemctl disable $service.service  > /dev/null 2>&1 &&
-  sudo rm /etc/systemd/system/$service.service &&
-  echo stop $service
- done
-}
+#!/bin/bash
 
-clear_framebuffer ()
-{
- dd if=/dev/zero of=/dev/fb0 status=none > /dev/null 2>&1 &
-}
+echo stop service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_stop_service)
+
+echo clear framebuffer
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_clear_framebuffer)
 
 start_service ()
 {
@@ -36,5 +27,4 @@ sudo systemctl start browser.service
 sudo systemctl enable browser.service > /dev/null 2>&1
 }
 
-stop_service ; clear_framebuffer
 echo start browser ; start_service
