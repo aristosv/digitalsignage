@@ -16,4 +16,4 @@ echo starting images service
 sudo systemctl start images.service
 
 echo enabling images service
-sudo systemctl enable images.service
+sudo systemctl enable images.service > /dev/null 2>&1
