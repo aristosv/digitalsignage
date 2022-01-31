@@ -18,3 +18,13 @@ EOL
 
 echo creating browser service
 service_browser
+
+echo creating browser directory
+sudo mkdir -p /root/.config/midori
+
+echo creating browser configuration
+sudo bash -c "cat >> /root/.config/midori/config" << EOL
+[settings]
+last-window-width=$(fbset -s | awk '/geometry/ { print $2 }')
+last-window-height=$(fbset -s | awk '/geometry/ { print $3 }')
+EOL
