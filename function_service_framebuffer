@@ -1,9 +1,9 @@
 #!/bin/bash
 
-clear_framebuffer ()
+service_framebuffer ()
 {
  dd if=/dev/zero of=/dev/fb0 status=none > /dev/null 2>&1 &
 }
 
-echo clear framebuffer
-clear_framebuffer
+echo clearing framebuffer
+service_framebuffer
