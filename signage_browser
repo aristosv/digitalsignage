@@ -1,30 +1,19 @@
 #!/bin/bash
 
 echo stopping service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_stop_service)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_stop)
 
 echo clearing framebuffer
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_clear_framebuffer)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_framebuffer)
 
-start_service ()
-{
-sudo bash -c 'cat > /etc/systemd/system/browser.service' << 'EOL'
-[Unit]
-Description=browser service
-After=network.target
+echo creating browser service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_browser)
 
-[Service]
-ExecStart=/bin/bash -c "sudo xinit /usr/bin/midori -e Fullscreen -a weburl"
-Restart=always
+echo reloading services
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox2/main/function_service_reload)
 
-[Install]
-WantedBy=multi-user.target
-EOL
-
-sudo sed -i -e "s|weburl|$RD_OPTION_WEBSITE_ADDRESS|g" /etc/systemd/system/browser.service
-sudo systemctl daemon-reload
+echo starting browser service
 sudo systemctl start browser.service
-sudo systemctl enable browser.service > /dev/null 2>&1
-}
 
-echo starting browser ; start_service
+echo enabling browser service
+sudo systemctl enable browser.service
