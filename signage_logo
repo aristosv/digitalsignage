@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo stopping service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_stop)
+
+echo clearing framebuffer
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_framebuffer)
+
+echo creating logo service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_logo)
+
+echo reloading services
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_reload)
+
+echo starting logo service
+sudo systemctl start logo.service
+
+echo enabling logo service
+sudo systemctl enable logo.service
