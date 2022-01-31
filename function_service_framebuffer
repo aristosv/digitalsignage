@@ -5,5 +5,4 @@ service_framebuffer ()
  dd if=/dev/zero of=/dev/fb0 status=none > /dev/null 2>&1 &
 }
 
-echo clearing framebuffer
 service_framebuffer
