@@ -16,4 +16,4 @@ echo starting logo service
 sudo systemctl start logo.service
 
 echo enabling logo service
-sudo systemctl enable logo.service
+sudo systemctl enable logo.service > /dev/null 2>&1
