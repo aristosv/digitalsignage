@@ -14,6 +14,10 @@ sudo apt install -y fim > /dev/null 2>&1
 echo install midori
 sudo apt install -y midori > /dev/null 2>&1
 
+echo install vlc
+sudo apt install -y vlc
+sed -i 's/geteuid/getppid/' /usr/bin/vlc
+
 echo install mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
 
