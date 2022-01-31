@@ -1,6 +1,6 @@
 #!/bin/bash
 
-start_logo ()
+service_logo ()
 {
 sudo bash -c 'cat > /etc/systemd/system/logo.service' << 'EOL'
 [Unit]
@@ -14,11 +14,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOL
-
-sudo systemctl daemon-reload
-sudo systemctl start logo.service
-sudo systemctl enable logo.service > /dev/null 2>&1
 }
 
-echo start logo
-start_logo
+echo starting logo service
+service_logo
