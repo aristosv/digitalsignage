@@ -23,9 +23,6 @@ echo install youtube-dl
 sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
 sudo chmod a+rx /usr/local/bin/youtube-dl
 
-echo install ssmtp
-sudo apt install -y ssmtp > /dev/null 2>&1
-
 echo set timezone
 sudo timedatectl set-timezone Asia/Nicosia
 
