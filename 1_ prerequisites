@@ -1,1 +1,72 @@
+echo update
+sudo apt update > /dev/null 2>&1
 
+echo upgrade
+sudo apt -y upgrade > /dev/null 2>&1
+
+echo install xinit
+sudo apt install -y xinit > /dev/null 2>&1
+
+echo install fim
+sudo apt install -y fim > /dev/null 2>&1
+
+echo install lftp
+sudo apt install -y lftp > /dev/null 2>&1
+
+echo install midori
+sudo apt install -y midori > /dev/null 2>&1
+
+echo install sshpass
+sudo apt install -y sshpass > /dev/null 2>&1
+
+echo install xdotool
+sudo apt install -y xdotool > /dev/null 2>&1
+
+echo install youtube-dl
+sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
+echo install ssmtp
+sudo apt install -y ssmtp > /dev/null 2>&1
+
+echo set timezone
+sudo timedatectl set-timezone Asia/Nicosia
+
+echo create folders
+mkdir -p /home/pi/media/{audio,video,images,youtube,logo}
+
+echo hide rainbow
+sudo sed -i '1 i\disable_splash=1' /boot/config.txt
+
+echo hide boot icons
+sudo sed -i "1 s|$| logo.nologo quiet splash|" /boot/cmdline.txt
+
+echo hide boot messages
+sudo sed -i "1 s|$| quiet splash|" /boot/cmdline.txt
+
+echo disable login prompt
+sudo systemctl disable getty@tty1.service > /dev/null 2>&1
+
+echo remove default pi password warning
+sudo rm /etc/profile.d/sshpwd.sh
+
+echo hide blinking cursor
+sudo sed -i "1 s|$| vt.global_cursor_default=0|" /boot/cmdline.txt
+
+echo hide undervoltage message on boot
+sudo sed -i "1 s|$| loglevel=1|" /boot/cmdline.txt
+
+echo hide undervoltage lightning bolt icon
+sudo sed -i '1 i\avoid_warnings=1' /boot/config.txt
+
+echo hide mouse
+sudo sed -i 's/-nolisten/-nocursor -nolisten/g' /etc/X11/xinit/xserverrc
+
+echo configure sshd
+sudo sed -i -e 's/AcceptEnv LANG LC/AcceptEnv RD/g' /etc/ssh/sshd_config
+
+echo prevent sleep
+echo '*/5 * * * * root export DISPLAY=:0.0 ; sudo xdotool key Ctrl > /dev/null 2>&1 ' | sudo tee -a /etc/cron.d/nosleep > /dev/null
+
+echo hush login
+touch /home/pi/.hushlogin
