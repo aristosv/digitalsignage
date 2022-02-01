@@ -6,7 +6,7 @@ echo removing existing video
 rm -rf /home/pi/media/youtube/*
 
 echo downloading $youtubeurl
-youtube-dl --output /home/pi/media/youtube/1.mp4 $youtubeurl
+cd /home/pi/media/youtube ; youtube-dl --restrict-filenames $youtubeurl
 
 echo stopping service
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_stop)
