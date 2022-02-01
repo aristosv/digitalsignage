@@ -1,6 +1,6 @@
 # BeatBox Digital Signage
 
-This is a simple way to use a Raspberry Pi as a digital signage system.
+This is a simple way to use a Raspberry Pi as a digital signage system. No need for a graphical user interface, no need to install a desktop. Just download the [Raspberry Pi OS Lite](https://www.raspberrypi.com/software/operating-systems/) image, burn it on an SD card and boot to the operating system.
 
 ## Step 1: Install the prerequisites by running the command below.
 
