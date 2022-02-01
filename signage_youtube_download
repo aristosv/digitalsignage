@@ -9,10 +9,10 @@ echo clearing framebuffer
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_framebuffer)
 
 echo downloading youtube video
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_youtube_download)
+youtube-dl --output /home/pi/media/video/1.mp4 $youtubeurl
 
-echo creating youtube service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_youtube_stream)
+echo creating video service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_video)
 
 echo configuring width size
 sudo sed -i -e "s|wsize|$(fbset -s | awk '/geometry/ { print $2 }')|g" /etc/systemd/system/youtube.service
@@ -20,14 +20,11 @@ sudo sed -i -e "s|wsize|$(fbset -s | awk '/geometry/ { print $2 }')|g" /etc/syst
 echo configuring height size
 sudo sed -i -e "s|hsize|$(fbset -s | awk '/geometry/ { print $3 }')|g" /etc/systemd/system/youtube.service
 
-echo configuring youtube url
-sudo sed -i -e "s|youtubeurl|$youtubeurl|g" /etc/systemd/system/youtube.service
-
 echo reloading services
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_reload)
 
-echo starting youtube service
-sudo systemctl start youtube.service
+echo starting video service
+sudo systemctl start video.service
 
-echo enabling youtube service
-sudo systemctl enable youtube.service > /dev/null 2>&1
+echo enabling video service
+sudo systemctl enable video.service > /dev/null 2>&1
