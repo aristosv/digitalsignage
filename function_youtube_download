@@ -1,0 +1,8 @@
+#!/bin/bash
+
+youtube_download ()
+{
+ cd /home/pi/media/youtube ; youtube-dl --restrict-filenames $RD_OPTION_YOUTUBE_VIDEO_LINK_DOWNLOAD
+}
+
+youtube_download
