@@ -2,6 +2,7 @@
 
 This is a simple way to use a Raspberry Pi as a digital signage system. All you have to do is setup a new installation of Raspberry Pi OS and install the prerequisites by running the command below.
 
+---
 install prerequisites
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/install_prerequisites)
