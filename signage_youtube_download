@@ -2,14 +2,14 @@
 
 echo youtube video you want to display: ; read youtubeurl
 
+echo downloading youtube video
+youtube-dl --output /home/pi/media/video/1.mp4 $youtubeurl
+
 echo stopping service
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_stop)
 
 echo clearing framebuffer
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_framebuffer)
-
-echo downloading youtube video
-youtube-dl --output /home/pi/media/video/1.mp4 $youtubeurl
 
 echo creating video service
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_video)
