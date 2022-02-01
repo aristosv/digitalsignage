@@ -19,3 +19,8 @@ show images from /home/pi/media/images
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_images)
 ```
+---
+stream youtube video
+```
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_stream)
+```
