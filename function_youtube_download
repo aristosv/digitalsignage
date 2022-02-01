@@ -1,8 +1,0 @@
-#!/bin/bash
-
-youtube_download ()
-{
- cd /home/pi/media/video ; youtube-dl --restrict-filenames youtubeurl
-}
-
-youtube_download
