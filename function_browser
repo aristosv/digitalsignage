@@ -8,7 +8,7 @@ Description=browser service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/chromium-browser -no-sandbox --window-size=1360,768 --start-fullscreen --kiosk --incognito --noerrdialogs --no-first-run --fast --fast-start --disable-infobars websiteurl"
+ExecStart=/bin/bash -c "xinit /usr/bin/chromium-browser -no-sandbox --window-size=wsize,hsize --start-fullscreen --kiosk --incognito --noerrdialogs --no-first-run --fast --fast-start --disable-infobars websiteurl"
 Restart=always
 
 [Install]
