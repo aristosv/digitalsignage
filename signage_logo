@@ -16,7 +16,7 @@ echo removing existing logo
 rm -rf /home/pi/media/logo/*
 
 echo downloading logo
-wget https://raw.githubusercontent.com/aristosv/beatbox/master/logo.png -P /home/pi/media/logo > /dev/null 2>&1
+wget https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/logo.png -P /home/pi/media/logo > /dev/null 2>&1
 
 echo starting logo service
 sudo systemctl start logo.service
