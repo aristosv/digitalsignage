@@ -9,7 +9,7 @@ echo clearing framebuffer
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_framebuffer)
 
 echo creating youtube service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_youtube)
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_youtube_stream)
 
 echo configuring width size
 sudo sed -i -e "s|wsize|$(fbset -s | awk '/geometry/ { print $2 }')|g" /etc/systemd/system/youtube.service
