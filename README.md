@@ -2,5 +2,5 @@
 
 install prerequisites
 ```
-wget -O - https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/install_prerequisites | bash
+bash <(wget -qO- hhttps://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/install_prerequisites)
 ```
