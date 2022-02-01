@@ -2,8 +2,11 @@
 
 echo youtube video you want to display: ; read youtubeurl
 
+echo removing existing video
+rm -rf /home/pi/media/youtube/*
+
 echo downloading $youtubeurl
-youtube-dl --output /home/pi/media/video/1.mp4 $youtubeurl
+youtube-dl --output /home/pi/media/youtube/1.mp4 $youtubeurl
 
 echo stopping service
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_stop)
