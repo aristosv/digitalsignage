@@ -8,9 +8,6 @@ echo install xinit
 sudo apt install -y xinit > /dev/null 2>&1
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
-echo install fim
-sudo apt install -y fim > /dev/null 2>&1
-
 echo install midori
 sudo apt install -y midori > /dev/null 2>&1
 
@@ -18,14 +15,18 @@ echo install vlc
 sudo apt install -y vlc
 sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
+echo install youtube-dl
+sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
 echo install mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
 
+echo install fim
+sudo apt install -y fim > /dev/null 2>&1
+
 echo install xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
-
-echo set timezone
-sudo timedatectl set-timezone Asia/Nicosia
 
 echo create folders
 mkdir -p /home/pi/media/{audio,video,images,youtube,logo}
