@@ -12,7 +12,7 @@ echo install midori
 sudo apt install -y midori > /dev/null 2>&1
 
 echo install vlc
-sudo apt install -y vlc
+sudo apt install -y vlc > /dev/null 2>&1
 sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 echo install youtube-dl
