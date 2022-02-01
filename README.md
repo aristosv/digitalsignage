@@ -10,6 +10,11 @@ show logo
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_logo)
 ```
 ---
+play video files from /home/pi/media/video
+```
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_video)
+```
+---
 play audio files from /home/pi/media/audio
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_audio)
