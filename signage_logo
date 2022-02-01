@@ -12,6 +12,12 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristo
 echo reloading services
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_service_reload)
 
+echo removing existing logo
+rm -rf /home/pi/media/logo/*
+
+echo downloading logo
+wget https://raw.githubusercontent.com/aristosv/beatbox/master/bbx.png -P /home/pi/media/logo > /dev/null 2>&1
+
 echo starting logo service
 sudo systemctl start logo.service
 
