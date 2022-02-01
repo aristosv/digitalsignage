@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo stopping service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_stop)
+
+echo clearing framebuffer
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_framebuffer)
+
+echo creating video service
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_video)
+
+echo reloading services
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_reload)
+
+echo starting video service
+sudo systemctl start video.service
+
+echo enabling video service
+sudo systemctl enable video.service > /dev/null 2>&1
