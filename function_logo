@@ -8,7 +8,7 @@ Description=logo service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/fim -q /home/pi/media/logo/bbx.png > /dev/null 2>&1 &
+ExecStart=/usr/bin/fim -q /home/pi/media/logo/logo.png > /dev/null 2>&1 &
 Restart=always
 
 [Install]
