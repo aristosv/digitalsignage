@@ -34,9 +34,9 @@ show images from /home/pi/media/images
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_images)
 ```
 ---
-stream youtube video
+show a website
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_stream)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
 ```
 ---
 download & play youtube video
@@ -44,7 +44,7 @@ download & play youtube video
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_local)
 ```
 ---
-show a website
+stream youtube video
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_stream)
 ```
