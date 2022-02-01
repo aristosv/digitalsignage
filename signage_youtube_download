@@ -2,7 +2,7 @@
 
 echo youtube video you want to display: ; read youtubeurl
 
-echo downloading youtube video
+echo downloading $youtubeurl
 youtube-dl --output /home/pi/media/video/1.mp4 $youtubeurl
 
 echo stopping service
