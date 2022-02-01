@@ -11,6 +11,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 
 You can then choose any of the commands below to display content on your screen, or play music using your Raspberry Pi.
 
+---
 show logo
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_logo)
