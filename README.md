@@ -1,4 +1,4 @@
-# BeatBox-Digital-Signage
+# BeatBox Digital Signage
 
 install prerequisites
 ```
