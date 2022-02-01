@@ -1,0 +1,19 @@
+#!/bin/bash
+
+service_video ()
+{
+sudo bash -c 'cat > /etc/systemd/system/video.service' << 'EOL'
+[Unit]
+Description=video service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize /home/pi/media/video"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+}
+
+service_video
