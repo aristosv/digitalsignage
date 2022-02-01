@@ -1,68 +1,68 @@
-echo update
+echo updating
 sudo apt update > /dev/null 2>&1
 
-echo upgrade
+echo upgrading
 sudo apt -y upgrade > /dev/null 2>&1
 
-echo install xinit
+echo installing xinit
 sudo apt install -y xinit > /dev/null 2>&1
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
-echo install midori
+echo installing midori
 sudo apt install -y midori > /dev/null 2>&1
 
-echo install vlc
+echo installing vlc
 sudo apt install -y vlc > /dev/null 2>&1
 sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
-echo install youtube-dl
+echo installing youtube-dl
 sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
 sudo chmod a+rx /usr/local/bin/youtube-dl
 
-echo install mpg123
+echo installing mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
 
-echo install fim
+echo installing fim
 sudo apt install -y fim > /dev/null 2>&1
 
-echo install xdotool
+echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
-echo create folders
+echo creating directories
 mkdir -p /home/pi/media/{audio,video,images,youtube,logo}
 
-echo hide rainbow
+echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
 
-echo hide boot icons
+echo hiding boot icons
 sudo sed -i "1 s|$| logo.nologo quiet splash|" /boot/cmdline.txt
 
-echo hide boot messages
+echo hiding boot messages
 sudo sed -i "1 s|$| quiet splash|" /boot/cmdline.txt
 
-echo disable login prompt
+echo disabling login prompt
 sudo systemctl disable getty@tty1.service > /dev/null 2>&1
 
-echo remove default pi password warning
+echo removing default pi password warning
 sudo rm /etc/profile.d/sshpwd.sh
 
-echo hide blinking cursor
+echo hiding blinking cursor
 sudo sed -i "1 s|$| vt.global_cursor_default=0|" /boot/cmdline.txt
 
-echo hide undervoltage message on boot
+echo hiding undervoltage message on boot
 sudo sed -i "1 s|$| loglevel=1|" /boot/cmdline.txt
 
-echo hide undervoltage lightning bolt icon
+echo hiding undervoltage lightning bolt icon
 sudo sed -i '1 i\avoid_warnings=1' /boot/config.txt
 
-echo hide mouse
+echo hiding mouse
 sudo sed -i 's/-nolisten/-nocursor -nolisten/g' /etc/X11/xinit/xserverrc
 
-echo configure sshd
+echo configuring sshd
 sudo sed -i -e 's/AcceptEnv LANG LC/AcceptEnv RD/g' /etc/ssh/sshd_config
 
-echo prevent sleep
+echo preventing sleep
 echo '*/5 * * * * root export DISPLAY=:0.0 ; sudo xdotool key Ctrl > /dev/null 2>&1 ' | sudo tee -a /etc/cron.d/nosleep > /dev/null
 
-echo hush login
+echo hushing login
 touch /home/pi/.hushlogin
