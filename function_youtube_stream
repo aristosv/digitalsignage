@@ -8,7 +8,7 @@ Description=youtube service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize youtubeurl"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop youtubeurl"
 Restart=always
 
 [Install]
