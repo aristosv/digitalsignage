@@ -27,7 +27,7 @@ echo reloading services
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_reload)
 
 echo starting video service
-sudo systemctl start video.service
+sudo systemctl start youtube.service
 
 echo enabling video service
-sudo systemctl enable video.service > /dev/null 2>&1
+sudo systemctl enable youtube.service > /dev/null 2>&1
