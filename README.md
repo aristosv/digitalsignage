@@ -52,8 +52,3 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_stream)
 ```
----
-- stop all signage related services
-```
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_stop)
-```
