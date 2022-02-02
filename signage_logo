@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo stopping service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_stop)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_stop)
 
 echo clearing framebuffer
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_framebuffer)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_framebuffer)
 
 echo creating logo service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_logo)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_logo)
 
 echo reloading services
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
 
 echo removing existing logo
 rm -rf /home/pi/media/logo/*
