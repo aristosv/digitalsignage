@@ -3,8 +3,6 @@
 This is a simple way to use a Raspberry Pi as a digital signage system. No need for a graphical user interface, no need to install a desktop. Just download the [Raspberry Pi OS Lite](https://www.raspberrypi.com/software/operating-systems/) image, burn it on an SD card and boot your Raspberry Pi to the operating system. This has been tested on a Raspberry Pi 4 Model B with 4GB of RAM, but it will probably run just fine on older models also.
 
 ## Step 1: Install the prerequisites by running the command below.
-
----
 - install prerequisites
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/install_prerequisites)
@@ -12,8 +10,6 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 ---
 
 ## Step 2: Choose any of the commands below.
-
----
 - show logo
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_logo)
@@ -49,7 +45,6 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_stream)
 ```
 ## Optional
----
 - create a reverse ssh tunnel using an ssh server
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_tunnel)
