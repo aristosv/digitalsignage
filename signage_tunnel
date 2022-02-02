@@ -21,7 +21,7 @@ echo configuring ssh server reverseport
 sudo sed -i -e "s|reverseport|$reverseport|g" /etc/systemd/system/tunnel.service
 
 echo reloading services
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
 
 echo starting tunnel service
 sudo systemctl start tunnel.service
