@@ -22,6 +22,9 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 echo installing mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
 
+echo installing sshpass
+sudo apt install -y sshpass > /dev/null 2>&1
+
 echo installing fim
 sudo apt install -y fim > /dev/null 2>&1
 
