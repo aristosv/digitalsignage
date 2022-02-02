@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo stopping service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_stop)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_stop)
 
 echo clearing framebuffer
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_framebuffer)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_framebuffer)
 
 echo creating images service
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_images)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_images)
 
 echo reloading services
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
 
 echo starting images service
 sudo systemctl start images.service
