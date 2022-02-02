@@ -55,9 +55,6 @@ sudo sed -i "1 s|$| loglevel=1|" /boot/cmdline.txt
 echo hiding undervoltage lightning bolt icon
 sudo sed -i '1 i\avoid_warnings=1' /boot/config.txt
 
-echo hiding mouse
-sudo sed -i 's/-nolisten/-nocursor -nolisten/g' /etc/X11/xinit/xserverrc
-
 echo configuring sshd
 sudo sed -i -e 's/AcceptEnv LANG LC/AcceptEnv RD/g' /etc/ssh/sshd_config
 
