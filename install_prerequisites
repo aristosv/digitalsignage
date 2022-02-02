@@ -9,7 +9,7 @@ sudo apt install -y xinit > /dev/null 2>&1
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
 echo installing chromium
-sudo apt install -y chromium > /dev/null 2>&1
+sudo apt install -y chromium-browser > /dev/null 2>&1
 
 echo installing vlc
 sudo apt install -y vlc > /dev/null 2>&1
