@@ -55,9 +55,6 @@ sudo sed -i "1 s|$| loglevel=1|" /boot/cmdline.txt
 echo hiding undervoltage lightning bolt icon
 sudo sed -i '1 i\avoid_warnings=1' /boot/config.txt
 
-echo configuring sshd
-sudo sed -i -e 's/AcceptEnv LANG LC/AcceptEnv RD/g' /etc/ssh/sshd_config
-
 echo preventing sleep
 echo '*/5 * * * * root export DISPLAY=:0.0 ; sudo xdotool key Ctrl > /dev/null 2>&1 ' | sudo tee -a /etc/cron.d/nosleep > /dev/null
 
