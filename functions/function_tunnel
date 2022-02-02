@@ -1,3 +1,5 @@
+#!/bin/bash
+
 service_tunnel ()
 {
 sudo bash -c 'cat > /etc/systemd/system/tunnel.service' << 'EOL'
