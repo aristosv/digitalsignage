@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo ssh server username: ; read sshusername
+echo ssh server password: ; read sshpassword
+echo ssh server hostname: ; read sshhostname
+echo ssh server reverseport: ; read reverseport
+
+echo configuring ssh server username
+sudo sed -i -e "s|sshusername|$sshusername|g" /etc/systemd/system/tunnel.service
+
+echo configuring ssh server password
+sudo sed -i -e "s|sshpassword|$sshpassword|g" /etc/systemd/system/tunnel.service
+
+echo configuring ssh server hostname
+sudo sed -i -e "s|sshhostname|$sshhostname|g" /etc/systemd/system/tunnel.service
+
+echo configuring ssh server reverseport
+sudo sed -i -e "s|reverseport|$reverseport|g" /etc/systemd/system/tunnel.service
+
+echo reloading services
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/function_reload)
+
+echo starting browser service
+sudo systemctl start browser.service
+
+echo enabling browser service
+sudo systemctl enable browser.service > /dev/null 2>&1
