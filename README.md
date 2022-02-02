@@ -48,6 +48,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_youtube_stream)
 ```
+## Optional
 ---
 - create a reverse ssh tunnel using an ssh server
 ```
