@@ -34,11 +34,11 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_images)
 ```
 ---
-- show a website
+- show a website - this will prompt you to enter a website
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
 ```
-- or use this to avoid the prompt
+- or use this to show a website without a prompt
 ```
 echo apple.com | bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
 ```
