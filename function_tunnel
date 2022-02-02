@@ -6,7 +6,7 @@ Description=tunnel service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do sshpass -p sshpassword ssh -p 22 -t -t sshoptions sshuser@sshhostname -R reverseport:127.0.0.1:22; sleep 60; done"
+ExecStart=/bin/bash -c "while true; do sshpass -p sshpassword ssh -p 22 -t -t sshoptions sshusername@sshhostname -R reverseport:127.0.0.1:22; sleep 60; done"
 Restart=always
 
 [Install]
