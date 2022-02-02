@@ -38,10 +38,6 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
 ```
-- or use this to show a website without a prompt
-```
-echo apple.com | bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
-```
 ---
 - download & play youtube video
 ```
