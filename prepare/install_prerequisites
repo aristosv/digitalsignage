@@ -22,17 +22,11 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 echo installing mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
 
-echo installing sshpass
-sudo apt install -y sshpass > /dev/null 2>&1
-
 echo installing fim
 sudo apt install -y fim > /dev/null 2>&1
 
 echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
-
-echo creating directories
-mkdir -p /home/pi/media/{audio,video,images,youtube,logo}
 
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
