@@ -2,11 +2,8 @@
 
 echo youtube video you want to display: ; read youtubeurl
 
-echo removing existing video
-rm -rf /home/pi/media/youtube/*
-
-echo downloading $youtubeurl
-cd /home/pi/media/youtube ; youtube-dl --restrict-filenames $youtubeurl
+echo downloading youtube video
+youtube-dl -o /home/pi/digitalsignage/media/video/video1.mp4 $youtubeurl
 
 echo stopping service
 bash ./functions/function_stop
