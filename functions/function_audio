@@ -8,7 +8,7 @@ Description=audio service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true ; do for audio in $(ls /home/pi/media/audio/* | shuf); do mpg123 $audio; done; done"
+ExecStart=/bin/bash -c "while true ; do for audio in $(ls /home/pi/digitalsignage/media/audio/* | shuf); do mpg123 $audio; done; done"
 Restart=always
 
 [Install]
