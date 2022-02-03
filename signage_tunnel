@@ -6,7 +6,7 @@ echo ssh server hostname: ; read sshhostname
 echo ssh server reverseport: ; read reverseport
 
 echo creating tunnel service
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_tunnel)
+bash ./functions/function_tunnel
 
 echo configuring ssh server username
 sudo sed -i -e "s|sshusername|$sshusername|g" /etc/systemd/system/tunnel.service
@@ -21,7 +21,7 @@ echo configuring ssh server reverseport
 sudo sed -i -e "s|reverseport|$reverseport|g" /etc/systemd/system/tunnel.service
 
 echo reloading services
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
+bash ./functions/function_reload
 
 echo starting tunnel service
 sudo systemctl start tunnel.service
