@@ -8,7 +8,7 @@ Description=images service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/fim -a -u -q -R /home/pi/media/images -c 'while(1){display;sleep "4";next;}'
+ExecStart=/usr/bin/fim -a -u -q -R /home/pi/digitalsignage/media/images -c 'while(1){display;sleep "4";next;}'
 Restart=always
 
 [Install]
