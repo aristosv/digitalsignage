@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo stopping service
-bash ./functions/function_stop
+/home/pi/digitalsignage/functions/function_stop
 
 echo clearing framebuffer
-bash ./functions/function_framebuffer
+/home/pi/digitalsignage/functions/function_framebuffer
 
 echo creating video service
-bash ./functions/function_video
+/home/pi/digitalsignage/functions/function_video
 
 echo reloading services
-bash ./functions/function_reload
+/home/pi/digitalsignage/functions/function_reload
 
 echo starting video service
 sudo systemctl start video.service
