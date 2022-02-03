@@ -30,7 +30,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Sign
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_images)
 ```
 ---
-- show a website - this will prompt you to enter a website
+- show a website
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/signage_browser)
 ```
