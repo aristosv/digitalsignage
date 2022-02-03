@@ -1,22 +1,16 @@
 #!/bin/bash
 
 echo stopping service
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_stop)
+bash ./functions/function_stop
 
 echo clearing framebuffer
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_framebuffer)
+bash ./functions/function_framebuffer
 
 echo creating logo service
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_logo)
+bash ./functions/function_logo
 
 echo reloading services
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/functions/function_reload)
-
-echo removing existing logo
-rm -rf /home/pi/media/logo/*
-
-echo downloading logo
-wget https://raw.githubusercontent.com/aristosv/BeatBox-Digital-Signage/main/media/logo/logo.png -P /home/pi/media/logo > /dev/null 2>&1
+bash ./functions/function_reload
 
 echo starting logo service
 sudo systemctl start logo.service
