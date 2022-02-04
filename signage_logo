@@ -1,18 +1,18 @@
 #!/bin/bash
 
-source variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo stopping service
-$workingdir/functions/function_stop
+$DIR/functions/function_stop
 
 echo clearing framebuffer
-$workingdir/functions/function_framebuffer
+$DIR/functions/function_framebuffer
 
 echo creating logo service
-$workingdir/functions/function_logo
+$DIR/functions/function_logo
 
 echo reloading services
-$workingdir/functions/function_reload
+$DIR/functions/function_reload
 
 echo starting logo service
 sudo systemctl start logo.service
