@@ -1,17 +1,17 @@
 #!/bin/bash
 
-source variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo website you want to display: ; read websiteurl
 
 echo stopping service
-$workingdir/functions/function_stop
+$DIR/functions/function_stop
 
 echo clearing framebuffer
-$workingdir/function_framebuffer
+$DIR/function_framebuffer
 
 echo creating browser service
-$workingdir/functions/function_browser
+$DIR/functions/function_browser
 
 echo configuring website
 sudo sed -i -e "s|websiteurl|$websiteurl|g" /etc/systemd/system/browser.service
@@ -23,7 +23,7 @@ echo configuring height size
 sudo sed -i -e "s|hsize|$(fbset -s | awk '/geometry/ { print $3 }')|g" /etc/systemd/system/browser.service
 
 echo reloading services
-$workingdir/functions/function_reload
+$DIR/functions/function_reload
 
 echo starting browser service
 sudo systemctl start browser.service
