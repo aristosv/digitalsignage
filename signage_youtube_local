@@ -4,8 +4,11 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo youtube video you want to display: ; read youtubeurl
 
+echo removing previous video
+rm -f $DIR/media/youtube/*
+
 echo downloading youtube video
-youtube-dl -o $DIR/media/video/video1.mp4 $youtubeurl
+youtube-dl -o $DIR/media/youtube/video1.mp4 $youtubeurl
 
 echo stopping service
 $DIR/functions/function_stop
