@@ -65,30 +65,33 @@ logLevel: "INFO"
 actions:
 - title: Show Logo
   shell: /home/pi/digitalsignage/signage_logo
-  timeout: 120
 
 - title: Play Video
   shell: /home/pi/digitalsignage/signage_video
-  timeout: 120
 
 - title: Play Audio
   shell: /home/pi/digitalsignage/signage_audio
-  timeout: 120
 
 - title: Show Images
   shell: /home/pi/digitalsignage/signage_images
-  timeout: 120
 
 - title: Show Website
   shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
-  timeout: 120
   arguments:
     - name: website
-      title: website
+      title: Website Address
       type: ascii_identifier
       default: apple.com
 
-- title: Play YouTube
+- title: YouTube - Download Video
+  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
+  arguments:
+    - name: youtube
+      title: YouTube Link
+      type: very_dangerous_raw_string
+      default: https://youtu.be/QC8iQqtG0hg
+
+- title: YouTube - Stream Video
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
   arguments:
     - name: youtube
