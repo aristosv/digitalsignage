@@ -10,6 +10,7 @@ service_stop ()
   sudo rm /etc/systemd/system/$service.service &&
   echo stopping $service
  done
+ exit 0
 }
 
 service_stop
