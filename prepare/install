@@ -3,6 +3,8 @@
 # variables
 installdir=/home/pi/digitalsignage
 
+# installation
+# ============================================================================================================================
 echo updating
 sudo apt update > /dev/null 2>&1
 
@@ -11,18 +13,15 @@ sudo apt -y upgrade > /dev/null 2>&1
 
 echo installing xinit
 sudo apt install -y xinit > /dev/null 2>&1
-sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
 echo installing chromium
 sudo apt install -y chromium-browser > /dev/null 2>&1
 
 echo installing vlc
 sudo apt install -y vlc > /dev/null 2>&1
-sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 echo installing youtube-dl
 sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
-sudo chmod a+rx /usr/local/bin/youtube-dl
 
 echo installing mpg123
 sudo apt install -y mpg123 > /dev/null 2>&1
@@ -38,13 +37,56 @@ sudo apt install -y git > /dev/null 2>&1
 
 echo cloning digitalsignage repository
 git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
-chmod -R +x $installdir/signage_*
-chmod -R +x $installdir/functions/function_*
 
 echo installing olivetin
 wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
-$installdir/functions/function_olivetin
+
+# configuration
+# ============================================================================================================================
+
+echo configure xinit
+sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+
+echo configure vlc
+sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
+
+echo configure youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
+echo configure digitalsignage
+chmod -R +x $installdir/signage_*
+chmod -R +x $installdir/functions/function_*
+
+echo configure olivetin
+sudo rm -f /etc/OliveTin/config.yaml
+sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
+listenAddressSingleHTTPFrontend: 0.0.0.0:1337
+hideNavigation: false
+logLevel: "INFO"
+actions:
+- title: Show Logo
+  shell: /home/pi/digitalsignage/signage_logo
+  icon: "&#128280"
+  timeout: 120
+- title: Play Video
+  shell: /home/pi/digitalsignage/signage_video
+  icon: "&#128280"
+  timeout: 120
+- title: Play Audio
+  shell: /home/pi/digitalsignage/signage_audio
+  icon: "&#128280"
+  timeout: 120
+- title: Show Images
+  shell: /home/pi/digitalsignage/signage_images
+  icon: "&#128280"
+  timeout: 120
+- title: Show Website
+  shell: /home/pi/digitalsignage/signage_browser
+  icon: "&#128280"
+  timeout: 120
+EOL
+}
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
 rm OliveTin_2022-01-06_linux_arm64.deb
