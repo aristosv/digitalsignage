@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo removing current olivetin configuration
+sudo rm -f /etc/OliveTin/config.yaml
+
+echo creating new olivetin configuration
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
 hideNavigation: false
