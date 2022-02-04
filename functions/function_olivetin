@@ -1,5 +1,8 @@
 #!/bin/bash
 
+config_olivetin ()
+{
+
 echo removing current olivetin configuration
 sudo rm -f /etc/OliveTin/config.yaml
 
@@ -35,3 +38,6 @@ actions:
   icon: "&#128280"
   timeout: 120
 EOL
+}
+
+config_olivetin
