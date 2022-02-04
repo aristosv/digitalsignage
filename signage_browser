@@ -8,7 +8,7 @@ echo stopping service
 $DIR/functions/function_stop
 
 echo clearing framebuffer
-$DIR/function_framebuffer
+$DIR/functions/function_framebuffer
 
 echo creating browser service
 $DIR/functions/function_browser
