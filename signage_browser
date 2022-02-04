@@ -1,15 +1,17 @@
 #!/bin/bash
 
+source variables
+
 echo website you want to display: ; read websiteurl
 
 echo stopping service
-/home/pi/digitalsignage/functions/function_stop
+$workingdir/functions/function_stop
 
 echo clearing framebuffer
-/home/pi/digitalsignage/function_framebuffer
+$workingdir/function_framebuffer
 
 echo creating browser service
-/home/pi/digitalsignage/functions/function_browser
+$workingdir/functions/function_browser
 
 echo configuring website
 sudo sed -i -e "s|websiteurl|$websiteurl|g" /etc/systemd/system/browser.service
@@ -21,7 +23,7 @@ echo configuring height size
 sudo sed -i -e "s|hsize|$(fbset -s | awk '/geometry/ { print $3 }')|g" /etc/systemd/system/browser.service
 
 echo reloading services
-/home/pi/digitalsignage/functions/function_reload
+$workingdir/functions/function_reload
 
 echo starting browser service
 sudo systemctl start browser.service
