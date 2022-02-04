@@ -1,16 +1,18 @@
 #!/bin/bash
 
+source variables
+
 echo stopping service
-/home/pi/digitalsignage/functions/function_stop
+$workingdir/functions/function_stop
 
 echo clearing framebuffer
-/home/pi/digitalsignage/functions/function_framebuffer
+$workingdir/functions/function_framebuffer
 
 echo creating audio service
-/home/pi/digitalsignage/functions/function_audio
+$workingdir/functions/function_audio
 
 echo reloading services
-/home/pi/digitalsignage/functions/function_reload
+$workingdir/functions/function_reload
 
 echo starting audio service
 sudo systemctl start audio.service
