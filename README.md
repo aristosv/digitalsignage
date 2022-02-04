@@ -9,5 +9,5 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/
 
 ## access
 ```
-http://your_raspberry_pi_ip_address:1337
+http://your_raspberrypi_ip_address:1337
 ```
