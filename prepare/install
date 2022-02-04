@@ -66,6 +66,7 @@ hideNavigation: false
 logLevel: "INFO"
 
 actions:
+
 - title: Show Logo
   shell: /home/pi/digitalsignage/signage_logo
   timeout: 120
@@ -84,9 +85,12 @@ actions:
 
 - title: Show Website
   shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
+  timeout: 120
   arguments:
     - name: website
+      title: website
       type: ascii_identifier
+      default: example.com
 EOL
 
 sudo systemctl start OliveTin.service
