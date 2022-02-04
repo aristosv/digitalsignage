@@ -40,6 +40,8 @@ sudo apt install -y git > /dev/null 2>&1
 
 echo cloning digitalsignage repository
 git clone https://github.com/aristosv/digitalsignage.git /home/pi/digitalsignage > /dev/null 2>&1
+chmod -R +x /home/pi/digitalsignage/signage_*
+chmod -R +x /home/pi/digitalsignage/functions/function_*
 
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
