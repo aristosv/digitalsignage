@@ -98,6 +98,9 @@ actions:
       title: YouTube Link
       type: very_dangerous_raw_string
       default: https://youtu.be/QC8iQqtG0hg
+
+- title: Stop Signage Services
+  shell: /home/pi/digitalsignage/signage_stop
 EOL
 
 sudo systemctl start OliveTin.service
