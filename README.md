@@ -5,11 +5,3 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install)
 ```
-
-```
-git clone https://github.com/aristosv/digitalsignage.git /home/pi/digitalsignage
-```
-
-```
-git fetch origin
-```
