@@ -44,7 +44,6 @@ sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 
 # configuration
 # ============================================================================================================================
-
 echo configuring xinit
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
