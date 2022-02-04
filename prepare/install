@@ -64,27 +64,29 @@ sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
 hideNavigation: false
 logLevel: "INFO"
+
 actions:
 - title: Show Logo
   shell: /home/pi/digitalsignage/signage_logo
-  icon: "&#128280"
   timeout: 120
+
 - title: Play Video
   shell: /home/pi/digitalsignage/signage_video
-  icon: "&#128280"
   timeout: 120
+
 - title: Play Audio
   shell: /home/pi/digitalsignage/signage_audio
-  icon: "&#128280"
   timeout: 120
+
 - title: Show Images
   shell: /home/pi/digitalsignage/signage_images
-  icon: "&#128280"
   timeout: 120
+
 - title: Show Website
-  shell: /home/pi/digitalsignage/signage_browser
-  icon: "&#128280"
-  timeout: 120
+  shell: echo google.com | /home/pi/digitalsignage/signage_browser
+  arguments:
+    - name: website
+      type: ascii_identifier
 EOL
 }
 sudo systemctl start OliveTin.service
