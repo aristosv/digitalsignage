@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# variables
 installdir=/home/pi/digitalsignage
 
 # installation
-# ============================================================================================================================
 echo updating
 sudo apt update > /dev/null 2>&1
 
@@ -43,7 +41,6 @@ wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 
 # configuration
-# ============================================================================================================================
 echo configuring xinit
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
@@ -62,17 +59,10 @@ sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/config.yaml.orig
 
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
-hideNavigation: false
-logLevel: "INFO"
-
-actions:
-
-listenAddressSingleHTTPFrontend: 0.0.0.0:1337
 hideNavigation: true
 logLevel: "INFO"
 
 actions:
-
 - title: Show Logo
   shell: /home/pi/digitalsignage/signage_logo
   timeout: 120
