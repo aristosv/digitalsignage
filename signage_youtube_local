@@ -5,7 +5,7 @@ source variables
 echo youtube video you want to display: ; read youtubeurl
 
 echo downloading youtube video
-youtube-dl -o /home/pi/digitalsignage/media/video/video1.mp4 $youtubeurl
+youtube-dl -o $workingdir/media/video/video1.mp4 $youtubeurl
 
 echo stopping service
 $workingdir/functions/function_stop
