@@ -82,7 +82,7 @@ actions:
   timeout: 120
 
 - title: Show Website
-  shell: echo google.com | /home/pi/digitalsignage/signage_browser
+  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
   arguments:
     - name: website
       type: ascii_identifier
