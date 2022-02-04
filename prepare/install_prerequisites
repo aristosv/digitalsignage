@@ -28,6 +28,9 @@ sudo apt install -y fim > /dev/null 2>&1
 echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
+echo installing git
+sudo apt install -y git > /dev/null 2>&1
+
 echo installing olivetin
 wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
