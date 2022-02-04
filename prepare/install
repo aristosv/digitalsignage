@@ -28,13 +28,6 @@ sudo apt install -y fim > /dev/null 2>&1
 echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
-echo installing olivetin
-wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
-sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
-sudo systemctl start OliveTin.service
-sudo systemctl enable OliveTin.service > /dev/null 2>&1
-rm OliveTin_2022-01-06_linux_arm64.deb
-
 echo installing git
 sudo apt install -y git > /dev/null 2>&1
 
@@ -42,6 +35,14 @@ echo cloning digitalsignage repository
 git clone https://github.com/aristosv/digitalsignage.git /home/pi/digitalsignage > /dev/null 2>&1
 chmod -R +x /home/pi/digitalsignage/signage_*
 chmod -R +x /home/pi/digitalsignage/functions/function_*
+
+echo installing olivetin
+wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
+sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
+/home/pi/digitalsignage/functions/function_olivetin
+sudo systemctl start OliveTin.service
+sudo systemctl enable OliveTin.service > /dev/null 2>&1
+rm OliveTin_2022-01-06_linux_arm64.deb
 
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
