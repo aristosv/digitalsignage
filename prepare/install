@@ -45,20 +45,20 @@ sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 # configuration
 # ============================================================================================================================
 
-echo configure xinit
+echo configuring xinit
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
 
-echo configure vlc
+echo configuring vlc
 sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
-echo configure youtube-dl
+echo configuring youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
 
-echo configure digitalsignage
+echo configuring digitalsignage
 chmod -R +x $installdir/signage_*
 chmod -R +x $installdir/functions/function_*
 
-echo configure olivetin
+echo configuring olivetin
 sudo rm -f /etc/OliveTin/config.yaml
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
