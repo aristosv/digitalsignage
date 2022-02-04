@@ -67,6 +67,12 @@ logLevel: "INFO"
 
 actions:
 
+listenAddressSingleHTTPFrontend: 0.0.0.0:1337
+hideNavigation: true
+logLevel: "INFO"
+
+actions:
+
 - title: Show Logo
   shell: /home/pi/digitalsignage/signage_logo
   timeout: 120
@@ -88,17 +94,16 @@ actions:
   timeout: 120
   arguments:
     - name: website
-      title: Website
+      title: website
       type: ascii_identifier
-      default: example.com
+      default: apple.com
 
 - title: Play YouTube
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
-  timeout: 120
   arguments:
     - name: youtube
-      title: YouTubeVideo
-      type: ascii_identifier
+      title: YouTube Link
+      type: very_dangerous_raw_string
       default: https://youtu.be/QC8iQqtG0hg
 EOL
 
