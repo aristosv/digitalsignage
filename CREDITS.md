@@ -1,4 +1,4 @@
-This project is made possible with the help of the following projects
+This project is made possible with the help of the following projects:
 
 - [OliveTin](https://www.olivetin.app)
 - [Chromium Browser](https://www.chromium.org/getting-involved/download-chromium/)
