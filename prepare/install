@@ -59,6 +59,7 @@ chmod -R +x $installdir/functions/function_*
 
 echo configuring olivetin
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/config.yaml.orig
+
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
 hideNavigation: false
@@ -87,7 +88,7 @@ actions:
     - name: website
       type: ascii_identifier
 EOL
-}
+
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
 rm OliveTin_2022-01-06_linux_arm64.deb
