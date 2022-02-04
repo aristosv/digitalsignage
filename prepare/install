@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# variables
+installdir=/home/pi/digitalsignage
+
 echo updating
 sudo apt update > /dev/null 2>&1
 
@@ -32,14 +37,14 @@ echo installing git
 sudo apt install -y git > /dev/null 2>&1
 
 echo cloning digitalsignage repository
-git clone https://github.com/aristosv/digitalsignage.git /home/pi/digitalsignage > /dev/null 2>&1
-chmod -R +x /home/pi/digitalsignage/signage_*
-chmod -R +x /home/pi/digitalsignage/functions/function_*
+git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
+chmod -R +x $installdir/signage_*
+chmod -R +x $installdir/functions/function_*
 
 echo installing olivetin
 wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
-/home/pi/digitalsignage/functions/function_olivetin
+$installdir/functions/function_olivetin
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
 rm OliveTin_2022-01-06_linux_arm64.deb
