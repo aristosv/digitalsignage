@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+echo stopping service
+$DIR/functions/function_stop
+
+echo clearing framebuffer
+$DIR/functions/function_framebuffer
+
+echo reloading services
+$DIR/functions/function_reload
