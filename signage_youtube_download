@@ -16,7 +16,7 @@ $DIR/functions/function_stop
 echo clearing framebuffer
 $DIR/functions/function_framebuffer
 
-echo creating video service
+echo creating youtube service
 $DIR/functions/function_youtube_download
 
 echo configuring width size
@@ -28,8 +28,8 @@ sudo sed -i -e "s|hsize|$(fbset -s | awk '/geometry/ { print $3 }')|g" /etc/syst
 echo reloading services
 $DIR/functions/function_reload
 
-echo starting video service
+echo starting youtube service
 sudo systemctl start youtube.service
 
-echo enabling video service
+echo enabling youtube service
 sudo systemctl enable youtube.service > /dev/null 2>&1
