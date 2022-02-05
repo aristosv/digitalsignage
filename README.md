@@ -19,8 +19,7 @@ http://raspberrypi_ip:8080
 ```
 ## update
 ```
-cd /home/pi/digitalsignage/
-git pull origin main
+bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/operations/update)
 ```
 ## screenshots
 <p align="center">
