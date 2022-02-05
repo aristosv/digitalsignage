@@ -27,8 +27,8 @@ sudo dpkg -i $olivetindeb > /dev/null 2>&1
 echo creating new OliveTin configuration
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
-checkForUpdates: false
-showNewVersions: false
+checkForUpdates: true
+showNewVersions: true
 hideNavigation: false
 logLevel: "INFO"
 
