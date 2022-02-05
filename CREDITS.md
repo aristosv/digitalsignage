@@ -1,7 +1,7 @@
 This project is made possible with the help of the following:
 
 - [Raspberry Pi Foundation](https://www.raspberrypi.org)
-- [Linux Questions](https://www.linuxquestions.org)
+- [Linux Questions Forums](https://www.linuxquestions.org)
 - [OliveTin](https://www.olivetin.app)
 - [FileBrowser](https://github.com/filebrowser/filebrowser)
 - [Chromium Browser](https://www.chromium.org/getting-involved/download-chromium/)
