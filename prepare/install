@@ -41,7 +41,7 @@ wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 
 echo installing filebrowser
-curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
 
 # configuration
 echo configuring xinit
