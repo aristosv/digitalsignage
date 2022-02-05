@@ -20,5 +20,5 @@ git pull origin main
 ```
 ## screenshots
 <p align="center">
-  <img width="533" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile.png">
+  <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_olivetin_1.png">
 </p>
