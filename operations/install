@@ -1,6 +1,9 @@
 #!/bin/bash
 
+# variables
 installdir=/home/pi/digitalsignage
+olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
+githubpath=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
 
 # installation
 echo updating
@@ -37,7 +40,7 @@ echo installing digitalsignage
 git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
 
 echo installing olivetin
-wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
+wget $githubpath/$olivetindeb > /dev/null 2>&1
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 
 echo installing filebrowser
@@ -118,7 +121,7 @@ EOL
 
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
-rm OliveTin_2022-01-06_linux_arm64.deb
+rm $olivetindeb
 
 echo configuring filebrowser
 $installdir/functions/function_filebrowser
