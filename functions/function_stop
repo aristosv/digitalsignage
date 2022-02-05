@@ -2,7 +2,7 @@
 
 service_stop ()
 {
- for service in audio video images stream youtube browser logo
+ for service in audio video images youtube browser logo
  do
   sudo systemctl is-active --quiet $service.service &&
   sudo systemctl stop $service.service &&
