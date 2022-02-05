@@ -9,9 +9,13 @@ Check out the [Credits](https://github.com/aristosv/digitalsignage/blob/main/CRE
 curl -fsSL https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install -o /home/pi/install
 bash /home/pi/install
 ```
-## access
+## access signage
 ```
 http://raspberrypi_ip:1337
+```
+## access files
+```
+http://raspberrypi_ip:8080
 ```
 ## update
 ```
