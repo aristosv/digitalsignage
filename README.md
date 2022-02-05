@@ -6,7 +6,7 @@ Check out the [Credits](https://github.com/aristosv/digitalsignage/blob/main/CRE
 
 ## install
 ```
-curl -fsSL https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install -o /home/pi/install
+curl -fsSL https://raw.githubusercontent.com/aristosv/digitalsignage/main/operations/install -o /home/pi/install
 bash /home/pi/install
 ```
 ## access signage
