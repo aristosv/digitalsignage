@@ -18,7 +18,7 @@ git pull origin main
 
 ## access
 ```
-http://raspberrypi_ip_address:1337
+http://raspberrypi_ip:1337
 ```
 
 ## screenshots
