@@ -9,18 +9,15 @@ Check out the [Credits](https://github.com/aristosv/digitalsignage/blob/main/CRE
 curl -fsSL https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install -o /home/pi/install
 bash /home/pi/install
 ```
-
+## access
+```
+http://raspberrypi_ip:1337
+```
 ## update
 ```
 cd /home/pi/digitalsignage/
 git pull origin main
 ```
-
-## access
-```
-http://raspberrypi_ip:1337
-```
-
 ## screenshots
 <p align="center">
   <img width="533" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile.png">
