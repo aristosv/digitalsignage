@@ -96,7 +96,7 @@ actions:
       type: ascii_identifier
       default: apple.com
 
-- title: YouTube - Download Video
+- title: YouTube - Download & Play
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
   icon: "&#128253"
   arguments:
@@ -105,7 +105,7 @@ actions:
       type: very_dangerous_raw_string
       default: https://youtu.be/QC8iQqtG0hg
 
-- title: YouTube - Stream Video
+- title: YouTube - Stream
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
   icon: "&#128249"
   arguments:
