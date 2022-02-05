@@ -6,9 +6,11 @@ sudo bash -c 'cat > /etc/systemd/system/filebrowser.service' << 'EOL'
 [Unit]
 Description=filebrowser service
 After=network.target
+
 [Service]
 ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r /home/pi/digitalsignage/media/ -a 0.0.0.0"
 Restart=always
+
 [Install]
 WantedBy=multi-user.target
 EOL
