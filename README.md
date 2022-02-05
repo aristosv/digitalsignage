@@ -15,3 +15,5 @@ http://your_raspberrypi_ip_address:1337
 ```
 
 <p style="text-align:center;"><img src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/interface/mobile.png" width="533" height="800"></p>
+
+<img align="center" width="533" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/interface/mobile.png">
