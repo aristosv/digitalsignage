@@ -1,6 +1,7 @@
 This project is made possible with the help of the following projects:
 
 - [OliveTin](https://www.olivetin.app)
+- [FileBrowser](https://github.com/filebrowser/filebrowser)
 - [Chromium Browser](https://www.chromium.org/getting-involved/download-chromium/)
 - [VLC Media Player](https://www.videolan.org/vlc/)
 - [YouTube-DL Downloader](https://youtube-dl.org/)
