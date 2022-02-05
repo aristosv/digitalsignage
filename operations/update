@@ -11,20 +11,20 @@ cd $installdir
 git pull origin main > /dev/null 2>&1
 
 # OliveTin
-echo stopping OliveTin service
+echo stopping olivetin service
 sudo systemctl stop OliveTin.service
 
-echo backing up OliveTin configuration
+echo backing up olivetin configuration
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 
-echo removing OliveTin
+echo removing olivetin
 sudo dpkg -P olivetin > /dev/null 2>&1
 
-echo installing OliveTin
+echo installing olivetin
 wget $githubpath/$olivetindeb > /dev/null 2>&1
 sudo dpkg -i $olivetindeb > /dev/null 2>&1
 
-echo creating new OliveTin configuration
+echo creating new olivetin configuration
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
 checkForUpdates: true
