@@ -6,7 +6,8 @@ Check out the [Credits](https://github.com/aristosv/digitalsignage/blob/main/CRE
 
 ## install
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install)
+curl -fsSL https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install
+bash install
 ```
 
 ## update
