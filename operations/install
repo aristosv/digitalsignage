@@ -1,0 +1,163 @@
+#!/bin/bash
+
+installdir=/home/pi/digitalsignage
+
+# installation
+echo updating
+sudo apt update > /dev/null 2>&1
+
+echo upgrading
+sudo apt -y upgrade > /dev/null 2>&1
+
+echo installing xinit
+sudo apt install -y xinit > /dev/null 2>&1
+
+echo installing chromium
+sudo apt install -y chromium-browser > /dev/null 2>&1
+
+echo installing vlc
+sudo apt install -y vlc > /dev/null 2>&1
+
+echo installing youtube-dl
+sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
+
+echo installing mpg123
+sudo apt install -y mpg123 > /dev/null 2>&1
+
+echo installing fim
+sudo apt install -y fim > /dev/null 2>&1
+
+echo installing xdotool
+sudo apt install -y xdotool > /dev/null 2>&1
+
+echo installing git
+sudo apt install -y git > /dev/null 2>&1
+
+echo installing digitalsignage
+git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
+
+echo installing olivetin
+wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
+sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
+
+echo installing filebrowser
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
+
+# configuration
+echo configuring xinit
+sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+
+echo configuring vlc
+sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
+
+echo configuring youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
+echo configuring digitalsignage
+chmod -R +x $installdir/signage_*
+chmod -R +x $installdir/functions/function_*
+
+echo configuring olivetin
+sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/config.yaml.orig
+
+sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
+listenAddressSingleHTTPFrontend: 0.0.0.0:1337
+checkForUpdates: false
+showNewVersions: false
+hideNavigation: false
+logLevel: "INFO"
+
+actions:
+- title: Show Logo
+  shell: /home/pi/digitalsignage/signage_logo
+  icon: "&#129703"
+
+- title: Play Video
+  shell: /home/pi/digitalsignage/signage_video
+  icon: "&#128250"
+
+- title: Play Audio
+  shell: /home/pi/digitalsignage/signage_audio
+  icon: "&#128265"
+
+- title: Show Images
+  shell: /home/pi/digitalsignage/signage_images
+  icon: "&#128247"
+
+- title: Show Website
+  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
+  icon: "&#127758"
+  arguments:
+    - name: website
+      title: Website Address
+      type: ascii_identifier
+      default: apple.com
+
+- title: YouTube - Download Video
+  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
+  icon: "&#128253"
+  arguments:
+    - name: youtube
+      title: YouTube Link
+      type: very_dangerous_raw_string
+      default: https://youtu.be/QC8iQqtG0hg
+
+- title: YouTube - Stream Video
+  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
+  icon: "&#128249"
+  arguments:
+    - name: youtube
+      title: YouTube Link
+      type: very_dangerous_raw_string
+      default: https://youtu.be/QC8iQqtG0hg
+
+- title: Stop Signage Services
+  shell: /home/pi/digitalsignage/signage_stop
+  icon: "&#9211"
+EOL
+
+sudo systemctl start OliveTin.service
+sudo systemctl enable OliveTin.service > /dev/null 2>&1
+rm OliveTin_2022-01-06_linux_arm64.deb
+
+echo configuring filebrowser
+$installdir/functions/function_filebrowser
+
+echo hiding rainbow
+sudo sed -i '1 i\disable_splash=1' /boot/config.txt
+
+echo hiding boot icons
+sudo sed -i "1 s|$| logo.nologo quiet splash|" /boot/cmdline.txt
+
+echo hiding boot messages
+sudo sed -i "1 s|$| quiet splash|" /boot/cmdline.txt
+
+echo disabling login prompt
+sudo systemctl disable getty@tty1.service > /dev/null 2>&1
+
+echo removing default pi password warning
+sudo rm /etc/profile.d/sshpwd.sh
+
+echo hiding blinking cursor
+sudo sed -i "1 s|$| vt.global_cursor_default=0|" /boot/cmdline.txt
+
+echo hiding undervoltage message on boot
+sudo sed -i "1 s|$| loglevel=1|" /boot/cmdline.txt
+
+echo hiding undervoltage lightning bolt icon
+sudo sed -i '1 i\avoid_warnings=1' /boot/config.txt
+
+echo preventing sleep
+echo '*/5 * * * * root export DISPLAY=:0.0 ; sudo xdotool key Ctrl > /dev/null 2>&1 ' | sudo tee -a /etc/cron.d/nosleep > /dev/null
+
+echo hushing login
+touch /home/pi/.hushlogin
+
+echo enabling logo
+$installdir/signage_logo
+
+echo removing install script
+rm -f /home/pi/install
+
+echo restarting
+sudo reboot
