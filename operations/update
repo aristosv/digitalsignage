@@ -2,6 +2,10 @@
 
 installdir=/home/pi/digitalsignage
 
+echo pulling changes from repository
+cd $installdir
+git pull origin main
+
 echo updating olivetin configuration
 echo stopping olivetin service
 sudo systemctl stop OliveTin.service
