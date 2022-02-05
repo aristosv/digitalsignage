@@ -62,6 +62,8 @@ sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/config.yaml.orig
 
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
+checkForUpdates: false
+showNewVersions: false
 hideNavigation: false
 logLevel: "INFO"
 
