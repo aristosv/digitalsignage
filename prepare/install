@@ -33,7 +33,7 @@ sudo apt install -y xdotool > /dev/null 2>&1
 echo installing git
 sudo apt install -y git > /dev/null 2>&1
 
-echo cloning digitalsignage repository
+echo installing digitalsignage
 git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
 
 echo installing olivetin
