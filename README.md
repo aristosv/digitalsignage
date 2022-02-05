@@ -14,4 +14,4 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/
 http://your_raspberrypi_ip_address:1337
 ```
 
-<img src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/interface/mobile.png" width="100" height="100">
+<img src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/interface/mobile.png" width="533" height="800">
