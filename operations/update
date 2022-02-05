@@ -3,7 +3,7 @@
 # variables
 installdir=/home/pi/digitalsignage
 olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
-gitpath=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
+githubpath=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
 
 # digitalsignage
 echo pulling changes from repository
@@ -21,7 +21,7 @@ echo removing OliveTin
 sudo dpkg -P olivetin
 
 echo installing OliveTin
-wget $gitpath/$olivetindeb > /dev/null 2>&1
+wget $githubpath/$olivetindeb > /dev/null 2>&1
 sudo dpkg -i $olivetindeb > /dev/null 2>&1
 
 echo creating new OliveTin configuration
