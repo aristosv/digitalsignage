@@ -65,23 +65,23 @@ logLevel: "INFO"
 actions:
 - title: Show Logo
   shell: /home/pi/digitalsignage/signage_logo
-  timeout: 120
+  icon: "&#129703"
 
 - title: Play Video
   shell: /home/pi/digitalsignage/signage_video
-  timeout: 120
+  icon: "&#128250"
 
 - title: Play Audio
   shell: /home/pi/digitalsignage/signage_audio
-  timeout: 120
+  icon: "&#128265"
 
 - title: Show Images
   shell: /home/pi/digitalsignage/signage_images
-  timeout: 120
+  icon: "&#128247"
 
 - title: Show Website
   shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
-  timeout: 120
+  icon: "&#127758"
   arguments:
     - name: website
       title: Website Address
@@ -90,7 +90,7 @@ actions:
 
 - title: YouTube - Download Video
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
-  timeout: 120
+  icon: "&#128253"
   arguments:
     - name: youtube
       title: YouTube Link
@@ -99,7 +99,7 @@ actions:
 
 - title: YouTube - Stream Video
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
-  timeout: 120
+  icon: "&#128249"
   arguments:
     - name: youtube
       title: YouTube Link
@@ -108,7 +108,7 @@ actions:
 
 - title: Stop Signage Services
   shell: /home/pi/digitalsignage/signage_stop
-  timeout: 120
+  icon: "&#9211"
 EOL
 
 sudo systemctl start OliveTin.service
