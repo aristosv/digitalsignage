@@ -146,4 +146,4 @@ echo hushing login
 touch /home/pi/.hushlogin
 
 echo removing install script
-rm -f $installdir/install
+rm -f /home/pi/install
