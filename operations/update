@@ -45,7 +45,7 @@ actions:
   shell: /home/pi/digitalsignage/signage_audio
   icon: "&#128265"
 
-- title: Show Images
+- title: Slideshow
   shell: /home/pi/digitalsignage/signage_images
   icon: "&#128247"
 
