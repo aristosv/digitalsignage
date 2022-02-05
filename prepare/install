@@ -118,6 +118,9 @@ sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
 rm OliveTin_2022-01-06_linux_arm64.deb
 
+echo configuring filebrowser
+$installdir/functions/function_filebrowser
+
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
 
