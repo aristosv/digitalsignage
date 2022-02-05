@@ -9,6 +9,12 @@ Check out the [Credits](https://github.com/aristosv/digitalsignage/blob/main/CRE
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/prepare/install)
 ```
 
+## update
+```
+cd /home/pi/digitalsignage/
+git pull origin main
+```
+
 ## access
 ```
 http://your_raspberrypi_ip_address:1337
