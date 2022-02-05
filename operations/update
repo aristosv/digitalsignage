@@ -85,3 +85,7 @@ echo starting olivetin service
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
 rm $olivetindeb
+
+# filebrowser
+echo updating filebrowser
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
