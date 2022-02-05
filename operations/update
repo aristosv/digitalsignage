@@ -1,3 +1,62 @@
 #!/bin/bash
 
 installdir=/home/pi/digitalsignage
+
+echo updating olivetin configuration
+echo stopping olivetin service
+sudo systemctl stop OliveTin.service
+
+echo backing up configuration
+sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
+
+echo creating new olivetin configuration
+sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
+listenAddressSingleHTTPFrontend: 0.0.0.0:1337
+checkForUpdates: false
+showNewVersions: false
+hideNavigation: false
+logLevel: "INFO"
+actions:
+- title: Show Logo
+  shell: /home/pi/digitalsignage/signage_logo
+  icon: "&#129703"
+- title: Play Video
+  shell: /home/pi/digitalsignage/signage_video
+  icon: "&#128250"
+- title: Play Audio
+  shell: /home/pi/digitalsignage/signage_audio
+  icon: "&#128265"
+- title: Show Images
+  shell: /home/pi/digitalsignage/signage_images
+  icon: "&#128247"
+- title: Show Website
+  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
+  icon: "&#127758"
+  arguments:
+    - name: website
+      title: Website Address
+      type: ascii_identifier
+      default: apple.com
+- title: YouTube - Download Video
+  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
+  icon: "&#128253"
+  arguments:
+    - name: youtube
+      title: YouTube Link
+      type: very_dangerous_raw_string
+      default: https://youtu.be/QC8iQqtG0hg
+- title: YouTube - Stream Video
+  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
+  icon: "&#128249"
+  arguments:
+    - name: youtube
+      title: YouTube Link
+      type: very_dangerous_raw_string
+      default: https://youtu.be/QC8iQqtG0hg
+- title: Stop Signage Services
+  shell: /home/pi/digitalsignage/signage_stop
+  icon: "&#9211"
+EOL
+
+echo starting olivetin service
+sudo systemctl start OliveTin.service
