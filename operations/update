@@ -2,7 +2,7 @@
 
 # variables
 installdir=/home/pi/digitalsignage
-olivetin=OliveTin_2022-01-06_linux_arm64.deb
+olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
 
 # digitalsignage
 echo pulling changes from repository
@@ -20,8 +20,8 @@ echo removing OliveTin
 sudo dpkg -P olivetin
 
 echo installing OliveTin
-wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/$olivetin > /dev/null 2>&1
-sudo dpkg -i $olivetin > /dev/null 2>&1
+wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/$olivetindeb > /dev/null 2>&1
+sudo dpkg -i $olivetindeb > /dev/null 2>&1
 
 echo creating new OliveTin configuration
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
@@ -83,4 +83,4 @@ EOL
 echo starting olivetin service
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
-rm $olivetin
+rm $olivetindeb
