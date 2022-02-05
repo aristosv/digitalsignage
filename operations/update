@@ -41,7 +41,7 @@ actions:
   shell: /home/pi/digitalsignage/signage_video
   icon: "&#128250"
 
-- title: Play Audio
+- title: Play Music
   shell: /home/pi/digitalsignage/signage_audio
   icon: "&#128265"
 
