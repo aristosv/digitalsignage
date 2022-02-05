@@ -1,5 +1,6 @@
 This project is made possible with the help of the following projects:
 
+- [Raspberry Pi Foundation](https://www.raspberrypi.orgp)
 - [OliveTin](https://www.olivetin.app)
 - [FileBrowser](https://github.com/filebrowser/filebrowser)
 - [Chromium Browser](https://www.chromium.org/getting-involved/download-chromium/)
