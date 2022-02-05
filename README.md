@@ -13,3 +13,5 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/
 ```
 http://your_raspberrypi_ip_address:1337
 ```
+
+![alt text](https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/interface/mobile.png)
