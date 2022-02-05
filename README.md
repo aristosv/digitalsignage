@@ -23,5 +23,5 @@ http://raspberrypi_ip:1337
 
 ## screenshots
 <p align="center">
-  <img width="533" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/interface/mobile.png">
+  <img width="533" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile.png">
 </p>
