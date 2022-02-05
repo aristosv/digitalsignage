@@ -81,3 +81,5 @@ EOL
 
 echo starting olivetin service
 sudo systemctl start OliveTin.service
+sudo systemctl enable OliveTin.service > /dev/null 2>&1
+rm OliveTin_2022-01-06_linux_arm64.deb
