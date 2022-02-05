@@ -153,5 +153,11 @@ echo '*/5 * * * * root export DISPLAY=:0.0 ; sudo xdotool key Ctrl > /dev/null 2
 echo hushing login
 touch /home/pi/.hushlogin
 
+echo enabling logo
+$installdir/signage_logo
+
 echo removing install script
 rm -f /home/pi/install
+
+echo restarting
+sudo reboot
