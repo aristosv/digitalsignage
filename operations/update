@@ -4,23 +4,14 @@
 installdir=/home/pi/digitalsignage
 
 # digitalsignage
-echo pulling changes from repository
+echo updating digitalsignage
 cd $installdir
 git pull origin main > /dev/null 2>&1
+chmod -R +x $installdir/signage_*
+chmod -R +x $installdir/functions/function_*
 
-# OliveTin
-echo stopping olivetin service
-sudo systemctl stop OliveTin.service
-
-echo backing up olivetin configuration
-sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
-
-echo removing olivetin
-sudo dpkg -P olivetin > /dev/null 2>&1
-
-echo installing olivetin
+echo updating olivetin
 $installdir/functions/function_olivetin
 
-# filebrowser
 echo updating filebrowser
-curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
+$installdir/functions/function_filebrowser
