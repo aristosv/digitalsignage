@@ -6,7 +6,11 @@ installdir=/home/pi/digitalsignage
 # digitalsignage
 echo updating digitalsignage
 cd $installdir
+
+echo pulling updates from repository
 git pull origin main > /dev/null 2>&1
+
+echo setting permissions
 chmod -R +x $installdir/signage_*
 chmod -R +x $installdir/functions/function_*
 
