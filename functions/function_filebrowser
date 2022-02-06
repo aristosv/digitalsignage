@@ -1,5 +1,10 @@
 #!/bin/bash
 
+install_filebrowser ()
+}
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
+}
+
 service_filebrowser ()
 {
 sudo bash -c 'cat > /etc/systemd/system/filebrowser.service' << 'EOL'
@@ -21,4 +26,5 @@ sudo systemctl enable filebrowser.service > /dev/null 2>&1
 
 }
 
+install_filebrowser
 service_filebrowser
