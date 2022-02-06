@@ -2,11 +2,19 @@
 
 install_filebrowser ()
 }
-curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
-}
+echo cheking filebrowser service
+if test -f "/etc/systemd/system/filebrowser.service" ; then
+ echo filebrowser service exists
+ echo removing filebrowser service
+ sudo systemctl stop filebrowser.service
+ sudo systemctl disable filebrowser.service
+ sudo rm -f /etc/systemd/system/filebrowser.service
+ sudo systemctl daemon-reload
+ 
+ echo installing latest filebrowser
+ curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
 
-service_filebrowser ()
-{
+echo creating filebrowser service
 sudo bash -c 'cat > /etc/systemd/system/filebrowser.service' << 'EOL'
 [Unit]
 Description=filebrowser service
@@ -23,8 +31,26 @@ EOL
 sudo systemctl daemon-reload
 sudo systemctl start filebrowser.service
 sudo systemctl enable filebrowser.service > /dev/null 2>&1
+else
+ echo filebrowser service does not exist
+ echo installing latest filebrowser
+ curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
 
-}
+echo creating filebrowser service
+sudo bash -c 'cat > /etc/systemd/system/filebrowser.service' << 'EOL'
+[Unit]
+Description=filebrowser service
+After=network.target
 
-install_filebrowser
-service_filebrowser
+[Service]
+ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r /home/pi/digitalsignage/media/ -a 0.0.0.0"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo systemctl daemon-reload
+sudo systemctl start filebrowser.service
+sudo systemctl enable filebrowser.service > /dev/null 2>&1
+fi
