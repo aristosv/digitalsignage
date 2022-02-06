@@ -2,8 +2,6 @@
 
 # variables
 installdir=/home/pi/digitalsignage
-olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
-githubpath=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
 
 # digitalsignage
 echo pulling changes from repository
@@ -21,70 +19,7 @@ echo removing olivetin
 sudo dpkg -P olivetin > /dev/null 2>&1
 
 echo installing olivetin
-wget $githubpath/$olivetindeb > /dev/null 2>&1
-sudo dpkg -i $olivetindeb > /dev/null 2>&1
-
-echo creating new olivetin configuration
-sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
-listenAddressSingleHTTPFrontend: 0.0.0.0:1337
-checkForUpdates: true
-showNewVersions: true
-hideNavigation: false
-logLevel: "INFO"
-
-actions:
-- title: Show Logo
-  shell: /home/pi/digitalsignage/signage_logo
-  icon: "&#129703"
-
-- title: Play Video
-  shell: /home/pi/digitalsignage/signage_video
-  icon: "&#128250"
-
-- title: Play Music
-  shell: /home/pi/digitalsignage/signage_audio
-  icon: "&#128265"
-
-- title: Slideshow
-  shell: /home/pi/digitalsignage/signage_images
-  icon: "&#128247"
-
-- title: Show Website
-  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
-  icon: "&#127758"
-  arguments:
-    - name: website
-      title: Website Address
-      type: ascii_identifier
-      default: apple.com
-
-- title: YouTube - Download & Play
-  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
-  icon: "&#128253"
-  arguments:
-    - name: youtube
-      title: YouTube Link
-      type: very_dangerous_raw_string
-      default: https://youtu.be/QC8iQqtG0hg
-
-- title: YouTube - Stream
-  shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_stream
-  icon: "&#128249"
-  arguments:
-    - name: youtube
-      title: YouTube Link
-      type: very_dangerous_raw_string
-      default: https://youtu.be/QC8iQqtG0hg
-
-- title: Stop Signage Services
-  shell: /home/pi/digitalsignage/signage_stop
-  icon: "&#9211"
-EOL
-
-echo starting olivetin service
-sudo systemctl start OliveTin.service
-sudo systemctl enable OliveTin.service > /dev/null 2>&1
-rm $olivetindeb
+$installdir/functions/function_olivetin
 
 # filebrowser
 echo updating filebrowser
