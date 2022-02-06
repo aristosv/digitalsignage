@@ -3,7 +3,6 @@
 # variables
 installdir=/home/pi/digitalsignage
 
-# digitalsignage
 echo updating digitalsignage
 cd $installdir
 
