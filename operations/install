@@ -38,6 +38,7 @@ echo installing digitalsignage
 git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
 
 echo installing olivetin
+chmod +x $installdir/functions/function_olivetin
 $installdir/functions/function_olivetin
 
 echo installing filebrowser
