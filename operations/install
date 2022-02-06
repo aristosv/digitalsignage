@@ -89,4 +89,4 @@ rm -f /home/pi/install
 echo restarting
 sudo reboot
 
-} | tee /var/log/digitalsignage_install_$(date +'%d_%m_%Y_%I_%M').log
+} | sudo tee /var/log/digitalsignage_install_$(date +'%d_%m_%Y_%I_%M').log
