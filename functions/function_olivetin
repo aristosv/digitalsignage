@@ -2,7 +2,6 @@
 
 install_olivetin ()
 {
-
 echo installing olivetin
 wget https://github.com/OliveTin/OliveTin/releases/download/2022-01-06/OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
