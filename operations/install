@@ -42,7 +42,8 @@ chmod +x $installdir/functions/function_olivetin
 $installdir/functions/function_olivetin
 
 echo installing filebrowser
-curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
+chmod +x $installdir/functions/function_filebrowser
+$installdir/functions/function_filebrowser
 
 # configuration
 echo configuring xinit
