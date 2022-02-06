@@ -42,15 +42,6 @@ actions:
   shell: /home/pi/digitalsignage/signage_images
   icon: "&#128247"
 
-- title: Show Website
-  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
-  icon: "&#127758"
-  arguments:
-    - name: website
-      title: Website Address
-      type: ascii_identifier
-      default: apple.com
-
 - title: YouTube - Download & Play
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
   icon: "&#128253"
@@ -68,6 +59,15 @@ actions:
       title: YouTube Link
       type: very_dangerous_raw_string
       default: https://youtu.be/QC8iQqtG0hg
+
+- title: Show Website
+  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
+  icon: "&#127758"
+  arguments:
+    - name: website
+      title: Website Address
+      type: ascii_identifier
+      default: apple.com
 
 - title: Stop Signage Services
   shell: /home/pi/digitalsignage/signage_stop
@@ -111,15 +111,6 @@ actions:
   shell: /home/pi/digitalsignage/signage_images
   icon: "&#128247"
 
-- title: Show Website
-  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
-  icon: "&#127758"
-  arguments:
-    - name: website
-      title: Website Address
-      type: ascii_identifier
-      default: apple.com
-
 - title: YouTube - Download & Play
   shell: echo {{ youtube }} | /home/pi/digitalsignage/signage_youtube_download
   icon: "&#128253"
@@ -137,6 +128,15 @@ actions:
       title: YouTube Link
       type: very_dangerous_raw_string
       default: https://youtu.be/QC8iQqtG0hg
+
+- title: Show Website
+  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
+  icon: "&#127758"
+  arguments:
+    - name: website
+      title: Website Address
+      type: ascii_identifier
+      default: apple.com
 
 - title: Stop Signage Services
   shell: /home/pi/digitalsignage/signage_stop
