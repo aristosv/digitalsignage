@@ -20,7 +20,7 @@ http://raspberrypi_ip:8080
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/operations/update)
 ```
-## logging
+## logs
 ```
 log files for install and update are located in /tmp
 ```
