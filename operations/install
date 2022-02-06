@@ -59,9 +59,6 @@ echo configuring digitalsignage
 chmod -R +x $installdir/signage_*
 chmod -R +x $installdir/functions/function_*
 
-echo configuring filebrowser
-$installdir/functions/function_filebrowser
-
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
 
