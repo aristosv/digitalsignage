@@ -8,6 +8,7 @@ echo updating digitalsignage
 cd $installdir
 
 echo pulling updates from repository
+git reset --hard
 git pull origin main > /dev/null 2>&1
 
 echo setting permissions
