@@ -19,7 +19,7 @@ echo configuring olivetin
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
-istenAddressSingleHTTPFrontend: 0.0.0.0:1337
+ListenAddressSingleHTTPFrontend: 0.0.0.0:1337
 checkForUpdates: true
 showNewVersions: true
 hideNavigation: false
@@ -90,7 +90,7 @@ echo configuring olivetin
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
-istenAddressSingleHTTPFrontend: 0.0.0.0:1337
+ListenAddressSingleHTTPFrontend: 0.0.0.0:1337
 checkForUpdates: true
 showNewVersions: true
 hideNavigation: false
