@@ -20,4 +20,4 @@ $installdir/functions/function_olivetin
 echo updating filebrowser
 $installdir/functions/function_filebrowser
 
-} | tee /var/log/digitalsignage_update_$(date +'%d_%m_%Y_%I_%M').log
+} | sudo tee /var/log/digitalsignage_update_$(date +'%d_%m_%Y_%I_%M').log
