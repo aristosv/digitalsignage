@@ -1,5 +1,6 @@
 #!/bin/bash
 
+{
 # variables
 installdir=/home/pi/digitalsignage
 
@@ -87,3 +88,4 @@ rm -f /home/pi/install
 
 echo restarting
 sudo reboot
+} | tee /tmp/digitalsignage_install_$(date +'%d_%m_%Y_%I_%M').log
