@@ -7,7 +7,7 @@ if test -f "/etc/systemd/system/filebrowser.service" ; then
  echo filebrowser service exists
  echo removing filebrowser service
  sudo systemctl stop filebrowser.service
- sudo systemctl disable filebrowser.service
+ sudo systemctl disable filebrowser.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/filebrowser.service
  sudo systemctl daemon-reload
 
