@@ -1,7 +1,7 @@
 #!/bin/bash
 
 install_filebrowser ()
-}
+{
 echo cheking filebrowser service
 if test -f "/etc/systemd/system/filebrowser.service" ; then
  echo filebrowser service exists
@@ -10,7 +10,7 @@ if test -f "/etc/systemd/system/filebrowser.service" ; then
  sudo systemctl disable filebrowser.service
  sudo rm -f /etc/systemd/system/filebrowser.service
  sudo systemctl daemon-reload
- 
+
  echo installing latest filebrowser
  curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
 
