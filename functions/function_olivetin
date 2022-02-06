@@ -16,7 +16,7 @@ if test -f "/etc/systemd/system/OliveTin.service" ; then
  sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 
 echo configuring olivetin
-sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/config.yaml.orig
+sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
@@ -85,7 +85,7 @@ else
  sudo dpkg -i OliveTin_2022-01-06_linux_arm64.deb > /dev/null 2>&1
 
 echo configuring olivetin
-sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/config.yaml.orig
+sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
 listenAddressSingleHTTPFrontend: 0.0.0.0:1337
