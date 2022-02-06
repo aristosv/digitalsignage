@@ -26,6 +26,8 @@ bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/
 ## screenshots
 <p align="center">
   <img width="600" height="487" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/logo/logo.png">
-  
+</p>
+ 
+<p align="center">  
   <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_olivetin_1.png"> <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_filebrowser_1.png">
 </p>
