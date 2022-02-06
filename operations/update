@@ -1,5 +1,5 @@
 #!/bin/bash
-
+{
 # variables
 installdir=/home/pi/digitalsignage
 
@@ -18,3 +18,4 @@ $installdir/functions/function_olivetin
 
 echo updating filebrowser
 $installdir/functions/function_filebrowser
+} | tee /tmp/digitalsignage_update_$(date +'%d_%m_%Y_%I_%M').log
