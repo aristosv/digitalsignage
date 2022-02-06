@@ -54,7 +54,7 @@ actions:
      default: https://youtu.be/QC8iQqtG0hg
 
    - name: streamordownload
-     title: Choose an Option
+     title: Stream or Download
      choices:
       - title: Stream
         value: /home/pi/digitalsignage/signage_youtube_stream
@@ -125,7 +125,7 @@ actions:
      default: https://youtu.be/QC8iQqtG0hg
 
    - name: streamordownload
-     title: Choose an Option
+     title: Stream or Download
      choices:
       - title: Stream
         value: /home/pi/digitalsignage/signage_youtube_stream
