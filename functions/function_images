@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # variables
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$DIR/../operations/variables"
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$currentdir/../operations/variables"
 
 service_images ()
 {
