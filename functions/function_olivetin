@@ -1,5 +1,7 @@
 #!/bin/bash
 
+workingdir=/home/pi/digitalsignage
+
 olivetin_config ()
 {
 sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
@@ -12,19 +14,19 @@ logLevel: "INFO"
 actions:
 
 - title: Show Logo
-  shell: /home/pi/digitalsignage/signage_logo
+  shell: $workingdir/signage_logo
   icon: "&#129703"
 
 - title: Play Video
-  shell: /home/pi/digitalsignage/signage_video
+  shell: $workingdir/signage_video
   icon: "&#128250"
 
 - title: Play Music
-  shell: /home/pi/digitalsignage/signage_audio
+  shell: $workingdir/signage_audio
   icon: "&#128265"
 
 - title: Image Slideshow
-  shell: /home/pi/digitalsignage/signage_images
+  shell: $workingdir/signage_images
   icon: "&#128247"
 
 - title: YouTube Video
@@ -41,13 +43,13 @@ actions:
      title: Stream or Download
      choices:
       - title: Stream
-        value: /home/pi/digitalsignage/signage_youtube_stream
+        value: $workingdir/signage_youtube_stream
 
       - title: Download & Play
-        value: /home/pi/digitalsignage/signage_youtube_download
+        value: $workingdir/signage_youtube_download
 
 - title: Show Website
-  shell: echo {{ website }} | /home/pi/digitalsignage/signage_browser
+  shell: echo {{ website }} | $workingdir/signage_browser
   icon: "&#127758"
   arguments:
    - name: website
@@ -56,7 +58,7 @@ actions:
      default: apple.com
 
 - title: Stop Signage Services
-  shell: /home/pi/digitalsignage/signage_stop
+  shell: $workingdir/signage_stop
   icon: "&#9211"
 EOL
 }
