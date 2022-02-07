@@ -4,7 +4,7 @@ workingdir=/home/pi/digitalsignage
 
 olivetin_config ()
 {
-sudo bash -c 'cat > /etc/OliveTin/config.yaml' << 'EOL'
+sudo bash -c "cat > /etc/OliveTin/config.yaml" << EOL
 ListenAddressSingleHTTPFrontend: 0.0.0.0:1337
 checkForUpdates: true
 showNewVersions: true
