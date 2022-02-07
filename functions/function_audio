@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/../operations/variables"
+
 service_audio ()
 {
-sudo bash -c 'cat > /etc/systemd/system/audio.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/audio.service" << EOL
 [Unit]
 Description=audio service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true ; do for audio in $(ls /home/pi/digitalsignage/media/audio/* | shuf); do mpg123 $audio; done; done"
+ExecStart=/bin/bash -c "while true ; do for audio in $(ls $workingdir/media/audio/* | shuf); do mpg123 $audio; done; done"
 Restart=always
 
 [Install]
