@@ -19,7 +19,7 @@ if test -f "/etc/systemd/system/filebrowser.service" ; then
  curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
 
 echo creating filebrowser service
-sudo bash -c 'cat > /etc/systemd/system/filebrowser.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/filebrowser.service" << EOL
 [Unit]
 Description=filebrowser service
 After=network.target
@@ -41,7 +41,7 @@ else
  curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
 
 echo creating filebrowser service
-sudo bash -c 'cat > /etc/systemd/system/filebrowser.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/filebrowser.service" << EOL
 [Unit]
 Description=filebrowser service
 After=network.target
