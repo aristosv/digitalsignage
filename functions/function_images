@@ -6,7 +6,7 @@ source "$DIR/../operations/variables"
 
 service_images ()
 {
-sudo bash -c 'cat > /etc/systemd/system/images.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/images.service" << EOL
 [Unit]
 Description=images service
 After=network.target
