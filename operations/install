@@ -2,7 +2,8 @@
 
 {
 # variables
-installdir=/home/pi/digitalsignage
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/../operations/variables"
 
 # installation
 echo updating
@@ -39,15 +40,15 @@ echo installing git
 sudo apt install -y git > /dev/null 2>&1
 
 echo installing digitalsignage
-git clone https://github.com/aristosv/digitalsignage.git $installdir > /dev/null 2>&1
-chmod -R +x $installdir/signage_*
-chmod -R +x $installdir/functions/function_*
+git clone https://github.com/aristosv/digitalsignage.git $workingdir > /dev/null 2>&1
+chmod -R +x $workingdir/signage_*
+chmod -R +x $workingdir/functions/function_*
 
 echo installing olivetin
-$installdir/functions/function_olivetin
+$workingdir/functions/function_olivetin
 
 echo installing filebrowser
-$installdir/functions/function_filebrowser
+$workingdir/functions/function_filebrowser
 
 # configuration
 echo hiding rainbow
@@ -81,10 +82,7 @@ echo hushing login
 touch /home/pi/.hushlogin
 
 echo enabling logo
-$installdir/signage_logo
-
-echo removing install script
-rm -f /home/pi/install
+$workingdir/signage_logo
 
 echo restarting
 sudo reboot
