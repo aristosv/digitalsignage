@@ -1,7 +1,7 @@
 #!/bin/bash
 
+websiteurl=apple.com
 workingdir=/home/pi/digitalsignage
 youtubeurl=https://youtu.be/QC8iQqtG0hg
-websiteurl=apple.com
-olivetinurl=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
 olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
+olivetinurl=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
