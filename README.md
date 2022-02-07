@@ -18,7 +18,7 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 
 ## screenshots
 <p align="center">
-  <img width="600" height="487" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/media/logo/logo.png">
+  <img width="600" height="487" src="https://<span></span>raw.githubusercontent.com/aristosv/digitalsignage/main/media/logo/logo.png">
 </p>
  
 <p align="center">  
