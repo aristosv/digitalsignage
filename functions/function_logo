@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/../operations/variables"
+
 service_logo ()
 {
-sudo bash -c 'cat > /etc/systemd/system/logo.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/logo.service" << EOL
 [Unit]
 Description=logo service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/fim -q /home/pi/digitalsignage/media/logo/logo.png > /dev/null 2>&1 &
+ExecStart=/usr/bin/fim -q $workingdir/media/logo/logo.png > /dev/null 2>&1 &
 Restart=always
 
 [Install]
