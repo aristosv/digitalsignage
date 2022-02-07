@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo updating
-sudo apt update > /dev/null 2>&1
-
-echo upgrading
-sudo apt -y upgrade > /dev/null 2>&1
-
 echo installing xinit
 sudo apt install -y xinit > /dev/null 2>&1
 sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
