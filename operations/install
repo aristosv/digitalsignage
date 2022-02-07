@@ -5,46 +5,11 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$DIR/../operations/variables"
 
-# installation
-echo updating
-sudo apt update > /dev/null 2>&1
-
-echo upgrading
-sudo apt -y upgrade > /dev/null 2>&1
-
-echo installing xinit
-sudo apt install -y xinit > /dev/null 2>&1
-sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
-
-echo installing chromium
-sudo apt install -y chromium-browser > /dev/null 2>&1
-
-echo installing vlc
-sudo apt install -y vlc > /dev/null 2>&1
-sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
-
-echo installing youtube-dl
-sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl > /dev/null 2>&1
-sudo chmod a+rx /usr/local/bin/youtube-dl
-
-echo installing mpg123
-sudo apt install -y mpg123 > /dev/null 2>&1
-
-echo installing fim
-sudo apt install -y fim > /dev/null 2>&1
-
-echo installing xdotool
-sudo apt install -y xdotool > /dev/null 2>&1
-
 echo setting permissions
 chmod +x $workingdir/signage_*
 chmod +x $workingdir/functions/function_*
 
-echo installing olivetin
-$workingdir/functions/function_olivetin
 
-echo installing filebrowser
-$workingdir/functions/function_filebrowser
 
 # configuration
 echo hiding rainbow
