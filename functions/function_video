@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/../operations/variables"
+
 service_video ()
 {
-sudo bash -c 'cat > /etc/systemd/system/video.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/video.service" << EOL
 [Unit]
 Description=video service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop /home/pi/digitalsignage/media/video/"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop $workingdir/media/video/"
 Restart=always
 
 [Install]
