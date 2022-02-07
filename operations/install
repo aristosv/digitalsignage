@@ -2,20 +2,17 @@
 
 {
 # variables
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$DIR/../operations/variables"
 
 echo setting permissions
-chmod +x $DIR/piconfig
-chmod +x $DIR/prerequisites
-chmod +x $workingdir/signage_*
-chmod +x $workingdir/functions/function_*
+chmod +x $currentdir/piconfig $currentdir/prerequisites $workingdir/signage_* $workingdir/functions/function_*
 
 echo configuring raspberry pi
-$DIR/piconfig
+$currentdir/piconfig
 
 echo installing prerequisites
-$DIR/prerequisites
+$currentdir/prerequisites
 
 echo installing olivetin
 $workingdir/functions/function_olivetin
