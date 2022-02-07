@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo hiding rainbow
+sudo sed -i '1 i\disable_splash=1' /boot/config.txt
+
+echo hiding boot icons
+sudo sed -i "1 s|$| logo.nologo quiet splash|" /boot/cmdline.txt
+
+echo hiding boot messages
+sudo sed -i "1 s|$| quiet splash|" /boot/cmdline.txt
+
+echo disabling login prompt
+sudo systemctl disable getty@tty1.service > /dev/null 2>&1
+
+echo removing default pi password warning
+sudo rm /etc/profile.d/sshpwd.sh
+
+echo hiding blinking cursor
+sudo sed -i "1 s|$| vt.global_cursor_default=0|" /boot/cmdline.txt
+
+echo hiding undervoltage message on boot
+sudo sed -i "1 s|$| loglevel=1|" /boot/cmdline.txt
+
+echo hiding undervoltage lightning bolt icon
+sudo sed -i '1 i\avoid_warnings=1' /boot/config.txt
+
+echo preventing sleep
+echo '*/5 * * * * root export DISPLAY=:0.0 ; sudo xdotool key Ctrl > /dev/null 2>&1 ' | sudo tee -a /etc/cron.d/nosleep > /dev/null
+
+echo hushing login
+touch /home/pi/.hushlogin
