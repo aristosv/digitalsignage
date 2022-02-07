@@ -16,9 +16,7 @@ Check out the [Credits](https://github.com/aristosv/digitalsignage/blob/main/CRE
 - http://raspberrypi_ip:8080
 
 ## update
-```
-bash <(wget -qO- https://raw.githubusercontent.com/aristosv/digitalsignage/main/operations/update)
-```
+- bash /home/pi/digitalsignage/operations/install
 
 ## screenshots
 <p align="center">
