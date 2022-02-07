@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/../operations/variables"
+
 install_filebrowser ()
 {
 echo cheking filebrowser service
@@ -21,7 +25,7 @@ Description=filebrowser service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r /home/pi/digitalsignage/media/ -a 0.0.0.0"
+ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r $workingdir/media/ -a 0.0.0.0"
 Restart=always
 
 [Install]
@@ -43,7 +47,7 @@ Description=filebrowser service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r /home/pi/digitalsignage/media/ -a 0.0.0.0"
+ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r $workingdir/media/ -a 0.0.0.0"
 Restart=always
 
 [Install]
