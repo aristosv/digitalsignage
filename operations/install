@@ -43,6 +43,10 @@ echo installing filebrowser
 $workingdir/functions/function_filebrowser
 
 # configuration
+echo setting permissions
+chmod +x $workingdir/signage_*
+chmod +x $workingdir/functions/function_*
+
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
 
