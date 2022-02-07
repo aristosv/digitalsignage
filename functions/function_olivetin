@@ -56,7 +56,7 @@ actions:
    - name: website
      title: Website Address
      type: ascii_identifier
-     default: apple.com
+     default: $websiteurl
 
 - title: Stop Signage Services
   shell: $workingdir/signage_stop
