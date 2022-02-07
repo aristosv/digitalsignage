@@ -36,14 +36,6 @@ sudo apt install -y fim > /dev/null 2>&1
 echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
-echo installing git
-sudo apt install -y git > /dev/null 2>&1
-
-echo installing digitalsignage
-git clone https://github.com/aristosv/digitalsignage.git $workingdir > /dev/null 2>&1
-chmod +x $workingdir/signage_*
-chmod +x $workingdir/functions/function_*
-
 echo installing olivetin
 $workingdir/functions/function_olivetin
 
