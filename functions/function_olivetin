@@ -1,6 +1,6 @@
 #!/bin/bash
 
-workingdir=/home/pi/digitalsignage
+source ../variables
 
 olivetin_config ()
 {
