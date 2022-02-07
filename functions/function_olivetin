@@ -2,7 +2,7 @@
 
 # variables
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$DIR/../variables"
+source "$DIR/../operations/variables"
 
 olivetin_config ()
 {
