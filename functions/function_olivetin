@@ -12,7 +12,6 @@ hideNavigation: false
 logLevel: "INFO"
 
 actions:
-
 - title: Show Logo
   shell: $workingdir/signage_logo
   icon: "&#129703"
