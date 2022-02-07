@@ -36,6 +36,10 @@ sudo apt install -y fim > /dev/null 2>&1
 echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
 
+echo setting permissions
+chmod +x $workingdir/signage_*
+chmod +x $workingdir/functions/function_*
+
 echo installing olivetin
 $workingdir/functions/function_olivetin
 
@@ -43,10 +47,6 @@ echo installing filebrowser
 $workingdir/functions/function_filebrowser
 
 # configuration
-echo setting permissions
-chmod +x $workingdir/signage_*
-chmod +x $workingdir/functions/function_*
-
 echo hiding rainbow
 sudo sed -i '1 i\disable_splash=1' /boot/config.txt
 
