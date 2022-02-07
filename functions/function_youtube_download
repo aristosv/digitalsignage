@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# variables
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/../operations/variables"
+
 service_youtube ()
 {
-sudo bash -c 'cat > /etc/systemd/system/youtube.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/youtube.service" << EOL
 [Unit]
 Description=youtube service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop /home/pi/digitalsignage/media/youtube/"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop $workingdir/media/youtube/"
 Restart=always
 
 [Install]
