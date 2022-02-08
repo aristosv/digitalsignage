@@ -78,6 +78,7 @@ if test -f "/etc/systemd/system/OliveTin.service" ; then
  echo installing latest olivetin
  wget $olivetinurl/$olivetindeb > /dev/null 2>&1
  sudo dpkg -i $olivetindeb > /dev/null 2>&1
+ rm $olivetindeb
 
 echo configuring olivetin
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
@@ -86,12 +87,12 @@ $(olivetin_config)
 echo starting olivetin service
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
-rm $olivetindeb
 else
  echo olivetin service does not exist
  echo installing latest olivetin
  wget $olivetinurl/$olivetindeb > /dev/null 2>&1
  sudo dpkg -i $olivetindeb > /dev/null 2>&1
+ rm $olivetindeb
 
 echo configuring olivetin
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
@@ -100,7 +101,6 @@ $(olivetin_config)
 echo starting olivetin service
 sudo systemctl start OliveTin.service
 sudo systemctl enable OliveTin.service > /dev/null 2>&1
-rm $olivetindeb
 fi
 }
 
