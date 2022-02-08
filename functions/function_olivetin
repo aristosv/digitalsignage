@@ -4,7 +4,7 @@
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/../operations/variables"
 
-olivetin_config () {
+configure_olivetin () {
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 sudo bash -c "cat > /etc/OliveTin/config.yaml" << EOL
 ListenAddressSingleHTTPFrontend: 0.0.0.0:1337
@@ -64,11 +64,8 @@ actions:
 EOL
 }
 
-remove_olivetin_service () {
- sudo systemctl stop OliveTin.service
- sudo systemctl disable OliveTin.service > /dev/null 2>&1
- sudo rm -f /etc/systemd/system/OliveTin.service
- sudo systemctl daemon-reload
+remove_olivetin () {
+ sudo dpkg -P olivetin
 }
 
 install_olivetin () {
@@ -77,21 +74,21 @@ install_olivetin () {
  rm $olivetindeb
 }
 
-start_olivetin_service () {
+start_olivetin () {
  sudo systemctl start OliveTin.service
  sudo systemctl enable OliveTin.service > /dev/null 2>&1
 }
 
 install () {
 if test -f "/etc/systemd/system/OliveTin.service" ; then
- $(remove_olivetin_service)
+ $(remove_olivetin)
  $(install_olivetin)
- $(olivetin_config)
- $(start_olivetin_service)
+ $(configure_olivetin)
+ $(start_olivetin)
 else
  $(install_olivetin)
- $(olivetin_config)
- $(start_olivetin_service)
+ $(configure_olivetin)
+ $(start_olivetin)
 fi
 }
 
