@@ -73,7 +73,7 @@ remove_olivetin_service () {
  sudo systemctl daemon-reload
 }
 
-install_olivetin_commands () {
+install_olivetin () {
  echo installing latest olivetin
  wget $olivetinurl/$olivetindeb > /dev/null 2>&1
  sudo dpkg -i $olivetindeb > /dev/null 2>&1
@@ -86,20 +86,20 @@ start_olivetin_service () {
  sudo systemctl enable OliveTin.service > /dev/null 2>&1
 }
 
-install_olivetin () {
+install () {
 echo cheking olivetin service
 if test -f "/etc/systemd/system/OliveTin.service" ; then
  echo olivetin service exists
  $(remove_olivetin_service)
- $(install_olivetin_commands)
+ $(install_olivetin)
  $(olivetin_config)
  $(start_olivetin_service)
 else
  echo olivetin service does not exist
- $(install_olivetin_commands)
+ $(install_olivetin)
  $(olivetin_config)
  $(start_olivetin_service)
 fi
 }
 
-install_olivetin
+install
