@@ -4,21 +4,18 @@
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/../operations/variables"
 
-install_filebrowser ()
-{
-echo cheking filebrowser service
-if test -f "/etc/systemd/system/filebrowser.service" ; then
- echo filebrowser service exists
- echo removing filebrowser service
+remove_filebrowser_service () {
  sudo systemctl stop filebrowser.service
  sudo systemctl disable filebrowser.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/filebrowser.service
  sudo systemctl daemon-reload
+}
 
- echo installing latest filebrowser
+install_filebrowser () {
  curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
+}
 
-echo creating filebrowser service
+create_filebrowser_service () {
 sudo bash -c "cat > /etc/systemd/system/filebrowser.service" << EOL
 [Unit]
 Description=filebrowser service
@@ -31,33 +28,25 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOL
+}
 
+start_filebrowser_service () {
 sudo systemctl daemon-reload
 sudo systemctl start filebrowser.service
 sudo systemctl enable filebrowser.service > /dev/null 2>&1
+}
+
+install () {
+if test -f "/etc/systemd/system/filebrowser.service" ; then
+ $(remove_filebrowser_service)
+ $(install_filebrowser)
+ $(create_filebrowser_service)
+ $(start_filebrowser_service)
 else
- echo filebrowser service does not exist
- echo installing latest filebrowser
- curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash > /dev/null 2>&1
-
-echo creating filebrowser service
-sudo bash -c "cat > /etc/systemd/system/filebrowser.service" << EOL
-[Unit]
-Description=filebrowser service
-After=network.target
-
-[Service]
-ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r $workingdir/media/ -a 0.0.0.0"
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOL
-
-sudo systemctl daemon-reload
-sudo systemctl start filebrowser.service
-sudo systemctl enable filebrowser.service > /dev/null 2>&1
+ $(install_filebrowser)
+ $(create_filebrowser_service)
+ $(start_filebrowser_service)
 fi
 }
 
-install_filebrowser
+install
