@@ -65,7 +65,7 @@ EOL
 }
 
 remove_olivetin () {
- sudo dpkg -P olivetin
+ sudo dpkg -P olivetin > /dev/null 2>&1
 }
 
 install_olivetin () {
