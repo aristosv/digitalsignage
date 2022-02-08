@@ -4,8 +4,9 @@
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/../operations/variables"
 
-olivetin_config ()
-{
+olivetin_config () {
+echo configuring olivetin
+sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 sudo bash -c "cat > /etc/OliveTin/config.yaml" << EOL
 ListenAddressSingleHTTPFrontend: 0.0.0.0:1337
 checkForUpdates: true
@@ -64,43 +65,40 @@ actions:
 EOL
 }
 
-install_olivetin ()
-{
-echo cheking olivetin service
-if test -f "/etc/systemd/system/OliveTin.service" ; then
- echo olivetin service exists
+remove_olivetin_service () {
  echo removing olivetin service
  sudo systemctl stop OliveTin.service
  sudo systemctl disable OliveTin.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/OliveTin.service
  sudo systemctl daemon-reload
+}
 
+install_olivetin_commands () {
  echo installing latest olivetin
  wget $olivetinurl/$olivetindeb > /dev/null 2>&1
  sudo dpkg -i $olivetindeb > /dev/null 2>&1
  rm $olivetindeb
+}
 
-echo configuring olivetin
-sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
-$(olivetin_config)
+start_olivetin_service () {
+ echo starting olivetin service
+ sudo systemctl start OliveTin.service
+ sudo systemctl enable OliveTin.service > /dev/null 2>&1
+}
 
-echo starting olivetin service
-sudo systemctl start OliveTin.service
-sudo systemctl enable OliveTin.service > /dev/null 2>&1
+install_olivetin () {
+echo cheking olivetin service
+if test -f "/etc/systemd/system/OliveTin.service" ; then
+ echo olivetin service exists
+ $(remove_olivetin_service)
+ $(install_olivetin_commands)
+ $(olivetin_config)
+ $(start_olivetin_service)
 else
  echo olivetin service does not exist
- echo installing latest olivetin
- wget $olivetinurl/$olivetindeb > /dev/null 2>&1
- sudo dpkg -i $olivetindeb > /dev/null 2>&1
- rm $olivetindeb
-
-echo configuring olivetin
-sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
-$(olivetin_config)
-
-echo starting olivetin service
-sudo systemctl start OliveTin.service
-sudo systemctl enable OliveTin.service > /dev/null 2>&1
+ $(install_olivetin_commands)
+ $(olivetin_config)
+ $(start_olivetin_service)
 fi
 }
 
