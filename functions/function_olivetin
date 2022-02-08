@@ -84,13 +84,13 @@ start_olivetin_service () {
 
 install () {
 if test -f "/etc/systemd/system/OliveTin.service" ; then
- echo "olivetin service exists"
+ echo updating olivetin
  $(remove_olivetin_service)
  $(install_olivetin)
  $(olivetin_config)
  $(start_olivetin_service)
 else
- echo "olivetin service does not exist"
+ echo installing olivetin
  $(install_olivetin)
  $(olivetin_config)
  $(start_olivetin_service)
