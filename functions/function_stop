@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service_stop ()
+function_stop ()
 {
  for service in audio video images youtube browser logo
  do
@@ -13,4 +13,4 @@ service_stop ()
  exit 0
 }
 
-service_stop
+function_stop
