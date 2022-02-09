@@ -55,6 +55,12 @@ WantedBy=multi-user.target
 EOL
 
 sudo systemctl daemon-reload
+
+sudo systemctl start cpumonitor.service
+sudo systemctl start diskmonitor.service
+sudo systemctl start memorymonitor.service
+sudo systemctl start temperaturemonitor.service
+
 sudo systemctl enable cpumonitor.service > /dev/null 2>&1
 sudo systemctl enable diskmonitor.service > /dev/null 2>&1
 sudo systemctl enable memorymonitor.service > /dev/null 2>&1
