@@ -1,16 +1,16 @@
 #!/bin/bash
 
+echo gmail address: ; read gmailaddress
+echo gmail password: ; read gmailpassword
 
+install_ssmtp () {
+sudo apt install -y ssmtp
+}
 
-configure_ssmtp ()
-{
- pass="!"
- mailhub="smtp.gmail.com:587"
- user="srvrsmonitor@gmail.com"
-
+configure_ssmtp () {
  sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
- echo "AuthUser=$user" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo "AuthPass=$pass" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo "mailhub=$mailhub" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "AuthUser=$gmailaddress" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "AuthPass=$gmailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
  echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
 }
