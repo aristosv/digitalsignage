@@ -49,7 +49,7 @@ Description=temperature monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt 90 ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /opt/vc/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp $emailaddress; fi; sleep 300; done"
+ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt 90 ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp $emailaddress; fi; sleep 300; done"
 Restart=always
 
 [Install]
