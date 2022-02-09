@@ -2,7 +2,8 @@
 
 {
 # variables
-source "$PWD/variables"
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$currentdir/../operations/variables"
 
 echo updating digitalsignage
 cd $workingdir
