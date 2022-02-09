@@ -67,4 +67,4 @@ sudo systemctl enable memorymonitor.service > /dev/null 2>&1
 sudo systemctl enable temperaturemonitor.service > /dev/null 2>&1
 }
 
-echo enable monitoring services ; function_monitor
+echo enabling monitoring services ; function_monitor
