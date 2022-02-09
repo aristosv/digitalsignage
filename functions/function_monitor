@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function_monitoring ()
+function_monitor ()
 {
 sudo bash -c 'cat > /etc/systemd/system/cpumonitor.service' << 'EOL'
 [Unit]
@@ -61,4 +61,4 @@ sudo systemctl enable memorymonitor.service > /dev/null 2>&1
 sudo systemctl enable temperaturemonitor.service > /dev/null 2>&1
 }
 
-echo enable monitoring services ; monitoring_services
+echo enable monitoring services ; function_monitor
