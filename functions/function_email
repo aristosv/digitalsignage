@@ -4,7 +4,7 @@
 
 configure_ssmtp ()
 {
- pass="kfl6v9aJ!"
+ pass="!"
  mailhub="smtp.gmail.com:587"
  user="srvrsmonitor@gmail.com"
 
