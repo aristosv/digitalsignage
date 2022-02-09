@@ -1,10 +1,17 @@
 #!/bin/bash
 
+echo ===============================================================================================
+echo to allow outgoing emails from your gmail account perform the following steps before continuing
+echo 1. visit https://myaccount.google.com/lesssecureapps to allow less secure apps
+echo 2. visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to your email account
+echo ===============================================================================================
+read -p "press enter to continue"
+
 echo gmail username: ; read gmailusername
 echo gmail password: ; read gmailpassword
 
 install_ssmtp () {
-sudo apt install -y ssmtp
+sudo apt install -y ssmtp > /dev/null 2>&1
 }
 
 configure_ssmtp () {
