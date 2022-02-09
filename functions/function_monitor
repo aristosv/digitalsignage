@@ -1,8 +1,10 @@
 #!/bin/bash
 
+echo email to sent alerts: ; read emailaddress
+
 function_monitor ()
 {
-sudo bash -c 'cat > /etc/systemd/system/cpumonitor.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/cpumonitor.service" << EOL
 [Unit]
 Description=cpu monitor
 After=network.target
@@ -15,7 +17,7 @@ Restart=always
 WantedBy=multi-user.target
 EOL
 
-sudo bash -c 'cat > /etc/systemd/system/diskmonitor.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/diskmonitor.service" << EOL
 [Unit]
 Description=disk monitor
 After=network.target
@@ -28,7 +30,7 @@ Restart=always
 WantedBy=multi-user.target
 EOL
 
-sudo bash -c 'cat > /etc/systemd/system/memorymonitor.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/memorymonitor.service" << EOL
 [Unit]
 Description=memory monitor
 After=network.target
@@ -41,7 +43,7 @@ Restart=always
 WantedBy=multi-user.target
 EOL
 
-sudo bash -c 'cat > /etc/systemd/system/temperaturemonitor.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/temperaturemonitor.service" << EOL
 [Unit]
 Description=temperature monitor
 After=network.target
