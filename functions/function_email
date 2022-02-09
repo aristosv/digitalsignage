@@ -22,5 +22,5 @@ configure_ssmtp () {
  echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
 }
 
-install_ssmtp
-configure_ssmtp
+echo installing ssmtp ; install_ssmtp
+echo configuring ssmtp ; configure_ssmtp
