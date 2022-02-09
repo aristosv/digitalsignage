@@ -6,14 +6,12 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 1. clone repository - git clone https://<span></span>github.com/aristosv/digitalsignage.git /home/pi/digitalsignage
 2. run install script - bash /home/pi/digitalsignage/operations/install
 
-## access signage
-- http://raspberrypi_ip:1337
-
-## access files
-- http://raspberrypi_ip:8080
+## access
+- OliveTin - http://raspberrypi_ip:1337
+- FileBrowser - http://raspberrypi_ip:8080
 
 ## update
-- run update script (bash /home/pi/digitalsignage/operations/update)
+- run update script - bash /home/pi/digitalsignage/operations/update
 
 ## screenshots
 <p align="center">
