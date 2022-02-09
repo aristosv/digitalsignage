@@ -3,7 +3,7 @@
 {
 # variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/variables"
+source $currentdir/variables
 
 echo setting permissions
 chmod +x $currentdir/piconfig $currentdir/prerequisites $workingdir/signage_* $workingdir/functions/function_*
