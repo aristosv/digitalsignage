@@ -12,7 +12,16 @@ Description=video service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop $workingdir/media/video/"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc \
+                              --no-osd \
+                              --no-qt-privacy-ask \
+                              --fullscreen \
+                              --no-embedded-video \
+                              --no-autoscale \
+                              --width=wsize \
+                              --height=hsize \
+                              --loop \
+                              $workingdir/media/video/"
 Restart=always
 
 [Install]
