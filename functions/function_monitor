@@ -8,7 +8,7 @@ Description=cpu monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: CPU Alert - $HOSTNAME; echo CPU Usage on $HOSTNAME is $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%; } | ssmtp $emailaddress; fi; sleep 3600; done"
+ExecStart=/bin/bash -c "while true; do if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: CPU Alert - $HOSTNAME; echo CPU Usage on $HOSTNAME is $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%; } | ssmtp $emailaddress; fi; sleep 300; done"
 Restart=always
 
 [Install]
@@ -21,7 +21,7 @@ Description=disk monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(df --output=pcent / | sed '1d;s/^ //;s/%//') -gt 90 ]; then { echo Subject: Disk Alert - $HOSTNAME; echo Disk Usage on $HOSTNAME is $(df --output=pcent / | sed '1d;s/^ //;s/%//')%; } | ssmtp $emailaddress; fi; sleep 3600; done"
+ExecStart=/bin/bash -c "while true; do if [ $(df --output=pcent / | sed '1d;s/^ //;s/%//') -gt 90 ]; then { echo Subject: Disk Alert - $HOSTNAME; echo Disk Usage on $HOSTNAME is $(df --output=pcent / | sed '1d;s/^ //;s/%//')%; } | ssmtp $emailaddress; fi; sleep 300; done"
 Restart=always
 
 [Install]
@@ -34,7 +34,7 @@ Description=memory monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp $emailaddress; fi; sleep 3600; done"
+ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp $emailaddress; fi; sleep 300; done"
 Restart=always
 
 [Install]
@@ -47,7 +47,7 @@ Description=temperature monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt 90 ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /opt/vc/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp $emailaddress; fi; sleep 3600; done"
+ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt 90 ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /opt/vc/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp $emailaddress; fi; sleep 300; done"
 Restart=always
 
 [Install]
