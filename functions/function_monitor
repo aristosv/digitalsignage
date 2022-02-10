@@ -1,6 +1,29 @@
 #!/bin/bash
 
+echo ===============================================================================================
+echo This function uses your gmail account to send you alerts if cpu/memory/disk/temp are too high
+echo To allow outgoing emails from your gmail account perform the following steps before continuing
+echo -----------------------------------------------------------------------------------------------
+echo 1. visit https://myaccount.google.com/lesssecureapps to allow less secure apps
+echo 2. visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to your email account
+echo ===============================================================================================
+read -p "press enter to continue"
+
+echo gmail username: ; read gmailusername
+echo gmail password: ; read gmailpassword
 echo email to send alerts: ; read emailaddress
+
+install_ssmtp () {
+sudo apt install -y ssmtp > /dev/null 2>&1
+}
+
+configure_ssmtp () {
+ sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
+ echo "AuthUser=$gmailusername" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "AuthPass=$gmailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+}
 
 function_monitor ()
 {
@@ -57,7 +80,6 @@ WantedBy=multi-user.target
 EOL
 
 sudo systemctl daemon-reload
-
 sudo systemctl start cpumonitor.service
 sudo systemctl start diskmonitor.service
 sudo systemctl start memorymonitor.service
@@ -69,4 +91,6 @@ sudo systemctl enable memorymonitor.service > /dev/null 2>&1
 sudo systemctl enable temperaturemonitor.service > /dev/null 2>&1
 }
 
+echo installing ssmtp ; install_ssmtp
+echo configuring ssmtp ; configure_ssmtp
 echo enabling monitoring services ; function_monitor
