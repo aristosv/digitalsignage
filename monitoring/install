@@ -21,10 +21,6 @@ $currentdir/function_temperaturemonitor
 echo reloading services
 sudo systemctl daemon-reload
 
-install_ssmtp () {
- sudo apt install -y ssmpt
-}
-
 configure_ssmtp () {
  sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
  echo "AuthUser=$gmailusername" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
