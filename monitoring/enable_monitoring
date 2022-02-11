@@ -2,6 +2,8 @@
 
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+echo email address to send alerts: ; read emailaddress
+
 echo creating cpumonitor
 $currentdir/function_cpumonitor
 
