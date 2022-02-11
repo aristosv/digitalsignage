@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cpumonitor () {
+sudo bash -c 'cat > /etc/systemd/system/cpumonitor.service' << 'EOL'
+[Unit]
+Description=cpu monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true; do if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt 1 ]; then { echo Subject: CPU Alert - $HOSTNAME; echo CPU Usage on $HOSTNAME is $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%; } | ssmtp $emailaddress; fi; sleep 60; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+}
