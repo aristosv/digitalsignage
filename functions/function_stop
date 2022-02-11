@@ -2,15 +2,16 @@
 
 function_stop ()
 {
- for service in audio video images youtube browser logo
+for service in audio video images youtube browser logo
  do
-  sudo systemctl is-active --quiet $service.service
-  sudo systemctl stop $service.service
-  sudo systemctl disable $service.service > /dev/null 2>&1
-  sudo rm /etc/systemd/system/$service.service
-  echo stopping $service
+  if test -f "/etc/systemd/system/$service.service" ; then
+   echo stopping $service
+   sudo systemctl stop $service.service
+   sudo systemctl disable $service.service > /dev/null 2>&1
+   sudo rm /etc/systemd/system/$service.service
+  fi
  done
- exit 0
+exit 0
 }
 
 function_stop
