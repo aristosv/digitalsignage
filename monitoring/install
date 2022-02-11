@@ -4,7 +4,7 @@
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/../operations/variables"
 
-echo This will setup ssmtp on your raspberry pi and enable email alerts for cpu/disk/memory/temperature usage
+echo This will setup ssmtp and enable email alerts for cpu/disk/memory/temperature usage
 
 echo gmail address: ; read gmailaddress ; export gmailaddress
 echo gmail password: ; read gmailpassword ; export gmailpassword
@@ -20,9 +20,6 @@ configure_ssmtp () {
  echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
  echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
 }
-
-echo configuring ssmtp
-$currentdir/function_ssmtp
 
 echo creating cpumonitor
 $currentdir/function_cpumonitor
