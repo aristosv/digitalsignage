@@ -14,7 +14,6 @@ Restart=always
 WantedBy=multi-user.target
 EOL
 
-sudo systemctl start diskmonitor.service
-sudo systemctl enable diskmonitor.service > /dev/null 2>&1
-
 }
+
+diskmonitor
