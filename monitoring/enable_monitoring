@@ -21,8 +21,8 @@ enable_monitoring ()
 {
  for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
  do
-  sudo systemctl start $service.service &&
-  sudo systemctl enable $service.service  > /dev/null 2>&1 &&
+  sudo systemctl start $service.service
+  sudo systemctl enable $service.service  > /dev/null 2>&1
  done
  exit 0
 }
