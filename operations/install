@@ -23,7 +23,4 @@ $workingdir/functions/function_filebrowser
 echo enabling logo
 $workingdir/signage_logo
 
-echo restarting
-sudo reboot
-
 } | sudo tee /var/log/digitalsignage_install_$(date +'%d_%m_%Y_%I_%M').log
