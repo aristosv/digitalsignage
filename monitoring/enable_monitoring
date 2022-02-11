@@ -17,8 +17,14 @@ $currentdir/function_temperaturemonitor
 echo reloading services
 $currentdir/functions/function_reload
 
-echo starting audio service
-sudo systemctl start audio.service
+enable_monitoring ()
+{
+ for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo systemctl start $service.service &&
+  sudo systemctl enable $service.service  > /dev/null 2>&1 &&
+ done
+ exit 0
+}
 
-echo enabling audio service
-sudo systemctl enable audio.service > /dev/null 2>&1
+enable_monitoring
