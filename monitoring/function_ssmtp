@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo This will setup ssmtp on your raspberry pi and enable email alerts for cpu/disk/memory/temperature usage
+
 echo gmail address: ; read gmailaddress ; export gmailaddress
 echo gmail password: ; read gmailpassword ; export gmailpassword
 
