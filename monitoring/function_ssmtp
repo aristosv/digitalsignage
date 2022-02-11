@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo gmail address: ; read gmailaddress
-echo gmail password: ; read gmailpassword
+echo gmail address: ; read gmailaddress ; export gmailaddress
+echo gmail password: ; read gmailpassword ; export gmailpassword
 
 install_ssmtp () {
  sudo apt install -y ssmtp
