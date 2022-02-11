@@ -1,0 +1,30 @@
+#!/bin/bash
+
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+echo creating cpumonitor
+$currentdir/function_cpumonitor
+
+echo creating diskmonitor
+$currentdir/function_diskmonitor
+
+echo creating memorymonitor
+$currentdir/function_memorymonitor
+
+echo creating temperaturemonitor
+$currentdir/function_temperaturemonitor
+
+echo clearing framebuffer
+$currentdir/functions/function_framebuffer
+
+echo creating audio service
+$currentdir/functions/function_audio
+
+echo reloading services
+$currentdir/functions/function_reload
+
+echo starting audio service
+sudo systemctl start audio.service
+
+echo enabling audio service
+sudo systemctl enable audio.service > /dev/null 2>&1
