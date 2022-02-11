@@ -7,7 +7,7 @@ Description=memory monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt 1 ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
+ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
 Restart=always
 
 [Install]
