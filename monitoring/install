@@ -4,7 +4,11 @@
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/../operations/variables"
 
-echo This will setup ssmtp and enable email alerts for cpu/disk/memory/temperature usage
+echo ==================================================================================
+echo This will enable email alerts for cpu/disk/memory/temperature usage.
+echo You will be asked to provide the username and password of a gmail account.
+echo Perform the following steps to enable access to a gmail account before proceeding.
+echo ----------------------------------------------------------------------------------
 
 echo gmail address: ; read gmailaddress ; export gmailaddress
 echo gmail password: ; read gmailpassword ; export gmailpassword
