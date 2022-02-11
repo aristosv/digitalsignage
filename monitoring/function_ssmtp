@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo gmail username: ; read gmailusername
+echo gmail password: ; read gmailpassword
+echo email address to send alerts: ; read emailaddress
+
 install_ssmtp () {
  sudo apt install -y ssmtp
 }
