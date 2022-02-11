@@ -12,6 +12,7 @@ echo ---------------------------------------------------------------------------
 echo 1. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to a gmail account.
 echo 2. Visit https://myaccount.google.com/lesssecureapps to enable less secure app access.
 echo =============================================================================================
+read -p "press enter to continue"
 
 echo gmail address: ; read gmailaddress ; export gmailaddress
 echo gmail password: ; read gmailpassword ; export gmailpassword
