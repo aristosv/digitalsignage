@@ -14,6 +14,6 @@ Restart=always
 WantedBy=multi-user.target
 EOL
 
-sudo systemctl start cpumonitor.service
-sudo systemctl enable cpumonitor.service > /dev/null 2>&1
 }
+
+cpumonitor
