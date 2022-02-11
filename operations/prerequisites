@@ -23,6 +23,3 @@ sudo apt install -y fim > /dev/null 2>&1
 
 echo installing xdotool
 sudo apt install -y xdotool > /dev/null 2>&1
-
-echo installing ssmtp
-sudo apt install -y ssmtp > /dev/null 2>&1
