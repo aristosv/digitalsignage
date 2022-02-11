@@ -20,7 +20,7 @@ echo creating temperaturemonitor
 $currentdir/function_temperaturemonitor
 
 echo reloading services
-sudo systemctl daemon-reload
+$workingdir/functions/function_reload
 
 enable_monitoring ()
 {
