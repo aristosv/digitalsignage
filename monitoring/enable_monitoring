@@ -14,12 +14,6 @@ $currentdir/function_memorymonitor
 echo creating temperaturemonitor
 $currentdir/function_temperaturemonitor
 
-echo clearing framebuffer
-$currentdir/functions/function_framebuffer
-
-echo creating audio service
-$currentdir/functions/function_audio
-
 echo reloading services
 $currentdir/functions/function_reload
 
