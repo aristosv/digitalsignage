@@ -2,10 +2,6 @@
 
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-echo gmail username: ; read gmailusername
-echo gmail password: ; read gmailpassword
-echo email address to send alerts: ; read emailaddress
-
 echo creating cpumonitor
 $currentdir/function_cpumonitor
 
@@ -20,14 +16,6 @@ $currentdir/function_temperaturemonitor
 
 echo reloading services
 sudo systemctl daemon-reload
-
-configure_ssmtp () {
- sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
- echo "AuthUser=$gmailusername" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo "AuthPass=$gmailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
-}
 
 enable_monitoring ()
 {
