@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$currentdir/../operations/variables"
 
 echo configuring ssmtp
 $currentdir/function_ssmtp
