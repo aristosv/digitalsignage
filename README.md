@@ -21,3 +21,6 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 <p align="center">  
   <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_olivetin_1.png"> <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_filebrowser_1.png">
 </p>
+
+## monitoring (optional)
+- enable cpu/disk/memory/temp monitoring - bash /home/pi/digitalsignage/monitoring/enable_monitoring
