@@ -2,7 +2,6 @@
 
 echo gmail address: ; read gmailaddress
 echo gmail password: ; read gmailpassword
-echo email address to send alerts: ; read emailaddress
 
 install_ssmtp () {
  sudo apt install -y ssmtp
