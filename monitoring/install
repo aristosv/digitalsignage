@@ -29,6 +29,7 @@ configure_ssmtp () {
  echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
 }
 
+create_services () {
 echo creating cpumonitor
 $currentdir/function_cpumonitor
 
@@ -43,8 +44,9 @@ $currentdir/function_temperaturemonitor
 
 echo reloading services
 $workingdir/functions/function_reload
+}
 
-enable_monitoring ()
+enable_services ()
 {
  for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
  do
@@ -57,4 +59,5 @@ enable_monitoring ()
 
 install_ssmtp
 configure_ssmtp
-enable_monitoring
+create_services
+enable_services
