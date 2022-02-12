@@ -44,12 +44,9 @@ remove_services () {
 }
 
 enable_services () {
-for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
- do
-  sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
-  sudo systemctl start $service.service
-  sudo systemctl enable $service.service > /dev/null 2>&1
- done
+ sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
+ sudo systemctl start $service.service
+ sudo systemctl enable $service.service > /dev/null 2>&1
 }
 
 install () {
