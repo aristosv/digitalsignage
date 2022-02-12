@@ -14,8 +14,8 @@ echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access t
 echo =============================================================================================
 read -p "press enter to continue"
 
-echo gmail address: ; read gmailaddress
-echo gmail password: ; read gmailpassword
+echo gmail address: ; read gmailaddress ; export gmailaddress
+echo gmail password: ; read gmailpassword ; export gmailpassword
 
 install_ssmtp () {
  sudo apt install -y ssmtp
@@ -30,19 +30,10 @@ configure_ssmtp () {
 }
 
 create_services () {
-echo creating cpumonitor
 $currentdir/function_cpumonitor
-
-echo creating diskmonitor
 $currentdir/function_diskmonitor
-
-echo creating memorymonitor
 $currentdir/function_memorymonitor
-
-echo creating temperaturemonitor
 $currentdir/function_temperaturemonitor
-
-echo reloading services
 $workingdir/functions/function_reload
 }
 
