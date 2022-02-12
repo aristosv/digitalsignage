@@ -11,8 +11,7 @@ git reset --hard > /dev/null 2>&1
 git pull origin main > /dev/null 2>&1
 
 echo setting permissions
-chmod +x $workingdir/signage_*
-chmod +x $workingdir/functions/function_*
+chmod +x $currentdir/piconfig $currentdir/prerequisites $workingdir/signage_* $workingdir/functions/function_* $workingdir/monitoring/function_*
 
 echo updating olivetin
 $workingdir/functions/function_olivetin
