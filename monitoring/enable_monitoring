@@ -58,7 +58,20 @@ enable_services () {
  sudo systemctl enable $service.service > /dev/null 2>&1
 }
 
-install_ssmtp
-configure_ssmtp
-create_services
-enable_services
+install () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  if test -f "/etc/systemd/system/$service.service" ; then
+   $(remove_services)
+   $(create_services)
+   $(enable_services)
+  else
+   $(install_ssmtp)
+   $(configure_ssmtp)
+   $(create_services)
+   $(enable_services)
+  fi
+ done
+}
+
+install
