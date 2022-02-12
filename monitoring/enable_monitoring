@@ -46,8 +46,16 @@ echo reloading services
 $workingdir/functions/function_reload
 }
 
-enable_services ()
-{
+remove_services () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo systemctl stop $service.service
+  sudo systemctl disable $service.service
+  sudo rm -f /etc/systemd/system/$service.service
+ done
+}
+
+enable_services () {
 for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
  do
   sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
