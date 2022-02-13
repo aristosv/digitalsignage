@@ -10,12 +10,6 @@ echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access t
 echo =============================================================================================
 read -p "press enter to continue"
 
-# variables
-cputhreshold=1
-diskthreshold=1
-memorythreshold=1
-temperaturethreshold=1
-
 echo gmail address: ; read gmailaddress ; export gmailaddress
 echo gmail password: ; read gmailpassword ; export gmailpassword
 
@@ -26,7 +20,7 @@ Description=cpu monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt $cputhreshold ]; then { echo Subject: CPU Alert - $HOSTNAME; echo CPU Usage on $HOSTNAME is $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
+ExecStart=/bin/bash -c "while true; do if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt threshold ]; then { echo Subject: CPU Alert - $HOSTNAME; echo CPU Usage on $HOSTNAME is $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
 Restart=always
 
 [Install]
@@ -39,7 +33,7 @@ Description=disk monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(df --output=pcent / | sed '1d;s/^ //;s/%//') -gt $diskthreshold ]; then { echo Subject: Disk Alert - $HOSTNAME; echo Disk Usage on $HOSTNAME is $(df --output=pcent / | sed '1d;s/^ //;s/%//')%; } | ssmtp emailaddress; fi; sleep 60; done"
+ExecStart=/bin/bash -c "while true; do if [ $(df --output=pcent / | sed '1d;s/^ //;s/%//') -gt threshold ]; then { echo Subject: Disk Alert - $HOSTNAME; echo Disk Usage on $HOSTNAME is $(df --output=pcent / | sed '1d;s/^ //;s/%//')%; } | ssmtp emailaddress; fi; sleep 60; done"
 Restart=always
 
 [Install]
@@ -52,7 +46,7 @@ Description=memory monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt $memorythreshold ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
+ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt threshold ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
 Restart=always
 
 [Install]
@@ -65,7 +59,7 @@ Description=temperature monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt $temperaturethreshold ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp emailaddress; fi; sleep 60; done"
+ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt threshold ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp emailaddress; fi; sleep 60; done"
 Restart=always
 
 [Install]
@@ -97,6 +91,7 @@ configure_ssmtp () {
 configure_services () {
 for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
  do
+  sudo sed -i -e "s|threshold|90|g" /etc/systemd/system/$service.service
   sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
  done
 }
