@@ -19,10 +19,6 @@ actions:
   icon: "&#129703"
 
 - title: Play Video
-  shell: $workingdir/signage_video
-  icon: "&#128250"
-
-- title: Play Video
   icon: "&#128250"
   shell: echo {{ videolink }} | {{ localorstream }}
   arguments:
