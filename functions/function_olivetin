@@ -31,10 +31,10 @@ actions:
    - name: localorstream
      title: Local or Stream
      choices:
-      - title: Local
+      - title: Local Media
         value: $workingdir/signage_video_local
 
-      - title: Stream
+      - title: Internet Stream
         value: $workingdir/signage_video_stream
 
 - title: Play Music
