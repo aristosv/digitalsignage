@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# variables
-cputhreshold=1
-diskthreshold=1
-memorythreshold=1
-temperaturethreshold=1
-
 echo =============================================================================================
 echo - This will enable email alerts for cpu/disk/memory/temperature usage.
 echo - You will be asked to provide the username and password of a gmail account.
@@ -15,6 +9,12 @@ echo 1. Visit https://myaccount.google.com/lesssecureapps to enable less secure 
 echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to a gmail account.
 echo =============================================================================================
 read -p "press enter to continue"
+
+# variables
+cputhreshold=1
+diskthreshold=1
+memorythreshold=1
+temperaturethreshold=1
 
 echo gmail address: ; read gmailaddress ; export gmailaddress
 echo gmail password: ; read gmailpassword ; export gmailpassword
