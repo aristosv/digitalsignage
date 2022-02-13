@@ -5,9 +5,9 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/variables"
 
 echo =============================================================================================
-echo This will enable email alerts for cpu/disk/memory/temperature usage.
-echo You will be asked to provide the username and password of a gmail account.
-echo Perform the following steps to enable access to a gmail account before proceeding.
+echo - This will enable email alerts for cpu/disk/memory/temperature usage.
+echo - You will be asked to provide the username and password of a gmail account.
+echo - Perform the following steps to enable access to a gmail account before proceeding.
 echo ---------------------------------------------------------------------------------------------
 echo 1. Visit https://myaccount.google.com/lesssecureapps to enable less secure app access.
 echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to a gmail account.
