@@ -24,7 +24,7 @@ actions:
   arguments:
 
    - name: videolink
-     title: Video Link
+     title: Internet Stream URL
      type: very_dangerous_raw_string
      default: $videourl
 
