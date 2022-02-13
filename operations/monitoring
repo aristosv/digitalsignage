@@ -71,6 +71,15 @@ WantedBy=multi-user.target
 EOL
 }
 
+remove_services () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo systemctl stop $service.service
+  sudo systemctl disable $service.service
+  sudo rm -f /etc/systemd/system/$service.service
+ done
+}
+
 install_ssmtp () {
  sudo apt install -y ssmtp > /dev/null 2>&1
 }
@@ -83,32 +92,34 @@ configure_ssmtp () {
  echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
 }
 
-remove_services () {
- sudo systemctl stop $service.service
- sudo systemctl disable $service.service
- sudo rm -f /etc/systemd/system/$service.service
+configure_services () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
+ done
 }
 
 enable_services () {
- sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
- sudo systemctl start $service.service
- sudo systemctl enable $service.service
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo systemctl start $service.service
+  sudo systemctl enable $service.service
+ done
 }
 
 install () {
-for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
- do
-  if test -f "/etc/systemd/system/$service.service" ; then
-   $(remove_services)
-   $(create_services)
-   $(enable_services)
-  else
-   $(install_ssmtp)
-   $(configure_ssmtp)
-   $(create_services)
-   $(enable_services)
-  fi
- done
+ if test -f "/etc/systemd/system/cpumonitor.service" ; then
+  $(remove_services)
+  $(create_services)
+  $(configure_services)
+  $(enable_services)
+ else
+  $(install_ssmtp)
+  $(configure_ssmtp)
+  $(create_services)
+  $(configure_services)
+  $(enable_services)
+ fi
 }
 
 install
