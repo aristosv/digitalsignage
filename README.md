@@ -23,4 +23,4 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 </p>
 
 ## monitoring (optional)
-- run update script - bash /home/pi/digitalsignage/operations/monitoring
+- enable cpu/disk/memory/temperature monitoring - bash /home/pi/digitalsignage/operations/monitoring
