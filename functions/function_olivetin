@@ -22,6 +22,25 @@ actions:
   shell: $workingdir/signage_video
   icon: "&#128250"
 
+- title: Play Video
+  icon: "&#128250"
+  shell: echo {{ videolink }} | {{ localorstream }}
+  arguments:
+
+   - name: videolink
+     title: Video Link
+     type: very_dangerous_raw_string
+     default: $videourl
+
+   - name: localorstream
+     title: Local or Stream
+     choices:
+      - title: Local
+        value: $workingdir/signage_video_local
+
+      - title: Stream
+        value: $workingdir/signage_video_stream
+
 - title: Play Music
   shell: $workingdir/signage_audio
   icon: "&#128265"
