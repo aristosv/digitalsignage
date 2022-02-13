@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# variables
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$currentdir/../operations/variables"
+
+echo =============================================================================================
+echo This will enable email alerts for cpu/disk/memory/temperature usage.
+echo You will be asked to provide the username and password of a gmail account.
+echo Perform the following steps to enable access to a gmail account before proceeding.
+echo ---------------------------------------------------------------------------------------------
+echo 1. Visit https://myaccount.google.com/lesssecureapps to enable less secure app access.
+echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to a gmail account.
+echo =============================================================================================
+read -p "press enter to continue"
+
+echo gmail address: ; read gmailaddress ; export gmailaddress
+echo gmail password: ; read gmailpassword ; export gmailpassword
+
+create_services () {
+sudo bash -c 'cat > /etc/systemd/system/cpumonitor.service' << 'EOL'
+[Unit]
+Description=cpu monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true; do if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: CPU Alert - $HOSTNAME; echo CPU Usage on $HOSTNAME is $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo bash -c 'cat > /etc/systemd/system/diskmonitor.service' << 'EOL'
+[Unit]
+Description=disk monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true; do if [ $(df --output=pcent / | sed '1d;s/^ //;s/%//') -gt 90 ]; then { echo Subject: Disk Alert - $HOSTNAME; echo Disk Usage on $HOSTNAME is $(df --output=pcent / | sed '1d;s/^ //;s/%//')%; } | ssmtp emailaddress; fi; sleep 60; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo bash -c 'cat > /etc/systemd/system/memorymonitor.service' << 'EOL'
+[Unit]
+Description=memory monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true; do if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt 90 ]; then { echo Subject: Memory Alert - $HOSTNAME; echo Memory Usage on $HOSTNAME is $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%; } | ssmtp emailaddress; fi; sleep 60; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo bash -c 'cat > /etc/systemd/system/temperaturemonitor.service' << 'EOL'
+[Unit]
+Description=temperature monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true; do if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt 90 ]; then { echo Subject: Temperature Alert - $HOSTNAME; echo Temperature on $HOSTNAME is $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//"); } | ssmtp emailaddress; fi; sleep 60; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+}
+
+install_ssmtp () {
+ sudo apt install -y ssmtp > /dev/null 2>&1
+}
+
+configure_ssmtp () {
+ sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
+ echo "AuthUser=$gmailaddress" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "AuthPass=$gmailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+}
+
+remove_services () {
+ sudo systemctl stop $service.service
+ sudo systemctl disable $service.service
+ sudo rm -f /etc/systemd/system/$service.service
+}
+
+enable_services () {
+ sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
+ sudo systemctl start $service.service
+ sudo systemctl enable $service.service
+}
+
+install () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  if test -f "/etc/systemd/system/$service.service" ; then
+   $(remove_services)
+   $(create_services)
+   $(enable_services)
+  else
+   $(install_ssmtp)
+   $(configure_ssmtp)
+   $(create_services)
+   $(enable_services)
+  fi
+ done
+}
+
+install
