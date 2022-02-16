@@ -12,7 +12,7 @@ echo configuring system
 $currentdir/config_system
 
 echo installing prerequisites
-$currentdir/prerequisites
+$currentdir/config_prerequisites
 
 echo installing olivetin
 $workingdir/functions/function_olivetin
