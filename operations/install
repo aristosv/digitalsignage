@@ -8,8 +8,8 @@ source $currentdir/variables
 echo setting permissions
 chmod +x $currentdir/piconfig $currentdir/prerequisites $workingdir/signage_* $workingdir/functions/function_*
 
-echo configuring raspberry pi
-$currentdir/piconfig
+echo configuring system
+$currentdir/config_system
 
 echo installing prerequisites
 $currentdir/prerequisites
