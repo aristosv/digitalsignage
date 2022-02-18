@@ -6,7 +6,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $currentdir/variables
 
 echo setting permissions
-chmod +x $currentdir/piconfig $currentdir/prerequisites $workingdir/signage_* $workingdir/functions/function_*
+chmod +x $currentdir/config_system $currentdir/config_prerequisites $workingdir/signage_* $workingdir/functions/function_*
 
 echo configuring system
 $currentdir/config_system
