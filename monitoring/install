@@ -33,3 +33,5 @@ install () {
   $currentdir/function_enable_services
  fi
 }
+
+install
