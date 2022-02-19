@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# variables
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+configure_monitor () {
+ sudo sed -i -e "s|threshold|90|g" $currentdir/function_monitor
+ sudo sed -i -e "s|emailaddress|$gmailaddress|g" $currentdir/function_monitor
+}
+
+configure_monitor
