@@ -1,0 +1,9 @@
+#!/bin/bash
+
+remove_service () {
+ sudo systemctl stop tunnel.service
+ sudo systemctl disable tunnel.service
+ sudo rm -f /etc/systemd/system/tunnel.service
+}
+
+remove_service

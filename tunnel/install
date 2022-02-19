@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# variables
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$currentdir/../operations/variables"
+
+echo =============================================================================================
+echo - This will enable a tunnel connection to your raspberry pi using an ssh server.
+echo - You will be asked to provide the ssh server username/password/ip and reverse port.
+echo - You can then connect to this raspberry pi through the tunnel created using your ssh server.
+echo =============================================================================================
+read -p "press enter to continue"
+
+echo ssh server ip: ; read ip ; export ip
+echo ssh server username: ; read username ; export username
+echo ssh server password: ; read password ; export password
+echo ssh server reverse port: ; read reverseport ; export reverseport
+
+install () {
+ if test -f "/etc/systemd/system/tunnel.service" ; then
+  $currentdir/function_remove_service
+  $currentdir/function_create_service
+  $currentdir/function_configure_service
+  $workingdir/functions/function_reload
+  $currentdir/function_enable_service
+ else
+  $currentdir/function_install_sshpass
+  $currentdir/function_create_service
+  $currentdir/function_configure_service
+  $workingdir/functions/function_reload
+  $currentdir/function_enable_service
+ fi
+}
+
+install

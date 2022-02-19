@@ -1,0 +1,7 @@
+#!/bin/bash
+
+install_sshpass () {
+ sudo apt install -y sshpass > /dev/null 2>&1
+}
+
+install_sshpass
