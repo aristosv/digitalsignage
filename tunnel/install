@@ -7,6 +7,7 @@ source "$currentdir/../operations/variables"
 echo =============================================================================================
 echo - This will enable a tunnel connection to your raspberry pi using an ssh server.
 echo - You will be asked to provide the ssh server username/password/ip and reverse port.
+echo - The minimum setting on the ssh server is to enable GatewayPorts in /etc/ssh/sshd_config.
 echo - You can then connect to this raspberry pi through the tunnel created using your ssh server.
 echo =============================================================================================
 read -p "press enter to continue"
