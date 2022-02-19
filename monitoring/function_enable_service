@@ -1,0 +1,8 @@
+#!/bin/bash
+
+enable_service () {
+ sudo systemctl start monitor.service
+ sudo systemctl enable monitor.service
+}
+
+enable_service

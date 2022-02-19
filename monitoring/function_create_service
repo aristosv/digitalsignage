@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function_service () {
+sudo bash -c 'cat > /etc/systemd/system/monitor.service' << 'EOL'
+[Unit]
+Description=monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true ; do /home/pi/digitalsignage/monitor/function_monitor ; sleep 60 ; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+}
+
+function_service
