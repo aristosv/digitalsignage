@@ -2,7 +2,7 @@
 
 enable_service () {
  sudo systemctl start tunnel.service
- sudo systemctl enable tunnel.service > /dev/null 2>&1
+ sudo systemctl enable tunnel.service
 }
 
 enable_service

@@ -24,3 +24,6 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 
 ## monitoring (optional)
 - enable cpu/disk/memory/temperature monitoring - bash /home/pi/digitalsignage/monitoring/install
+
+## tunnel (optional)
+- enable tunnel access to your raspberry pi through an ssh server - bash /home/pi/digitalsignage/tunnel/install
