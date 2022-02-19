@@ -8,8 +8,8 @@ echo ===========================================================================
 read -p "press enter to continue"
 
 echo ssh server ip: ; read ip ; export ip
-echo ssh server username: ; read user ; export user
-echo ssh server password: ; read pass ; export pass
+echo ssh server username: ; read username ; export username
+echo ssh server password: ; read password ; export password
 echo ssh server reverse port: ; read reverseport ; export reverseport
 
 create_service () {
