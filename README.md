@@ -21,9 +21,3 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 <p align="center">  
   <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_olivetin_1.png"> <img width="370" height="800" src="https://raw.githubusercontent.com/aristosv/digitalsignage/main/screenshots/mobile_filebrowser_1.png">
 </p>
-
-## monitoring (optional)
-- enable cpu/disk/memory/temperature monitoring - bash /home/pi/digitalsignage/monitoring/install
-
-## tunnel (optional)
-- enable tunnel access to your raspberry pi through an ssh server - bash /home/pi/digitalsignage/tunnel/install
