@@ -5,7 +5,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$currentdir/../operations/variables"
 
 configure_service () {
- sudo sed -i -e "s|threshold|1|g" /etc/systemd/system/monitor.service
+ sudo sed -i -e "s|threshold|90|g" /etc/systemd/system/monitor.service
  sudo sed -i -e "s|workingdir|$workingdir|g" /etc/systemd/system/monitor.service
  sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/monitor.service
 }
