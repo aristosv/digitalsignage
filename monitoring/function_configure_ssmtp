@@ -1,0 +1,11 @@
+#!/bin/bash
+
+configure_ssmtp () {
+ sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
+ echo "AuthUser=$gmailaddress" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "AuthPass=$gmailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+}
+
+configure_ssmtp

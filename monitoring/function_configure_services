@@ -1,0 +1,11 @@
+#!/bin/bash
+
+configure_services () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo sed -i -e "s|threshold|1|g" /etc/systemd/system/$service.service
+  sudo sed -i -e "s|emailaddress|$gmailaddress|g" /etc/systemd/system/$service.service
+ done
+}
+
+configure_services

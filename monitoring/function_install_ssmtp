@@ -1,0 +1,7 @@
+#!/bin/bash
+
+install_ssmtp () {
+ sudo apt install -y ssmtp > /dev/null 2>&1
+}
+
+install_ssmtp

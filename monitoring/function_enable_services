@@ -1,0 +1,11 @@
+#!/bin/bash
+
+enable_services () {
+for service in cpumonitor diskmonitor memorymonitor temperaturemonitor
+ do
+  sudo systemctl start $service.service
+  sudo systemctl enable $service.service
+ done
+}
+
+enable_services
