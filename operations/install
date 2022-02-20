@@ -16,10 +16,10 @@ echo installing prerequisites
 $currentdir/config_prerequisites
 
 echo installing olivetin
-$parentdir/functions/function_olivetin
+$parentdir/signage/function_olivetin
 
 echo installing filebrowser
-$parentdir/functions/function_filebrowser
+$parentdir/signage/function_filebrowser
 
 echo enabling logo
 $parentdir/signage_logo

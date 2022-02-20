@@ -14,9 +14,9 @@ echo setting permissions
 chmod +x $currentdir/config_* $parentdir/signage_* $parentdir/signage/function_* $parentdir/monitoring/function_* $parentdir/tunnel/function_*
 
 echo updating olivetin
-$parentdir/functions/function_olivetin
+$parentdir/signage/function_olivetin
 
 echo updating filebrowser
-$parentdir/functions/function_filebrowser
+$parentdir/signage/function_filebrowser
 
 } | sudo tee /var/log/digitalsignage_update_$(date +'%d_%m_%Y_%I_%M').log
