@@ -6,7 +6,7 @@ parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo setting permissions
-chmod +x $currentdir/config_* $parentdir/signage_* $parentdir/signage/function_* $parentdir/monitoring/function_* $parentdir/tunnel/function_*
+chmod +x $currentdir/* $parentdir/signage_* $parentdir/signage/* $parentdir/monitoring/* $parentdir/tunnel/*
 
 echo configuring system
 $currentdir/config_system
