@@ -1,7 +1,6 @@
 #!/bin/bash
 
-function_stop ()
-{
+function_stop () {
 for service in audio video images youtube browser logo
  do
   if test -f "/etc/systemd/system/$service.service" ; then

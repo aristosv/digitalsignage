@@ -1,7 +1,6 @@
 #!/bin/bash
 
-service_youtube ()
-{
+service_youtube () {
 sudo bash -c 'cat > /etc/systemd/system/youtube.service' << 'EOL'
 [Unit]
 Description=youtube service

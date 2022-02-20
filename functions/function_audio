@@ -3,8 +3,7 @@
 # variables
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 
-service_audio ()
-{
+service_audio () {
 sudo bash -c "cat > /etc/systemd/system/audio.service" << EOL
 [Unit]
 Description=audio service

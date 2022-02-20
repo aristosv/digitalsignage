@@ -3,8 +3,7 @@
 # variables
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 
-service_logo ()
-{
+service_logo () {
 sudo bash -c "cat > /etc/systemd/system/logo.service" << EOL
 [Unit]
 Description=logo service
