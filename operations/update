@@ -3,21 +3,19 @@
 {
 # variables
 parentdir=$(dirname $(dirname $(readlink -fm $0)))
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source $currentdir/variables
 
 echo updating digitalsignage
-cd $workingdir
+cd $parentdir
 git reset --hard > /dev/null 2>&1
 git pull origin main > /dev/null 2>&1
 
 echo setting permissions
-chmod +x $currentdir/config_* $workingdir/signage_* $workingdir/functions/function_* $workingdir/monitoring/function_* $workingdir/tunnel/function_*
+chmod +x $currentdir/config_* $parentdir/signage_* $parentdir/functions/function_* $parentdir/monitoring/function_* $parentdir/tunnel/function_*
 
 echo updating olivetin
-$workingdir/functions/function_olivetin
+$parentdir/functions/function_olivetin
 
 echo updating filebrowser
-$workingdir/functions/function_filebrowser
+$parentdir/functions/function_filebrowser
 
 } | sudo tee /var/log/digitalsignage_update_$(date +'%d_%m_%Y_%I_%M').log
