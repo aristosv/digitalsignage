@@ -80,18 +80,18 @@ EOL
 }
 
 remove_olivetin () {
- sudo dpkg -P olivetin
+ sudo dpkg -P olivetin > /dev/null 2>&1
 }
 
 install_olivetin () {
- wget $olivetinurl/$olivetindeb
- sudo dpkg -i $olivetindeb
+ wget $olivetinurl/$olivetindeb > /dev/null 2>&1
+ sudo dpkg -i $olivetindeb > /dev/null 2>&1
  rm $olivetindeb
 }
 
 start_olivetin () {
  sudo systemctl start OliveTin.service
- sudo systemctl enable OliveTin.service
+ sudo systemctl enable OliveTin.service > /dev/null 2>&1
 }
 
 install () {
