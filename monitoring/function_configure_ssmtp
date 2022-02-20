@@ -8,4 +8,5 @@ configure_ssmtp () {
  echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
 }
 
+echo configuring ssmtp
 configure_ssmtp

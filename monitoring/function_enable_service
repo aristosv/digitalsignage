@@ -5,4 +5,5 @@ enable_service () {
  sudo systemctl enable monitor.service
 }
 
+echo enabling monitor
 enable_service

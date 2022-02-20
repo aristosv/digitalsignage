@@ -22,4 +22,5 @@ if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].
 fi
 }
 
+echo creating monitor
 function_monitor

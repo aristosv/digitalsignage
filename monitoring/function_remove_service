@@ -6,4 +6,5 @@ remove_service () {
  sudo rm -f /etc/systemd/system/monitor.service
 }
 
+echo removing service
 remove_service

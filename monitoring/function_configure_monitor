@@ -8,4 +8,5 @@ configure_monitor () {
  sudo sed -i -e "s|emailaddress|$gmailaddress|g" $currentdir/function_monitor
 }
 
+echo configuring monitor
 configure_monitor
