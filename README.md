@@ -5,6 +5,7 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 ## install
 clone repository
 ```
+sudo apt install -y git
 git clone https://github.com/aristosv/digitalsignage.git
 ```
 run install script
