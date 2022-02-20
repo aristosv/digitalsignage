@@ -14,8 +14,10 @@ bash ~/digitalsignage/operations/install
 ```
 
 ## access
-- OliveTin - http://raspberrypi_ip:1337
-- FileBrowser - http://raspberrypi_ip:8080
+```
+OliveTin - http://raspberrypi_ip:1337
+FileBrowser - http://raspberrypi_ip:8080
+```
 
 ## update
 run update script
