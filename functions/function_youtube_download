@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 
 service_youtube ()
 {
@@ -12,7 +11,7 @@ Description=youtube service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop $workingdir/media/youtube/"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop $parentdir/media/youtube/"
 Restart=always
 
 [Install]

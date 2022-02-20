@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 
 configure_olivetin () {
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
@@ -15,7 +14,7 @@ logLevel: "INFO"
 
 actions:
 - title: Show Logo
-  shell: $workingdir/signage_logo
+  shell: $parentdir/signage_logo
   icon: "&#129703"
 
 - title: Play Video
@@ -32,17 +31,17 @@ actions:
      title: Local or Stream
      choices:
       - title: Local Media
-        value: $workingdir/signage_video_local
+        value: $parentdir/signage_video_local
 
       - title: Internet Stream
-        value: $workingdir/signage_video_stream
+        value: $parentdir/signage_video_stream
 
 - title: Play Music
-  shell: $workingdir/signage_audio
+  shell: $parentdir/signage_audio
   icon: "&#128265"
 
 - title: Image Slideshow
-  shell: $workingdir/signage_images
+  shell: $parentdir/signage_images
   icon: "&#128247"
 
 - title: YouTube Video
@@ -59,13 +58,13 @@ actions:
      title: Stream or Download
      choices:
       - title: Stream
-        value: $workingdir/signage_youtube_stream
+        value: $parentdir/signage_youtube_stream
 
       - title: Download & Play
-        value: $workingdir/signage_youtube_download
+        value: $parentdir/signage_youtube_download
 
 - title: Show Website
-  shell: echo {{ website }} | $workingdir/signage_browser
+  shell: echo {{ website }} | $parentdir/signage_browser
   icon: "&#127758"
   arguments:
    - name: website
@@ -74,7 +73,7 @@ actions:
      default: $websiteurl
 
 - title: Stop Signage Services
-  shell: $workingdir/signage_stop
+  shell: $parentdir/signage_stop
   icon: "&#9211"
 EOL
 }

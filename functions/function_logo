@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 
 service_logo ()
 {
@@ -12,7 +11,7 @@ Description=logo service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/fim -q $workingdir/media/logo/logo.png > /dev/null 2>&1 &
+ExecStart=/usr/bin/fim -q $parentdir/media/logo/logo.png > /dev/null 2>&1 &
 Restart=always
 
 [Install]

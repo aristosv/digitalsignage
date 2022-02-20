@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
-
 service_video ()
 {
 sudo bash -c "cat > /etc/systemd/system/video.service" << EOL

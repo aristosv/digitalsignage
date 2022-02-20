@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 
 remove_filebrowser_service () {
  sudo systemctl stop filebrowser.service
@@ -22,7 +21,7 @@ Description=filebrowser service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r $workingdir/media/ -a 0.0.0.0"
+ExecStart=/bin/bash -c "filebrowser config set --auth.method=noauth ; filebrowser -r $parentdir/media/ -a 0.0.0.0"
 Restart=always
 
 [Install]

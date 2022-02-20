@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 
 service_images ()
 {
@@ -12,7 +11,7 @@ Description=images service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/fim -a -u -q -R $workingdir/media/images -c 'while(1){display;sleep "4";next;}'
+ExecStart=/usr/bin/fim -a -u -q -R $parentdir/media/images -c 'while(1){display;sleep "4";next;}'
 Restart=always
 
 [Install]

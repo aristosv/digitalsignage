@@ -2,6 +2,7 @@
 
 {
 # variables
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $currentdir/variables
 
@@ -15,12 +16,12 @@ echo installing prerequisites
 $currentdir/config_prerequisites
 
 echo installing olivetin
-$workingdir/functions/function_olivetin
+$parentdir/functions/function_olivetin
 
 echo installing filebrowser
-$workingdir/functions/function_filebrowser
+$parentdir/functions/function_filebrowser
 
 echo enabling logo
-$workingdir/signage_logo
+$parentdir/signage_logo
 
 } | sudo tee /var/log/digitalsignage_install_$(date +'%d_%m_%Y_%I_%M').log
