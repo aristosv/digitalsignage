@@ -4,14 +4,14 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 
 ## install
 1. clone repository - git clone https://<span></span>github.com/aristosv/digitalsignage.git
-2. run install script - bash /home/pi/digitalsignage/operations/install
+2. run install script - bash ~/digitalsignage/operations/install
 
 ## access
 - OliveTin - http://raspberrypi_ip:1337
 - FileBrowser - http://raspberrypi_ip:8080
 
 ## update
-- run update script - bash /home/pi/digitalsignage/operations/update
+- run update script - ~/digitalsignage/operations/update
 
 ## screenshots
 <p align="center">
@@ -23,5 +23,5 @@ This is a simple way to use a Raspberry Pi as a digital signage system. No need 
 </p>
 
 ## optional
-- enable cpu/disk/memory/temperature monitoring - bash /home/pi/digitalsignage/monitoring/install
-- enable tunnel access to your raspberry pi via an ssh server - bash /home/pi/digitalsignage/tunnel/install
+- enable cpu/disk/memory/temperature monitoring - ~/digitalsignage/monitoring/install
+- enable tunnel access to your raspberry pi via an ssh server - ~/digitalsignage/tunnel/install
