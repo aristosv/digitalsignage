@@ -7,7 +7,7 @@ Description=monitor
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "while true ; do workingdir/monitoring/function_monitor ; sleep 60 ; done"
+ExecStart=/bin/bash -c "while true ; do parentdir/monitoring/function_monitor ; sleep 60 ; done"
 Restart=always
 
 [Install]

@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # variables
-currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
+parentdir=$(dirname $(dirname $(readlink -fm $0)))
 
 configure_service () {
- sudo sed -i -e "s|workingdir|$workingdir|g" /etc/systemd/system/monitor.service
+ sudo sed -i -e "s|parentdir|$parentdir|g" /etc/systemd/system/monitor.service
 }
 
 echo configuring monitoring service
