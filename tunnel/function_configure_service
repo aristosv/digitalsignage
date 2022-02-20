@@ -7,4 +7,5 @@ configure_service () {
  sudo sed -i -e "s/port/$reverseport/g" /etc/systemd/system/tunnel.service
 }
 
+echo configuring tunnel service
 configure_service

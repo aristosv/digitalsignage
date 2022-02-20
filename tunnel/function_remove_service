@@ -2,8 +2,9 @@
 
 remove_service () {
  sudo systemctl stop tunnel.service
- sudo systemctl disable tunnel.service
+ sudo systemctl disable tunnel.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/tunnel.service
 }
 
+echo removing tunnel service
 remove_service

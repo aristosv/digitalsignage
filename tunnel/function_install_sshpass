@@ -4,4 +4,5 @@ install_sshpass () {
  sudo apt install -y sshpass > /dev/null 2>&1
 }
 
+echo installing sshpass
 install_sshpass

@@ -2,7 +2,6 @@
 
 # variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$currentdir/../operations/variables"
 
 echo =============================================================================================
 echo - This will enable a tunnel connection to your raspberry pi using an ssh server.
@@ -22,13 +21,13 @@ install () {
   $currentdir/function_remove_service
   $currentdir/function_create_service
   $currentdir/function_configure_service
-  $workingdir/functions/function_reload
+  $currentdir/function_reload
   $currentdir/function_enable_service
  else
   $currentdir/function_install_sshpass
   $currentdir/function_create_service
   $currentdir/function_configure_service
-  $workingdir/functions/function_reload
+  $currentdir/function_reload
   $currentdir/function_enable_service
  fi
 }
