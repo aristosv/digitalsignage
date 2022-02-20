@@ -15,5 +15,5 @@ WantedBy=multi-user.target
 EOL
 }
 
-echo creating service
+echo creating monitoring service
 function_service

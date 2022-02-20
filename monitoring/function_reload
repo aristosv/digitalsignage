@@ -5,4 +5,5 @@ function_reload ()
 sudo systemctl daemon-reload
 }
 
+echo reloading services
 function_reload

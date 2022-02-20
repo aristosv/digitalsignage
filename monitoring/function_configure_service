@@ -8,5 +8,5 @@ configure_service () {
  sudo sed -i -e "s|workingdir|$workingdir|g" /etc/systemd/system/monitor.service
 }
 
-echo configuring service
+echo configuring monitoring service
 configure_service

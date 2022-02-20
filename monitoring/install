@@ -22,6 +22,7 @@ install () {
   $currentdir/function_create_service
   $currentdir/function_configure_service
   $currentdir/function_reload
+  $currentdir/function_configure_monitor
   $currentdir/function_enable_service
  else
   $currentdir/function_install_ssmtp
@@ -29,6 +30,7 @@ install () {
   $currentdir/function_create_service
   $currentdir/function_configure_service
   $currentdir/function_reload
+  $currentdir/function_configure_monitor
   $currentdir/function_enable_service
  fi
 }

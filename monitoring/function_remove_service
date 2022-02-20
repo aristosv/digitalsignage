@@ -2,9 +2,9 @@
 
 remove_service () {
  sudo systemctl stop monitor.service
- sudo systemctl disable monitor.service
+ sudo systemctl disable monitor.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/monitor.service
 }
 
-echo removing service
+echo removing monitoring service
 remove_service
