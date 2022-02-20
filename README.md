@@ -18,7 +18,10 @@ bash ~/digitalsignage/operations/install
 - FileBrowser - http://raspberrypi_ip:8080
 
 ## update
-- run update script - ~/digitalsignage/operations/update
+run update script
+```
+bash ~/digitalsignage/operations/update
+```
 
 ## screenshots
 <p align="center">
