@@ -20,7 +20,7 @@ bash ~/digitalsignage/operations/install
 ## update
 run update script
 ```
-bash ~/digitalsignage/operations/update
+~/digitalsignage/operations/update
 ```
 
 ## screenshots
