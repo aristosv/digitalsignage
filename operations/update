@@ -3,6 +3,7 @@
 {
 # variables
 parentdir=$(dirname $(dirname $(readlink -fm $0)))
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo updating digitalsignage
 cd $parentdir
