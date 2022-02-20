@@ -2,6 +2,7 @@
 
 # variables
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
 
 configure_olivetin () {
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
