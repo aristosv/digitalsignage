@@ -3,16 +3,16 @@
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo stopping service
-$currentdir/functions/function_stop
+$currentdir/signage/function_stop
 
 echo clearing framebuffer
-$currentdir/functions/function_framebuffer
+$currentdir/signage/function_framebuffer
 
 echo creating logo service
-$currentdir/functions/function_logo
+$currentdir/signage/function_logo
 
 echo reloading services
-$currentdir/functions/function_reload
+$currentdir/signage/function_reload
 
 echo starting logo service
 sudo systemctl start logo.service
