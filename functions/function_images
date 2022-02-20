@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # variables
-parentdir=$(dirname $(dirname $(readlink -fm $0)))
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 
 service_images ()
 {
