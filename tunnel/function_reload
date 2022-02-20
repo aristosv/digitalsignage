@@ -1,7 +1,6 @@
 #!/bin/bash
 
-function_reload ()
-{
+function_reload () {
 sudo systemctl daemon-reload
 }
 
