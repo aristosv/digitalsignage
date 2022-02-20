@@ -33,5 +33,11 @@ bash ~/digitalsignage/operations/update
 </p>
 
 ## optional
-- enable cpu/disk/memory/temperature monitoring - ~/digitalsignage/monitoring/install
-- enable tunnel access to your raspberry pi via an ssh server - ~/digitalsignage/tunnel/install
+enable cpu/disk/memory/temperature monitoring
+```
+~/digitalsignage/monitoring/install
+```
+enable tunnel access to your raspberry pi via an ssh server
+```
+~/digitalsignage/tunnel/install
+```
