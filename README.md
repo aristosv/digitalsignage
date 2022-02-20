@@ -3,11 +3,14 @@
 This is a simple way to use a Raspberry Pi as a digital signage system. No need for a graphical user interface, no need to install a desktop. Just download the [Raspberry Pi OS Lite](https://www.raspberrypi.com/software/operating-systems/) image, burn it on an SD card and boot your Raspberry Pi to the operating system. This has been tested on a Raspberry Pi 4 Model B with 4GB of RAM, but it will probably run just fine on older models also.
 
 ## install
-1. clone repository
+clone repository
 ```
 git clone https://<span></span>github.com/aristosv/digitalsignage.git
 ```
-2. run install script - bash ~/digitalsignage/operations/install
+run install script
+```
+bash ~/digitalsignage/operations/install
+```
 
 ## access
 - OliveTin - http://raspberrypi_ip:1337
