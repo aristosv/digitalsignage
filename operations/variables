@@ -8,7 +8,7 @@ videourl=https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_worldmedi
 
 localip=$(hostname -I | cut -d' ' -f1)
 publicip=$(curl -s http://whatismyip.akamai.com/)
-uptime=$(/usr/bin/uptime | sed 's/.*up \([^,]*\), .*/\1/')"
+uptime=$(/usr/bin/uptime | sed 's/.*up \([^,]*\), .*/\1/')
 cpuusage=$(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%
 diskusage=$(df --output=pcent / | sed '1d;s/^ //;s/%//')%
 memoryusage=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%
