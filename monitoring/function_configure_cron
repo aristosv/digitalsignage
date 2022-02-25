@@ -9,3 +9,6 @@ sudo bash -c "cat > /etc/cron.d/report" << "EOL"
 @reboot root $currentdir/function_startup_report
 EOL
 }
+
+echo configuring cron job
+configure_cron
