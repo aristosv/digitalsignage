@@ -12,4 +12,4 @@ uptime=$(/usr/bin/uptime | sed 's/.*up \([^,]*\), .*/\1/')
 cpuusage=$(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}')%
 diskusage=$(df --output=pcent / | sed '1d;s/^ //;s/%//')%
 memoryusage=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%
-temperature=$(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//")      C
+temperature=$(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//")C
