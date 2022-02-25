@@ -14,17 +14,17 @@ echo "Host Name: $HOSTNAME"
 echo ---------------------------------
 echo "Date: $(date)"
 echo ---------------------------------
-echo "CPU Usage: $cpuusage
+echo "CPU Usage: $cpuusage"
 echo ---------------------------------
-echo "Disk Usage: $diskusage
+echo "Disk Usage: $diskusage"
 echo ---------------------------------
-echo "Memory Usage: $memoryusage
+echo "Memory Usage: $memoryusage"
 echo ---------------------------------
-echo "Temperature: $temperature
+echo "Temperature: $temperature"
 echo ---------------------------------
-echo "Uptime: $uptime
+echo "Uptime: $uptime"
 echo ---------------------------------
-echo "Local IP: $localip
+echo "Local IP: $localip"
 echo ---------------------------------
-echo "Public IP: $publicip
+echo "Public IP: $publicip"
 echo ---------------------------------
