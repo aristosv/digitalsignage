@@ -4,27 +4,31 @@
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 source "$parentdir/operations/variables"
 
-echo ---------------------------------
-echo "Audio Files: $(ls -F $parentdir/media/audio | wc -l)"
-echo "Video Files: $(ls -F $parentdir/media/video | wc -l)"
-echo "Image Files: $(ls -F $parentdir/media/images | wc -l)"
-echo "YouTube Files: $(ls -F $parentdir/media/youtube | wc -l)"
-echo ---------------------------------
-echo "Host Name: $HOSTNAME"
-echo ---------------------------------
-echo "Date: $(date)"
-echo ---------------------------------
-echo "CPU Usage: $cpuusage"
-echo ---------------------------------
-echo "Disk Usage: $diskusage"
-echo ---------------------------------
-echo "Memory Usage: $memoryusage"
-echo ---------------------------------
-echo "Temperature: $temperature"
-echo ---------------------------------
-echo "Uptime: $uptime"
-echo ---------------------------------
-echo "Local IP: $localip"
-echo ---------------------------------
-echo "Public IP: $publicip"
-echo ---------------------------------
+read -r -d '' report << EOM
+---------------------------------
+Audio Files: $(ls -F $parentdir/media/audio | wc -l)
+Video Files: $(ls -F $parentdir/media/video | wc -l)
+Image Files: $(ls -F $parentdir/media/images | wc -l)
+YouTube Files: $(ls -F $parentdir/media/youtube | wc -l)
+---------------------------------
+Host Name: $HOSTNAME
+---------------------------------
+Date: $(date)
+---------------------------------
+CPU Usage: $cpuusage
+---------------------------------
+Disk Usage: $diskusage
+---------------------------------
+Memory Usage: $memoryusage
+---------------------------------
+Temperature: $temperature
+---------------------------------
+Uptime: $uptime
+---------------------------------
+Local IP: $localip
+---------------------------------
+Public IP: $publicip
+---------------------------------
+EOM
+
+{ echo Subject: Report - $HOSTNAME ; echo "$report" ; } | ssmtp emailaddress
