@@ -5,7 +5,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 configure_cron ()
 {
-sudo bash -c "cat > /etc/cron.d/report" << "EOL"
+sudo bash -c "cat > /etc/cron.d/report" << EOL
 @reboot root "$currentdir/function_startup_report"
 EOL
 }
