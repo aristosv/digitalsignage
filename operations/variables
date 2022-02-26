@@ -2,9 +2,10 @@
 
 websiteurl=apple.com
 youtubeurl=https://youtu.be/QC8iQqtG0hg
+videourl=https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_worldmedium.m3u8
+
 olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
 olivetinurl=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
-videourl=https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_worldmedium.m3u8
 
 localip=$(hostname -I | cut -d' ' -f1)
 publicip=$(curl -s http://whatismyip.akamai.com/)
