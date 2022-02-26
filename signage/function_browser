@@ -1,13 +1,17 @@
 #!/bin/bash
 
+# variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
+
 service_browser () {
-sudo bash -c 'cat > /etc/systemd/system/browser.service' << 'EOL'
+sudo bash -c "cat > /etc/systemd/system/browser.service" << EOL
 [Unit]
 Description=browser service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/chromium-browser -no-sandbox --enable-features=OverlayScrollbar --window-size=wsize,hsize --start-fullscreen --kiosk --incognito --noerrdialogs --no-first-run --fast --fast-start --disable-infobars websiteurl -- -nocursor"
+ExecStart=/bin/bash -c "xinit /usr/bin/chromium-browser -no-sandbox --enable-features=OverlayScrollbar --window-size=$width,$height --start-fullscreen --kiosk --incognito --noerrdialogs --no-first-run --fast --fast-start --disable-infobars $websiteurl -- -nocursor"
 Restart=always
 
 [Install]
