@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
+
 service_video () {
 sudo bash -c "cat > /etc/systemd/system/video.service" << EOL
 [Unit]
@@ -7,7 +11,7 @@ Description=video service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize videourl"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=$width --height=$height $videourl"
 Restart=always
 
 [Install]
