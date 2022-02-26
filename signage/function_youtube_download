@@ -2,6 +2,7 @@
 
 # variables
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
 
 service_youtube () {
 sudo bash -c "cat > /etc/systemd/system/youtube.service" << EOL
@@ -10,7 +11,7 @@ Description=youtube service
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=wsize --height=hsize --loop $parentdir/media/youtube/"
+ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=$width --height=$height --loop $parentdir/media/youtube/"
 Restart=always
 
 [Install]
