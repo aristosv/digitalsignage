@@ -1,12 +1,11 @@
 #!/bin/bash
 
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 
 echo website you want to display: ; read websiteurl
 
 echo configuring website
-sed -i -e "s/websiteurl=.*/websiteurl=$websiteurl/" $parentdir/operations/variables
+sed -i -e "s/websiteurl=.*/websiteurl=$websiteurl/" $currentdir/operations/variables
 
 echo stopping service
 $currentdir/signage/function_stop
