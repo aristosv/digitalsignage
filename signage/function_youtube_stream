@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
+
 service_youtube () {
 sudo bash -c 'cat > /etc/systemd/system/youtube.service' << 'EOL'
 [Unit]
