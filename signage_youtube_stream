@@ -5,7 +5,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo youtube video you want to display: ; read youtubeurl
 
 echo configuring youtube url
-sed -i -e "s/youtubeurl=.*/youtubeurl=$youtubeurl/" $currentdir/operations/variables
+sed -i -e "s|youtubeurl=.*|youtubeurl=$youtubeurl|" $currentdir/operations/variables
 
 echo stopping service
 $currentdir/signage/function_stop
