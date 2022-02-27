@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo youtube video you want to display: ; read youtubeurl

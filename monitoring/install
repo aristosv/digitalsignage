@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo =============================================================================================
@@ -13,25 +14,21 @@ echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access t
 echo =============================================================================================
 read -p "press enter to continue"
 
-echo gmail address: ; read gmailaddress ; export gmailaddress
-echo gmail password: ; read gmailpassword ; export gmailpassword
+echo gmail address: ; read emailaddress ; export emailaddress
+echo gmail password: ; read emailpassword ; export emailpassword
+
+sed -i -e "s/emailaddress=.*/emailaddress=$emailaddress/" $parentdir/operations/variables
+sed -i -e "s/emailpassword=.*/emailpassword=$emailpassword/" $parentdir/operations/variables
 
 install () {
  if test -f "/etc/systemd/system/monitor.service" ; then
   $currentdir/function_remove_service
-  $currentdir/function_create_service
-  $currentdir/function_configure_service
-  $currentdir/function_reload
-  $currentdir/function_configure_monitor
-  $currentdir/function_enable_service
+  $currentdir/function_monitoring_service
+  $parentdir/operations/function_reload
  else
-  $currentdir/function_install_ssmtp
-  $currentdir/function_configure_ssmtp
-  $currentdir/function_create_service
-  $currentdir/function_configure_service
-  $currentdir/function_reload
-  $currentdir/function_configure_monitor
-  $currentdir/function_enable_service
+  $currentdir/function_ssmtp
+  $currentdir/function_monitoring_service
+  $parentdir/operations/function_reload
  fi
 }
 

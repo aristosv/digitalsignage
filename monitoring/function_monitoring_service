@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# variables
+currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+function_service_monitoring () {
+sudo bash -c "cat > /etc/systemd/system/monitor.service" << EOL
+[Unit]
+Description=monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "while true ; do $currentdir/function_monitor ; sleep 60 ; done"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo systemctl start monitor.service
+sudo systemctl enable monitor.service > /dev/null 2>&1
+}
+
+echo creating monitoring service
+function_service_monitoring

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
+
+install_ssmtp () {
+ sudo apt install -y ssmtp > /dev/null 2>&1
+}
+
+configure_ssmtp () {
+ sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
+ echo "AuthUser=$emailaddress" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "AuthPass=$emailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+ echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+}
+
+echo installing ssmtp
+install_ssmtp
+
+echo configuring ssmtp
+configure_ssmtp
