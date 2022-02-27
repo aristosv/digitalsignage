@@ -4,6 +4,7 @@ remove_service () {
  sudo systemctl stop monitor.service
  sudo systemctl disable monitor.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/monitor.service
+ sudo systemctl daemon-reload
 }
 
 echo removing monitoring service
