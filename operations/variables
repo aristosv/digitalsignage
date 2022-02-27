@@ -1,6 +1,6 @@
 #!/bin/bash
 
-threshold=90
+threshold=1
 emailaddress=
 emailpassword=
 
