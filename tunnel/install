@@ -11,24 +11,23 @@ echo - You can then connect to this raspberry pi through the tunnel created usin
 echo =============================================================================================
 read -p "press enter to continue"
 
-echo ssh server ip: ; read ip ; export ip
-echo ssh server username: ; read username ; export username
-echo ssh server password: ; read password ; export password
-echo ssh server reverse port: ; read reverseport ; export reverseport
+echo ssh server ip: ; read server_ip ; export server_ip
+echo ssh server username: ; read server_user ; export server_user
+echo ssh server password: ; read server_pass ; export server_pass
+echo ssh server reverse port: ; read reverse_port ; export reverse_port
+
+sed -i -e "s/server_ip=.*/server_ip=$server_ip/" $parentdir/operations/variables
+sed -i -e "s/server_user=.*/server_user=$server_user/" $parentdir/operations/variables
+sed -i -e "s/server_pass=.*/server_pass=$server_pass/" $parentdir/operations/variables
+sed -i -e "s/reverse_port=.*/reverse_port=$reverse_port/" $parentdir/operations/variables
 
 install () {
  if test -f "/etc/systemd/system/tunnel.service" ; then
   $currentdir/function_remove_service
   $currentdir/function_create_service
-  $currentdir/function_configure_service
-  $currentdir/function_reload
-  $currentdir/function_enable_service
  else
   $currentdir/function_install_sshpass
   $currentdir/function_create_service
-  $currentdir/function_configure_service
-  $currentdir/function_reload
-  $currentdir/function_enable_service
  fi
 }
 

@@ -21,3 +21,9 @@ cpuusage=$(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.
 diskusage=$(df --output=pcent / | sed '1d;s/^ //;s/%//')%
 memoryusage=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%
 temperature=$(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//")C
+
+server_ip=
+server_user=
+server_pass=
+reverse_port=
+server_options="-t -t -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes -o ServerAliveCountMax=5 -o ServerAliveInterval=60 -o LogLevel=ERROR"
