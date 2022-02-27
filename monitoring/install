@@ -24,7 +24,7 @@ install () {
  if test -f "/etc/systemd/system/monitor.service" ; then
   $currentdir/function_remove_service
   $currentdir/function_monitoring_service
-  $parentdir/operations/function_reload
+  $parentdir/signage/function_reload
  else
   $currentdir/function_ssmtp
   $currentdir/function_monitoring_service
