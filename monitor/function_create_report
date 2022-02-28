@@ -4,6 +4,7 @@
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 source "$parentdir/operations/variables"
 
+create_report () {
 read -r -d '' report << EOM
 ---------------------------------
 Audio Files: $(ls -F $parentdir/media/audio | wc -l)
@@ -31,4 +32,8 @@ Public IP: $publicip
 ---------------------------------
 EOM
 
-{ echo Subject: Report - $HOSTNAME ; echo "$report" ; } | ssmtp emailaddress
+{ echo Subject: Report - $HOSTNAME ; echo "$report" ; } | ssmtp $emailaddress
+}
+
+echo creating report
+create_report
