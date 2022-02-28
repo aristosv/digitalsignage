@@ -6,7 +6,7 @@ parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo saving configuration
-source $currentdir/operations/variables
+source $currentdir/variables
 
 echo updating digitalsignage
 cd $parentdir
