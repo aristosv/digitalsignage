@@ -37,7 +37,7 @@ run update script
 ## optional
 enable cpu/disk/memory/temperature monitoring
 ```
-~/digitalsignage/monitoring/install
+~/digitalsignage/monitor/install
 ```
 enable tunnel access to your raspberry pi via an ssh server
 ```
