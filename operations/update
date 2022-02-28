@@ -13,7 +13,7 @@ cd $parentdir
 git reset --hard > /dev/null 2>&1
 git pull origin main > /dev/null 2>&1
 
-echo restoring settings
+echo restoring configuration
 # monitor
 sed -i -e "s/threshold=.*/threshold=$threshold/" $currentdir/variables
 sed -i -e "s/emailaddress=.*/emailaddress=$emailaddress/" $currentdir/variables
