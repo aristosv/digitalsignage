@@ -1,19 +1,24 @@
 #!/bin/bash
 
+# monitor
 threshold=90
 emailaddress=
 emailpassword=
 
+# signage
 websiteurl=apple.com
 youtubeurl=https://youtu.be/QC8iQqtG0hg
 videourl=https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_worldmedium.m3u8
 
+# olivetin
 olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
 olivetinurl=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
 
+# screensize
 width=$(fbset -s | awk '/geometry/ { print $2 }')
 height=$(fbset -s | awk '/geometry/ { print $3 }')
 
+# report
 localip=$(hostname -I | cut -d' ' -f1)
 publicip=$(curl -s http://whatismyip.akamai.com/)
 uptime=$(/usr/bin/uptime | sed 's/.*up \([^,]*\), .*/\1/')
@@ -22,6 +27,7 @@ diskusage=$(df --output=pcent / | sed '1d;s/^ //;s/%//')%
 memoryusage=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}')%
 temperature=$(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//")C
 
+# tunnel
 server_ip=
 server_user=
 server_pass=
