@@ -5,10 +5,24 @@
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+echo saving configuration
+source $currentdir/operations/variables
+
 echo updating digitalsignage
 cd $parentdir
 git reset --hard > /dev/null 2>&1
 git pull origin main > /dev/null 2>&1
+
+echo restoring settings
+# monitor
+sed -i -e "s/threshold=.*/threshold=$threshold/" $currentdir/variables
+sed -i -e "s/emailaddress=.*/emailaddress=$emailaddress/" $currentdir/variables
+sed -i -e "s/emailpassword=.*/emailpassword=$emailpassword/" $currentdir/variables
+# tunnel
+sed -i -e "s/server_ip=.*/server_ip=$server_ip/" $currentdir/variables
+sed -i -e "s/server_user=.*/server_user=$server_user/" $currentdir/variables
+sed -i -e "s/server_pass=.*/server_pass=$server_pass/" $currentdir/variables
+sed -i -e "s/reverse_port=.*/reverse_port=$reverse_port/" $currentdir/variables
 
 echo setting permissions
 chmod +x $currentdir/* $parentdir/signage_* $parentdir/signage/* $parentdir/monitor/* $parentdir/tunnel/*
