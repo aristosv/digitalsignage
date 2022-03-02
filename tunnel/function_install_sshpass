@@ -1,7 +1,9 @@
 #!/bin/bash
 
 install_sshpass () {
- sudo apt install -y sshpass > /dev/null 2>&1
+if ! dpkg -s sshpass >/dev/null 2>&1; then
+  sudo apt install -y sshpass > /dev/null 2>&1
+fi
 }
 
 echo installing sshpass
