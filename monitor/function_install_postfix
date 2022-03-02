@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+source "$parentdir/operations/variables"
+
+install_prerequisites () {
+sudo bash -c "echo postfix postfix/mailname string $(hostname --fqdn) | debconf-set-selections"
+sudo bash -c "echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections"
+sudo apt install -y postfix mailutils gcalcli python3-pip > /dev/null 2>&1
+}
+
+configure_postfix () {
+sudo sed -i -e '/relayhost/d' /etc/postfix/main.cf
+sudo sed -i -e '/inet_interfaces/d' /etc/postfix/main.cf
+
+sudo bash -c "echo \"/.+/ $emailaddress\" >> /etc/postfix/sender_canonical_maps"
+
+sudo bash -c "cat > /etc/postfix/main.cf" << EOL
+smtp_sasl_auth_enable = yes
+inet_interfaces = 127.0.0.1
+smtp_tls_security_level = encrypt
+relayhost = $smtpserver
+smtp_sasl_security_options = noanonymous
+sender_canonical_maps = regexp:/etc/postfix/sender_canonical_maps
+smtp_sasl_password_maps = static:$emailaddress:$emailpassword
+EOL
+}
+
+restart_postfix () {
+sudo systemctl restart postfix
+}
+
+send_email () {
+echo "body test" | mail -s "subject test" $emailaddress
+}
+
+echo installing prerequisites
+install_prerequisites
+
+echo configuring postfix
+configure_postfix
+
+echo restarting postfix
+restart_postfix
+
+echo sending test email
+send_email

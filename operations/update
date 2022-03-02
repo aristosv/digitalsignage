@@ -18,7 +18,7 @@ echo restoring configuration
 sed -i -e "s/threshold=.*/threshold=$threshold/" $currentdir/variables
 sed -i -e "s/emailaddress=.*/emailaddress=$emailaddress/" $currentdir/variables
 sed -i -e "s/emailpassword=.*/emailpassword=$emailpassword/" $currentdir/variables
-sed -i -e "s/mailhub=.*/mailhub=$mailhub/" $currentdir/variables
+sed -i -e "s/smtpserver=.*/smtpserver=$smtpserver/" $currentdir/variables
 # tunnel
 sed -i -e "s/server_ip=.*/server_ip=$server_ip/" $currentdir/variables
 sed -i -e "s/server_user=.*/server_user=$server_user/" $currentdir/variables
