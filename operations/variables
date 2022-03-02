@@ -10,6 +10,7 @@ mailhub="smtp.gmail.com:587"
 websiteurl=apple.com
 youtubeurl=https://youtu.be/QC8iQqtG0hg
 videourl=https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_worldmedium.m3u8
+currentsignage=$(for service in audio video images youtube browser logo ; do if test -f "/etc/systemd/system/$service.service" ; then echo $service ; fi done)
 
 # olivetin
 olivetindeb=OliveTin_2022-01-06_linux_arm64.deb

@@ -6,7 +6,7 @@ source "$parentdir/operations/variables"
 
 create_report () {
 read -r -d '' report << EOM
-echo $HOSTNAME boot report
+$HOSTNAME boot report
 ---------------------------------
 Audio Files: $(ls -F $parentdir/media/audio | wc -l)
 Video Files: $(ls -F $parentdir/media/video | wc -l)
@@ -30,6 +30,8 @@ Uptime: $uptime
 Local IP: $localip
 ---------------------------------
 Public IP: $publicip
+---------------------------------
+Signage Running: $currentsignage
 ---------------------------------
 EOM
 }
