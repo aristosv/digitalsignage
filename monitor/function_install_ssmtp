@@ -9,11 +9,13 @@ install_ssmtp () {
 }
 
 configure_ssmtp () {
- sudo truncate -s 0 /etc/ssmtp/ssmtp.conf
- echo "AuthUser=$emailaddress" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo "AuthPass=$emailpassword" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo "mailhub=smtp.gmail.com:587" | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
- echo 'UseSTARTTLS=YES' | sudo tee -a /etc/ssmtp/ssmtp.conf > /dev/null
+sudo rm -f /etc/ssmtp/ssmtp.conf
+sudo bash -c "cat > /etc/ssmtp/ssmtp.conf" << EOL
+"AuthUser=$emailaddress"
+"AuthPass=$emailpassword"
+"mailhub=$mailhub"
+"UseSTARTTLS=YES"
+EOL
 }
 
 echo installing ssmtp
