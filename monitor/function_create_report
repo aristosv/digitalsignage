@@ -31,9 +31,14 @@ Local IP: $localip
 Public IP: $publicip
 ---------------------------------
 EOM
+}
 
+send_email () {
 { echo Subject: Report - $HOSTNAME ; echo "$report" ; } | ssmtp $emailaddress
 }
 
 echo creating report
 create_report
+
+echo sending email
+send_email
