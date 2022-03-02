@@ -3,12 +3,11 @@
 # variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-create_cron ()
-{
+create_cronjob () {
 sudo bash -c "cat > /etc/cron.d/report" << EOL
 @reboot root "$currentdir/function_create_report"
 EOL
 }
 
-echo configuring cron job
-create_cron
+echo creating cron job
+create_cronjob
