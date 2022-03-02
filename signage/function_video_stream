@@ -8,7 +8,8 @@ service_video () {
 sudo bash -c "cat > /etc/systemd/system/video.service" << EOL
 [Unit]
 Description=video service
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=$width --height=$height $videourl"

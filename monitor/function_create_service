@@ -7,7 +7,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 function_service_monitor () {
 sudo bash -c "cat > /etc/systemd/system/monitor.service" << EOL
 [Unit]
-Description=monitor
+Description=monitor service
 After=network.target
 
 [Service]
@@ -27,7 +27,7 @@ sudo systemctl enable monitor.service > /dev/null 2>&1
 function_service_report () {
 sudo bash -c "cat > /etc/systemd/system/report.service" << EOL
 [Unit]
-Description=report
+Description=report service
 Wants=network-online.target
 After=network-online.target
 

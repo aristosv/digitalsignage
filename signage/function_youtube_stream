@@ -8,7 +8,8 @@ service_youtube () {
 sudo bash -c "cat > /etc/systemd/system/youtube.service" << EOL
 [Unit]
 Description=youtube service
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 ExecStart=/bin/bash -c "xinit /usr/bin/cvlc --no-osd --network-caching=2000 --no-qt-privacy-ask --fullscreen --no-embedded-video --no-autoscale --width=$width --height=$height --loop $youtubeurl"
