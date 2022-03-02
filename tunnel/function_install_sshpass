@@ -2,7 +2,7 @@
 
 install_sshpass () {
 if ! dpkg -s sshpass >/dev/null 2>&1; then
-  sudo apt install -y sshpass > /dev/null 2>&1
+ sudo apt install -y sshpass > /dev/null 2>&1
 fi
 }
 

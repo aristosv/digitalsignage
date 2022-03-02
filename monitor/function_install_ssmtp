@@ -6,7 +6,7 @@ source "$parentdir/operations/variables"
 
 install_ssmtp () {
 if ! dpkg -s ssmtp >/dev/null 2>&1; then
-  sudo apt install -y ssmtp > /dev/null 2>&1
+ sudo apt install -y ssmtp > /dev/null 2>&1
 fi
 }
 
