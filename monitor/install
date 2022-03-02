@@ -14,19 +14,21 @@ echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access t
 echo =============================================================================================
 read -p "press enter to continue"
 
-echo gmail address: ; read emailaddress ; export emailaddress
-echo gmail password: ; read emailpassword ; export emailpassword
+echo email address: ; read emailaddress ; export emailaddress
+echo email password: ; read emailpassword ; export emailpassword
+echo smtp server: ; read smtpserver ; export smtpserver
 
 sed -i -e "s/emailaddress=.*/emailaddress=$emailaddress/" $parentdir/operations/variables
 sed -i -e "s/emailpassword=.*/emailpassword=$emailpassword/" $parentdir/operations/variables
+sed -i -e "s/smtpserver=.*/smtpserver=$smtpserver/" $parentdir/operations/variables
 
 install () {
  if test -f "/etc/systemd/system/monitor.service" ; then
   $currentdir/function_remove_service
-  $currentdir/function_install_ssmtp
+  $currentdir/function_install_postfix
   $currentdir/function_create_service
  else
-  $currentdir/function_install_ssmtp
+  $currentdir/function_install_postfix
   $currentdir/function_create_service
  fi
 }

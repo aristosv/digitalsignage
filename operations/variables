@@ -4,7 +4,7 @@
 threshold=90
 emailaddress=
 emailpassword=
-mailhub="smtp.gmail.com:587"
+smtpserver=
 
 # signage
 websiteurl=apple.com
