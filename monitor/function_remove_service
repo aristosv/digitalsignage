@@ -1,11 +1,21 @@
 #!/bin/bash
 
-remove_service () {
+remove_monitor () {
  sudo systemctl stop monitor.service
  sudo systemctl disable monitor.service > /dev/null 2>&1
  sudo rm -f /etc/systemd/system/monitor.service
  sudo systemctl daemon-reload
 }
 
+remove_report () {
+ sudo systemctl stop report.service
+ sudo systemctl disable report.service > /dev/null 2>&1
+ sudo rm -f /etc/systemd/system/report.service
+ sudo systemctl daemon-reload
+}
+
 echo removing monitoring service
-remove_service
+remove_monitor
+
+echo removing reporting service
+remove_report

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-remove_cronjob () {
- sudo rm -f /etc/cron.d/report
-}
-
-echo removing cron job
-remove_cronjob

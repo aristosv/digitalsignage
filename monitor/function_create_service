@@ -3,7 +3,8 @@
 # variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-function_service_monitoring () {
+# monitor
+function_service_monitor () {
 sudo bash -c "cat > /etc/systemd/system/monitor.service" << EOL
 [Unit]
 Description=monitor
@@ -22,5 +23,28 @@ sudo systemctl start monitor.service
 sudo systemctl enable monitor.service > /dev/null 2>&1
 }
 
+# report
+function_service_report () {
+sudo bash -c "cat > /etc/systemd/system/report.service" << EOL
+[Unit]
+Description=report
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "$currentdir/function_report"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo systemctl daemon-reload
+sudo systemctl start report.service
+sudo systemctl enable report.service > /dev/null 2>&1
+}
+
 echo creating monitoring service
-function_service_monitoring
+function_service_monitor
+
+echo creating reporting service
+function_service_monitor

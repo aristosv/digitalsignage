@@ -23,14 +23,11 @@ sed -i -e "s/emailpassword=.*/emailpassword=$emailpassword/" $parentdir/operatio
 install () {
  if test -f "/etc/systemd/system/monitor.service" ; then
   $currentdir/function_remove_service
-  $currentdir/function_remove_cronjob
   $currentdir/function_install_ssmtp
   $currentdir/function_create_service
-  $currentdir/function_create_cronjob
  else
   $currentdir/function_install_ssmtp
   $currentdir/function_create_service
-  $currentdir/function_create_cronjob
  fi
 }
 
