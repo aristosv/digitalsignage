@@ -47,4 +47,4 @@ echo creating monitoring service
 function_service_monitor
 
 echo creating reporting service
-function_service_monitor
+function_service_report
