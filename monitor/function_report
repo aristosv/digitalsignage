@@ -15,7 +15,7 @@ YouTube Files: $(ls -F $parentdir/media/youtube | wc -l)
 ----------------------------------
 Host Name: $HOSTNAME
 ----------------------------------
-Date: $(date)
+Date: $(date +'%d-%m-%Y')
 ----------------------------------
 CPU Usage: $cpuusage
 ----------------------------------
