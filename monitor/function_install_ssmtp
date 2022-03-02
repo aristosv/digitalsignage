@@ -11,10 +11,10 @@ install_ssmtp () {
 configure_ssmtp () {
 sudo rm -f /etc/ssmtp/ssmtp.conf
 sudo bash -c "cat > /etc/ssmtp/ssmtp.conf" << EOL
-"AuthUser=$emailaddress"
-"AuthPass=$emailpassword"
-"mailhub=$mailhub"
-"UseSTARTTLS=YES"
+AuthUser=$emailaddress
+AuthPass=$emailpassword
+mailhub=$mailhub
+UseSTARTTLS=YES
 EOL
 }
 
