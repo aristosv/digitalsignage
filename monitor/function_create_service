@@ -28,7 +28,8 @@ function_service_report () {
 sudo bash -c "cat > /etc/systemd/system/report.service" << EOL
 [Unit]
 Description=report
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=oneshot
