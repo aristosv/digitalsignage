@@ -31,6 +31,7 @@ Description=report
 After=network.target
 
 [Service]
+Type=oneshot
 ExecStart=/bin/bash -c "$currentdir/function_report"
 Restart=always
 
