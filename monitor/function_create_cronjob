@@ -5,7 +5,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 create_cronjob () {
 sudo bash -c "cat > /etc/cron.d/report" << EOL
-@reboot root "$currentdir/function_create_report"
+@reboot root $currentdir/function_create_report
 EOL
 }
 
