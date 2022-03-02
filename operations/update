@@ -24,7 +24,6 @@ sed -i -e "s/server_ip=.*/server_ip=$server_ip/" $currentdir/variables
 sed -i -e "s/server_user=.*/server_user=$server_user/" $currentdir/variables
 sed -i -e "s/server_pass=.*/server_pass=$server_pass/" $currentdir/variables
 sed -i -e "s/reverse_port=.*/reverse_port=$reverse_port/" $currentdir/variables
-sed -i -e "s/server_options=.*/server_options=$server_options/" $currentdir/variables
 
 echo setting permissions
 chmod +x $currentdir/* $parentdir/signage_* $parentdir/signage/* $parentdir/monitor/* $parentdir/tunnel/*
