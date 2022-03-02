@@ -7,32 +7,32 @@ source "$parentdir/operations/variables"
 create_report () {
 read -r -d '' report << EOM
 $HOSTNAME boot report
----------------------------------
+----------------------------------
 Audio Files: $(ls -F $parentdir/media/audio | wc -l)
 Video Files: $(ls -F $parentdir/media/video | wc -l)
 Image Files: $(ls -F $parentdir/media/images | wc -l)
 YouTube Files: $(ls -F $parentdir/media/youtube | wc -l)
----------------------------------
+----------------------------------
 Host Name: $HOSTNAME
----------------------------------
+----------------------------------
 Date: $(date)
----------------------------------
+----------------------------------
 CPU Usage: $cpuusage
----------------------------------
+----------------------------------
 Disk Usage: $diskusage
----------------------------------
+----------------------------------
 Memory Usage: $memoryusage
----------------------------------
+----------------------------------
 Temperature: $temperature
----------------------------------
+----------------------------------
 Uptime: $uptime
----------------------------------
+----------------------------------
 Local IP: $localip
----------------------------------
+----------------------------------
 Public IP: $publicip
----------------------------------
+----------------------------------
 Signage Running: $currentsignage
----------------------------------
+----------------------------------
 EOM
 }
 
