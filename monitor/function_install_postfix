@@ -46,7 +46,7 @@ sudo systemctl restart postfix
 }
 
 send_email () {
-echo "This email confirms that your system can send emails" | mail -s "Confirmation Email" $emailaddress
+echo "This is a confirmation that your system can send emails" | mail -s "Confirmation Email" $emailaddress
 }
 
 echo installing postfix
