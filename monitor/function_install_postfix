@@ -4,16 +4,16 @@
 parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 source "$parentdir/operations/variables"
 
-install_prerequisites () {
-sudo bash -c "echo postfix postfix/mailname string $(hostname --fqdn) | debconf-set-selections"
-sudo bash -c "echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections"
+install_postfix () {
+sudo bash -c "echo postfix postfix/mailname string $(hostname --fqdn) | debconf-set-selections" > /dev/null 2>&1
+sudo bash -c "echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections" > /dev/null 2>&1
 sudo apt install -y postfix mailutils > /dev/null 2>&1
 }
 
 configure_postfix () {
 sudo rm -f /etc/postfix/main.cf
 sudo bash -c "cat > /etc/postfix/main.cf" << EOL
-smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)
+smtpd_banner = $HOSTNAME ESMTP (Debian/GNU)
 biff = no
 append_dot_mydomain = no
 readme_directory = no
@@ -27,7 +27,7 @@ smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_una
 myhostname = $HOSTNAME.localdomain
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-mydestination = $myhostname, $HOSTNAME, localhost.localdomain, , localhost
+mydestination = $HOSTNAME, localhost.localdomain, , localhost
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
 recipient_delimiter = +
@@ -42,24 +42,18 @@ smtp_sasl_password_maps = static:$emailaddress:$emailpassword
 EOL
 sudo rm -f /etc/postfix/sender_canonical_maps
 sudo bash -c "echo \"/.+/ $emailaddress\" >> /etc/postfix/sender_canonical_maps"
-}
-
-restart_postfix () {
 sudo systemctl restart postfix
 }
 
 send_email () {
-echo "body test" | mail -s "subject test" $emailaddress
+echo "This is a confirmation that your system can send emails" | mail -s "Confirmation Email" $emailaddress
 }
 
-echo installing prerequisites
-install_prerequisites
+echo installing postfix
+install_postfix
 
 echo configuring postfix
 configure_postfix
-
-echo restarting postfix
-restart_postfix
 
 echo sending test email
 send_email
