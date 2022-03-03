@@ -7,7 +7,7 @@ source "$parentdir/operations/variables"
 install_prerequisites () {
 sudo bash -c "echo postfix postfix/mailname string $(hostname --fqdn) | debconf-set-selections"
 sudo bash -c "echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections"
-sudo apt install -y postfix mailutils gcalcli python3-pip > /dev/null 2>&1
+sudo apt install -y postfix mailutils > /dev/null 2>&1
 }
 
 configure_postfix () {
