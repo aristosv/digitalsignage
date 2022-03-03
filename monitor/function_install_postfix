@@ -5,9 +5,17 @@ parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 source "$parentdir/operations/variables"
 
 install_postfix () {
-sudo bash -c "echo postfix postfix/mailname string $(hostname --fqdn) | debconf-set-selections" > /dev/null 2>&1
-sudo bash -c "echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections" > /dev/null 2>&1
-sudo apt install -y postfix mailutils > /dev/null 2>&1
+if ! dpkg -s postfix >/dev/null 2>&1; then
+ sudo bash -c "echo postfix postfix/mailname string $(hostname --fqdn) | debconf-set-selections" > /dev/null 2>&1
+ sudo bash -c "echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections" > /dev/null 2>&1
+ sudo apt install -y postfix > /dev/null 2>&1
+fi
+}
+
+install_mailutils () {
+if ! dpkg -s postfix >/dev/null 2>&1; then
+ sudo apt install -y mailutils > /dev/null 2>&1
+fi
 }
 
 configure_postfix () {
@@ -51,6 +59,9 @@ echo "This is a confirmation that your system can send emails" | mail -s "Confir
 
 echo installing postfix
 install_postfix
+
+echo installing mailutils
+install_mailutils
 
 echo configuring postfix
 configure_postfix
