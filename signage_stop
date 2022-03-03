@@ -3,7 +3,7 @@
 # variables
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-echo stopping service
+echo stopping services
 $currentdir/signage/function_stop
 
 echo clearing framebuffer

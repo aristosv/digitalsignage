@@ -11,7 +11,7 @@ rm -f $currentdir/media/youtube/*
 echo downloading youtube video
 youtube-dl -o $currentdir/media/youtube/video1.mp4 $youtubeurl
 
-echo stopping service
+echo stopping services
 $currentdir/signage/function_stop
 
 echo clearing framebuffer

@@ -8,7 +8,7 @@ echo website you want to display: ; read websiteurl
 echo configuring website
 sed -i -e "s/websiteurl=.*/websiteurl=$websiteurl/" $currentdir/operations/variables
 
-echo stopping service
+echo stopping services
 $currentdir/signage/function_stop
 
 echo clearing framebuffer
