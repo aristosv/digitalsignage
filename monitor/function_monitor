@@ -7,22 +7,22 @@ source "$parentdir/operations/variables"
 function_monitor () {
 # cpu monitor
 if [ $(top -b -n1 | grep Cpu | awk '{print $2 + $4}' | awk '{print int($1+0.5)}') -gt $threshold ] ; then
- { echo Subject: CPU Alert - $HOSTNAME ; echo CPU Usage on $HOSTNAME is $cpuusage ; } | ssmtp $emailaddress
+ echo "CPU on $HOSTNAME is $cpuusage" | mail -s "CPU Alert - $HOSTNAME" $emailaddress
 fi
 
 # disk monitor
 if [ $(df --output=pcent / | sed '1d;s/^ //;s/%//') -gt $threshold ] ; then
- { echo Subject: Disk Alert - $HOSTNAME ; echo Disk Usage on $HOSTNAME is $diskusage ; } | ssmtp $emailaddress
+ echo "Disk on $HOSTNAME is $diskusage" | mail -s "Disk Alert - $HOSTNAME" $emailaddress
 fi
 
 # memory monitor
 if [ $(free | grep Mem | awk '{print $3/$2 * 100.0}' | awk '{print int($1+0.5)}') -gt $threshold ] ; then
- { echo Subject: Memory Alert - $HOSTNAME ; echo Memory Usage on $HOSTNAME is $memoryusage ; } | ssmtp $emailaddress
+ echo "Memory on $HOSTNAME is $memoryusage" | mail -s "Memory Alert - $HOSTNAME" $emailaddress
 fi
 
 # temperature monitor
 if [ $(sudo /usr/bin/vcgencmd measure_temp | sed -e 's/temp=//' | sed -e "s/[.].*//") -gt $threshold ] ; then
- { echo Subject: Temperature Alert - $HOSTNAME ; echo Temperature on $HOSTNAME is $temperature ; } | ssmtp $emailaddress
+ echo "Temperature on $HOSTNAME is $temperature" | mail -s "Temperature Alert - $HOSTNAME" $emailaddress
 fi
 }
 

@@ -37,7 +37,7 @@ EOM
 }
 
 send_email () {
-{ echo Subject: Report - $HOSTNAME ; echo "$report" ; } | ssmtp $emailaddress
+echo "$report" | mail -s "Report - $HOSTNAME" $emailaddress
 }
 
 echo creating report
