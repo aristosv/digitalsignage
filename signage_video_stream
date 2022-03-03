@@ -6,7 +6,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo video you want to display: ; read videourl
 
 echo configuring video url
-sed -i -e "s/videourl=.*/videourl=$videourl/" $currentdir/operations/variables
+sed -i -e "s|videourl=.*|videourl=$videourl|" $currentdir/operations/variables
 
 echo stopping services
 $currentdir/signage/function_stop
