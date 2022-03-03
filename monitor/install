@@ -6,21 +6,21 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo =============================================================================================
 echo - This will enable email alerts for cpu/disk/memory/temperature usage.
-echo - You will be asked to provide the username and password of a gmail account.
-echo - Before proceeding perform the following steps to enable access to any gmail account.
+echo - You will be asked to provide smtp/username/password of an email account.
 echo ---------------------------------------------------------------------------------------------
+echo IMPORTANT IF YOU ARE USING A GMAIL ACCOUNT
 echo 1. Visit https://myaccount.google.com/lesssecureapps to enable less secure app access.
 echo 2. Visit https://accounts.google.com/DisplayUnlockCaptcha to allow access to a gmail account.
 echo =============================================================================================
 read -p "press enter to continue"
 
+echo smtp server: ; read smtpserver ; export smtpserver
 echo email address: ; read emailaddress ; export emailaddress
 echo email password: ; read emailpassword ; export emailpassword
-echo smtp server: ; read smtpserver ; export smtpserver
 
+sed -i -e "s/smtpserver=.*/smtpserver=$smtpserver/" $parentdir/operations/variables
 sed -i -e "s/emailaddress=.*/emailaddress=$emailaddress/" $parentdir/operations/variables
 sed -i -e "s/emailpassword=.*/emailpassword=$emailpassword/" $parentdir/operations/variables
-sed -i -e "s/smtpserver=.*/smtpserver=$smtpserver/" $parentdir/operations/variables
 
 install () {
  if test -f "/etc/systemd/system/monitor.service" ; then
