@@ -1,26 +1,23 @@
 #!/bin/bash
 
-remove_monitor () {
- sudo systemctl stop monitor.service
- sudo systemctl disable monitor.service > /dev/null 2>&1
- sudo rm -f /etc/systemd/system/monitor.service
+# variables
+parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
+
+remove_services () {
+for service in monitor report
+ do
+  if test -f "/etc/systemd/system/$service.service" ; then
+   echo stopping $service
+   sudo systemctl stop $service.service
+   sudo systemctl disable $service.service > /dev/null 2>&1
+   sudo rm /etc/systemd/system/$service.service
+  fi
+ done
+exit 0
 }
 
-remove_report () {
- sudo systemctl stop report.service
- sudo systemctl disable report.service > /dev/null 2>&1
- sudo rm -f /etc/systemd/system/report.service
-}
+echo removing services
+remove_services
 
-reload_daemon () {
-sudo systemctl daemon-reload
-}
-
-echo removing monitoring service
-remove_monitor
-
-echo removing reporting service
-remove_report
-
-echo reloading daemon
-reload_daemon
+echo reloading services
+$parentdir/signage/function_reload
