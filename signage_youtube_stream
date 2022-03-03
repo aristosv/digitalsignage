@@ -8,7 +8,7 @@ echo youtube video you want to display: ; read youtubeurl
 echo configuring youtube url
 sed -i -e "s|youtubeurl=.*|youtubeurl=$youtubeurl|" $currentdir/operations/variables
 
-echo stopping service
+echo stopping services
 $currentdir/signage/function_stop
 
 echo clearing framebuffer

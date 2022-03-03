@@ -8,7 +8,7 @@ echo video you want to display: ; read videourl
 echo configuring video url
 sed -i -e "s/videourl=.*/videourl=$videourl/" $currentdir/operations/variables
 
-echo stopping service
+echo stopping services
 $currentdir/signage/function_stop
 
 echo clearing framebuffer
