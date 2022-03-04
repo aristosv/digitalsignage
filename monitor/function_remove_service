@@ -5,14 +5,14 @@ parentdir=$(dirname "$(dirname "$(readlink -f -- "$0")")")
 
 remove_services () {
 for service in monitor report
- do
-  if test -f "/etc/systemd/system/$service.service" ; then
-   echo stopping $service
-   sudo systemctl stop $service.service
-   sudo systemctl disable $service.service > /dev/null 2>&1
-   sudo rm /etc/systemd/system/$service.service
-  fi
- done
+do
+ if test -f "/etc/systemd/system/$service.service" ; then
+  echo stopping $service
+  sudo systemctl stop $service.service
+  sudo systemctl disable $service.service > /dev/null 2>&1
+  sudo rm /etc/systemd/system/$service.service
+ fi
+done
 }
 
 echo removing services
