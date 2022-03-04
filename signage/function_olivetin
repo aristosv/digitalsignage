@@ -70,7 +70,7 @@ actions:
   arguments:
    - name: website
      title: Website Address
-     type: very_dangerous_raw_string
+     type: ascii_identifier
      default: $websiteurl
 
 - title: Stop Signage Services
