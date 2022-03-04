@@ -6,7 +6,7 @@ currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo website you want to display: ; read websiteurl
 
 echo configuring website
-sed -i -e "s/websiteurl=.*/websiteurl=$websiteurl/" $currentdir/operations/variables
+sed -i -e "s|websiteurl=.*|websiteurl=$websiteurl|" $currentdir/operations/variables
 
 echo stopping services
 $currentdir/signage/function_stop
