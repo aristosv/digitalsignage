@@ -6,6 +6,9 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/aristosv/digitalsignage?style=plastic)
 ![GitHub top language](https://img.shields.io/github/languages/top/aristosv/digitalsignage?style=plastic)
 ![GitHub repo size](https://img.shields.io/github/repo-size/aristosv/digitalsignage)
+[![OS - Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white)](https://www.linux.org/ "Go to Linux homepage")
+[![Made with Bash](https://img.shields.io/badge/Bash->=3-blue?logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/ "Go to Bash homepage")
+[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=plastic)](/docs/ "Go to project documentation")
 
 This is a simple way to use a Raspberry Pi as a digital signage system. No need for a graphical user interface, no need to install a desktop. Just download the [Raspberry Pi OS Lite](https://www.raspberrypi.com/software/operating-systems/) image, burn it on an SD card and boot your Raspberry Pi to the operating system. This has been tested on a Raspberry Pi 4 Model B with 4GB of RAM, but it will probably run just fine on older models also.
 
