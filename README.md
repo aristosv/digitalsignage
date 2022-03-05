@@ -2,6 +2,7 @@
 
 [![aristosv - digitalsignage](https://img.shields.io/static/v1?label=aristosv&message=digitalsignage&color=blue&logo=github)](https://github.com/aristosv/digitalsignage "Go to GitHub repo")
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/aristosv/digitalsignage?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/aristosv/digitalsignage?style=plastic)
 [![License](https://img.shields.io/badge/License-GPL_v3.0-blue)](#license)
 [![stars - digitalsignage](https://img.shields.io/github/stars/aristosv/digitalsignage?style=plastic)](https://github.com/aristosv/digitalsignage)
 [![forks - digitalsignage](https://img.shields.io/github/forks/aristosv/digitalsignage?style=plastic)](https://github.com/aristosv/digitalsignage)
