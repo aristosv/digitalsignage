@@ -1,6 +1,7 @@
 # Open Source Raspberry Pi Digital Signage System
 
 [![aristosv - digitalsignage](https://img.shields.io/static/v1?label=aristosv&message=digitalsignage&color=blue&logo=github)](https://github.com/aristosv/digitalsignage "Go to GitHub repo")
+[![License](https://img.shields.io/badge/License-GPL_v3.0-blue)](#license)
 [![stars - digitalsignage](https://img.shields.io/github/stars/aristosv/digitalsignage?style=plastic)](https://github.com/aristosv/digitalsignage)
 [![forks - digitalsignage](https://img.shields.io/github/forks/aristosv/digitalsignage?style=plastic)](https://github.com/aristosv/digitalsignage)
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=plastic)](/docs/ "Go to project documentation")
