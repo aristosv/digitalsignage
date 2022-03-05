@@ -3,8 +3,6 @@
 [![aristosv - digitalsignage](https://img.shields.io/static/v1?label=aristosv&message=digitalsignage&color=blue&logo=github)](https://github.com/aristosv/digitalsignage "Go to GitHub repo")
 [![stars - digitalsignage](https://img.shields.io/github/stars/aristosv/digitalsignage?style=plastic)](https://github.com/aristosv/digitalsignage)
 [![forks - digitalsignage](https://img.shields.io/github/forks/aristosv/digitalsignage?style=plastic)](https://github.com/aristosv/digitalsignage)
-
-
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=plastic)](/docs/ "Go to project documentation")
 ![maintained - yes](https://img.shields.io/badge/maintained-yes-blue)
 [![contributions - welcome](https://img.shields.io/badge/contributions-welcome-blue)](/CONTRIBUTING.md "Go to contributions doc")
