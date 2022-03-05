@@ -1,4 +1,4 @@
-# Open Source Raspberry Pi Digital Signage System - RPDS
+# Raspberry Pi Digital Signage System - RPDS
 
 [![aristosv - digitalsignage](https://img.shields.io/static/v1?label=aristosv&message=digitalsignage&color=blue&logo=github)](https://github.com/aristosv/digitalsignage "Go to GitHub repo")
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/aristosv/digitalsignage?style=plastic)
