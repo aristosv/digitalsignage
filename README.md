@@ -40,4 +40,4 @@ enable tunnel access to your raspberry pi via an ssh server
 ~/digitalsignage/tunnel/install
 ```
 
-https://img.shields.io/github/stars/aristosv/digitalsignage
+<a href="https://github.com/aristosv/digitalsignage/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aristosv/digitalsignage"></a>
