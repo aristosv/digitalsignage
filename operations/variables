@@ -12,8 +12,8 @@ youtubeurl=https://youtu.be/QC8iQqtG0hg
 videourl=https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_worldmedium.m3u8
 
 # olivetin
-olivetindeb=OliveTin_2022-01-06_linux_arm64.deb
-olivetinurl=https://github.com/OliveTin/OliveTin/releases/download/2022-01-06
+olivetindeb=OliveTin_2022-04-07_linux_arm64.deb
+olivetinurl=https://github.com/OliveTin/OliveTin/releases/download/2022-04-07
 
 # screensize
 width=$(fbset -s | awk '/geometry/ { print $2 }')
