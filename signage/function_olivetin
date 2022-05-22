@@ -8,10 +8,10 @@ configure_olivetin () {
 sudo mv /etc/OliveTin/config.yaml /etc/OliveTin/backup_$(date +'%d_%m_%Y_%I_%M').yaml
 sudo bash -c "cat > /etc/OliveTin/config.yaml" << EOL
 ListenAddressSingleHTTPFrontend: 0.0.0.0:1337
-checkForUpdates: true
-showNewVersions: true
-ShowNavigation: true
-ShowFooter: true
+checkForUpdates: false
+showNewVersions: false
+ShowNavigation: false
+ShowFooter: false
 logLevel: "INFO"
 
 actions:
